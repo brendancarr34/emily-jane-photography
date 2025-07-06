@@ -1,6 +1,6 @@
 import React from 'react';
-import backgroundImage from '../components/goldenGoldenGate.jpg'; // Adjust the path as necessary
-import Menu from '../components/Menu'; // Import the Menu component
+import backgroundImage from '../components/goldenGoldenGate.jpg';
+import Menu from '../components/Menu';
 
 const LandingPage = () => {
     const landingPageStyle = {
@@ -19,7 +19,7 @@ const LandingPage = () => {
 
     return (
         <div style={landingPageStyle}>
-            <Menu /> {/* Add the Menu component */}
+            <Menu />
             <div className="container">
                 <div className="row justify-content-center align-items-center" style={{ height: '100%' }}>
                     <div className="col text-center">

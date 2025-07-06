@@ -1,6 +1,8 @@
 import Menu from "../components/Menu";
 // import { Row, Col } from 'react-bootstrap';
 import React from "react";
+import { Link } from 'react-router-dom';
+
 const HomePage = () => {
   const images = [
     { url: '/images/goldenGoldenGate.jpg', title: 'Golden Gate Bridge' },
@@ -84,14 +86,16 @@ const HomePage = () => {
       <main style={styles.photoGrid}>
         {images.map((photo, index) => (
           <div key={index} style={styles.photoCard}>
-            <img
-              src={photo.url}
-              alt={`Photo ${index + 1} - ${photo.title}`}
-              style={styles.photoImage}
-            />
-            <div style={styles.photoInfo}>
-              <p>{photo.title}</p>
-            </div>
+            <Link to={`/product/${encodeURIComponent(photo.title)}`} style={{ textDecoration: 'none' }}>
+              <img
+                src={photo.url}
+                alt={`Photo ${index + 1} - ${photo.title}`}
+                style={styles.photoImage}
+              />
+              <div style={styles.photoInfo}>
+                <p>{photo.title}</p>
+              </div>
+            </Link>
           </div>
         ))}
       </main>
