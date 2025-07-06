@@ -1,11 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Menu from '../components/Menu';
 
 const Product = () => {
     const { imageName } = useParams();
-    const [customerName, setCustomerName] = useState(""); // State for customer name
+    const imageUrl = `/images/photo${imageName}.jpg`; // Construct the image URL
 
+    const [customerName, setCustomerName] = useState(""); // State for customer name
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    useEffect(() => {
+      // Fetch photo info from the API
+      fetch('https://superbowl-squares-api-2-637010006131.us-central1.run.app/api/ejt-photography/photo-info')
+        .then(response => response.json())
+        // .then(response => console.log(response))
+        .then(data => {
+          // Construct the images array using the response data
+          const constructedImages = data.map((item) => ({
+            id: item.id,
+            url: `/images/photo${item.id}.jpg`,
+            title: `${item.title}`, // Placeholder title, can be customized
+            price: item.price // Assuming the API returns a price field
+          }));
+          console.log("Constructed Images:", constructedImages); // Log the constructed images for debugging
+
+          console.log(constructedImages.find(image => image.id === imageName));
+          
+          setSelectedImage(constructedImages.find(image => image.id === imageName));
+
+        })
+        .catch(error => {
+          console.error('Error fetching photo info:', error);
+        });
+
+        // console.log("Images:", images); // Log the images array for debugging
+
+        // find the image with id matching imageName
+        
+
+    }, []);
 
     const styles = {
         photoImage: {
@@ -52,8 +85,8 @@ const Product = () => {
       <div>
         <Menu/>
         <div style={{ paddingLeft: '50px', paddingRight: '50px', paddingTop: '80px' }}>
-          <img src={imageName} style={styles.photoImage} />
-          <p>Image Name: {decodeURIComponent(imageName)}</p>
+          <img src={imageUrl} style={styles.photoImage} />
+          <h1>{selectedImage.title}</h1>
           {/* Input box for customer name */}
           <input
             type="text"
@@ -63,6 +96,7 @@ const Product = () => {
             style={{ marginBottom: "10px", padding: "5px" }}
           />
           <button onClick={handleOrder}>Place Order</button>
+          <p>{selectedImage && selectedImage.price != null ? `Price: $${selectedImage.price}` : ''}</p>
         </div>
       </div>
     );

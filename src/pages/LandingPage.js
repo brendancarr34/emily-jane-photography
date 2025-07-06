@@ -1,5 +1,5 @@
 import React from 'react';
-import backgroundImage from '../components/goldenGoldenGate.jpg';
+import backgroundImage from '../resources/landingPageBackground.jpg';
 import Menu from '../components/Menu';
 
 const LandingPage = () => {

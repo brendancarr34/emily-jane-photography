@@ -1,17 +1,29 @@
 import Menu from "../components/Menu";
 // import { Row, Col } from 'react-bootstrap';
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
-  const images = [
-    { url: '/images/goldenGoldenGate.jpg', title: 'Golden Gate Bridge' },
-    { url: '/images/photo2.jpg', title: 'Sunset Over the Ocean' },
-    { url: '/images/photo3.jpg', title: 'Mountain View' },
-    { url: '/images/photo4.jpg', title: 'City Skyline' },
-    { url: '/images/photo5.jpg', title: 'Forest Path' },
-    { url: '/images/photo6.jpg', title: 'Desert Dunes' },
-  ];
+
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    // Fetch photo info from the API
+    fetch('https://superbowl-squares-api-2-637010006131.us-central1.run.app/api/ejt-photography/photo-info')
+      .then(response => response.json())
+      .then(data => {
+        // Construct the images array using the response data
+        const constructedImages = data.map((item) => ({
+          id: item.id,
+          url: `/images/photo${item.id}.jpg`,
+          title: `${item.title}` // Placeholder title, can be customized
+        }));
+        setImages(constructedImages);
+      })
+      .catch(error => {
+        console.error('Error fetching photo info:', error);
+      });
+  }, []);
 
   const styles = {
     homepage: {
@@ -68,28 +80,18 @@ const HomePage = () => {
 
   return (
     <div style={styles.homepage}>
-      {/* <header style={styles.header}>
-        <h1>Photography Prints</h1>
-        <nav>
-          <ul style={styles.menu}>
-            <li><a href="/about" style={styles.menuLink}>About Me</a></li>
-            <li><a href="/store" style={styles.menuLink}>Store</a></li>
-          </ul>
-        </nav>
-      </header> */}
       <Menu/>
       <div>
         <br/>
         <br/>
       </div>
-
       <main style={styles.photoGrid}>
         {images.map((photo, index) => (
           <div key={index} style={styles.photoCard}>
-            <Link to={`/product/${encodeURIComponent(photo.url)}`} style={{ textDecoration: 'none' }}>
+            <Link to={`/product/${photo.id}`} style={{ textDecoration: 'none', color: 'black' }}>
               <img
                 src={photo.url}
-                alt={`Photo ${index + 1} - ${photo.title}`}
+                alt={`Photo ${index + 1}`}
                 style={styles.photoImage}
               />
               <div style={styles.photoInfo}>
