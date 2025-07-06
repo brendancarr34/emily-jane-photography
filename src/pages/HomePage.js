@@ -1,5 +1,6 @@
+import Menu from "../components/Menu";
+// import { Row, Col } from 'react-bootstrap';
 import React from "react";
-
 const HomePage = () => {
   const images = [
     { url: '/images/goldenGoldenGate.jpg', title: 'Golden Gate Bridge' },
@@ -33,7 +34,8 @@ const HomePage = () => {
     },
     photoGrid: {
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+      gridTemplateColumns: "repeat(4, minmax(200px, 1fr))", // Ensure a maximum of 4 items per row
+      gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", // Adjusts to available space
       gap: "1rem",
       padding: "1rem",
     },
@@ -64,7 +66,7 @@ const HomePage = () => {
 
   return (
     <div style={styles.homepage}>
-      <header style={styles.header}>
+      {/* <header style={styles.header}>
         <h1>Photography Prints</h1>
         <nav>
           <ul style={styles.menu}>
@@ -72,7 +74,12 @@ const HomePage = () => {
             <li><a href="/store" style={styles.menuLink}>Store</a></li>
           </ul>
         </nav>
-      </header>
+      </header> */}
+      <Menu/>
+      <div>
+        <br/>
+        <br/>
+      </div>
 
       <main style={styles.photoGrid}>
         {images.map((photo, index) => (
