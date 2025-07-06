@@ -3,41 +3,30 @@ import { useParams } from 'react-router-dom';
 import Menu from '../components/Menu';
 
 const Product = () => {
-    const { imageName } = useParams();
-    const imageUrl = `/images/photo${imageName}.jpg`; // Construct the image URL
+    const { imageId } = useParams();
 
-    const [customerName, setCustomerName] = useState(""); // State for customer name
     const [selectedImage, setSelectedImage] = useState(null);
+    const [customerName, setCustomerName] = useState("");
 
     useEffect(() => {
       // Fetch photo info from the API
       fetch('https://superbowl-squares-api-2-637010006131.us-central1.run.app/api/ejt-photography/photo-info')
         .then(response => response.json())
-        // .then(response => console.log(response))
         .then(data => {
           // Construct the images array using the response data
-          const constructedImages = data.map((item) => ({
-            id: item.id,
-            url: `/images/photo${item.id}.jpg`,
-            title: `${item.title}`, // Placeholder title, can be customized
-            price: item.price // Assuming the API returns a price field
-          }));
-          console.log("Constructed Images:", constructedImages); // Log the constructed images for debugging
-
-          console.log(constructedImages.find(image => image.id === imageName));
+          const constructedImages = data.filter(item => item.id === imageId)
+            .map(item => ({
+              id: item.id,
+              url: `/images/photo${item.id}.jpg`,
+              title: item.title,
+              price: item.price
+            }));
           
-          setSelectedImage(constructedImages.find(image => image.id === imageName));
-
+          setSelectedImage(constructedImages.find(image => image.id === imageId));
         })
         .catch(error => {
           console.error('Error fetching photo info:', error);
         });
-
-        // console.log("Images:", images); // Log the images array for debugging
-
-        // find the image with id matching imageName
-        
-
     }, []);
 
     const styles = {
@@ -53,9 +42,15 @@ const Product = () => {
     }
 
     const handleOrder = async () => {
+
+      if (!customerName) {
+        alert("Please enter your name before placing an order.");
+        return;
+      }
+
       const orderData = {
-        customerName: customerName || "John Doe 100", // Replace with actual customer name
-        item: decodeURIComponent(imageName),
+        customerName: customerName, // Replace with actual customer name
+        item: decodeURIComponent(imageId),
         quantity: 1, // Replace with actual quantity
         price: 100 // Replace with actual price
       };
@@ -70,6 +65,7 @@ const Product = () => {
         });
 
         const data = await response.json();
+        
         if (response.ok) {
           alert(`Order placed successfully: ${data.message}`);
         } else {
@@ -85,8 +81,8 @@ const Product = () => {
       <div>
         <Menu/>
         <div style={{ paddingLeft: '50px', paddingRight: '50px', paddingTop: '80px' }}>
-          <img src={imageUrl} style={styles.photoImage} />
-          <h1>{selectedImage.title}</h1>
+          {selectedImage && selectedImage.title != null ? <img src={selectedImage.url} style={styles.photoImage} /> : <p>Loading...</p>}
+          <h1 style={{paddingTop: '20px' }}>{selectedImage && selectedImage.title != null ? `${selectedImage.title}` : ''}</h1>
           {/* Input box for customer name */}
           <input
             type="text"

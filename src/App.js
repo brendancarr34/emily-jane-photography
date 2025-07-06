@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/collection" element={<HomePage />} />
-          <Route path="/product/:imageName" element={<Product />} />
+          <Route path="/product/:imageId" element={<Product />} />
         </Routes>
       </Router>
     );
