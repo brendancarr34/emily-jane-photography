@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, Navbar, Nav } from 'react-bootstrap';
+import PwintyButton from '../../components/PwintyButton';
+// import OrderButton from '../components/OrderButton';
+import OrderButton2 from '../../components/OrderButton2';
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -56,6 +59,8 @@ const Home = () => {
                 <Card.Body className="text-center">
                   Item {item + 1}
                 </Card.Body>
+                {/* <PwintyButton/> */}
+                <OrderButton2/>
               </Card>
             ))}
           </div>

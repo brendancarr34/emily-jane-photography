@@ -2,14 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from '../src/pages/Home4.js';
+import Home from './pages/deprecated/Home5.js';
+import HomePage from './pages/HomePage.js';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home />
+    <HomePage />
   </React.StrictMode>
 );
 

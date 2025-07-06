@@ -1,0 +1,34 @@
+curl "https://api.sandbox.prodigi.com/v4.0/Orders"
+  -X POST
+  -H "X-API-Key: test_4c5abfeb-c442-4e68-8d7b-daf4a9f03b00"
+  -H "Content-Type: application/json"
+  -d '
+    {
+        "shippingMethod": "Budget",
+        "recipient": {
+            "address": {
+                "line1": "14 test place",
+                "line2": "test",
+                "postalOrZipCode": "12345",
+                "countryCode": "US",
+                "townOrCity": "somewhere",
+                "stateOrCounty": "somewhereelse"
+            },
+            "name": "John Testman",
+            "email": "jtestman@prodigi.com"
+        },
+        "items": [
+            {
+                "sku": "GLOBAL-FAP-16x24",
+                "copies": 1,
+                "sizing": "fillPrintArea",
+                "assets": [
+                    {
+                        "printArea": "default",
+                        "url": "https://picsum.photos/200/300"
+                    }
+                ]
+            }
+        ]
+    }
+'
