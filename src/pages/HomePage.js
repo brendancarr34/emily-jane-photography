@@ -86,7 +86,7 @@ const HomePage = () => {
       <main style={styles.photoGrid}>
         {images.map((photo, index) => (
           <div key={index} style={styles.photoCard}>
-            <Link to={`/product/${encodeURIComponent(photo.title)}`} style={{ textDecoration: 'none' }}>
+            <Link to={`/product/${encodeURIComponent(photo.url)}`} style={{ textDecoration: 'none' }}>
               <img
                 src={photo.url}
                 alt={`Photo ${index + 1} - ${photo.title}`}

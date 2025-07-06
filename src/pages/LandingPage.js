@@ -24,7 +24,7 @@ const LandingPage = () => {
                 <div className="row justify-content-center align-items-center" style={{ height: '100%' }}>
                     <div className="col text-center">
                         <h1>Emily Jane Photography</h1>
-                        <div style={{ marginTop: '20px' }}>
+                        <div style={{ marginBottom: '400px' }}>
                             <button onClick={() => window.location.href = '/collection'} style={{ padding: '10px 20px', fontSize: '1rem' }}>
                                 Go to Collection
                             </button>
