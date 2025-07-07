@@ -4,16 +4,22 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './pages/LandingPage'; // Adjust the path if necessary
 import HomePage from './pages/HomePage';
 import Product from './pages/Product';
+import { CartProvider } from './components/CartContext'; // Adjust the path if necessary
+import Cart from './pages/Cart';
 
 function App() {
     return (
-      <Router>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/collection" element={<HomePage />} />
-          <Route path="/product/:imageId" element={<Product />} />
-        </Routes>
-      </Router>
+      <CartProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/collection" element={<HomePage />} />
+            <Route path="/product/:imageId" element={<Product />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='*' element={<div>404 Not Found</div>} />
+          </Routes>
+        </Router>
+      </CartProvider>
     );
 }
 

@@ -25,6 +25,7 @@ const Menu = () => {
         <nav style={menuStyle}>
             <Link to="/" style={linkStyle}>Home</Link>
             <Link to="/collection" style={linkStyle}>Collection</Link>
+            <Link to="/cart" style={linkStyle}>Cart</Link>
         </nav>
     );
 };
