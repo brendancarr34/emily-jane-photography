@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import Product from './pages/Product';
 import { CartProvider } from './components/CartContext'; // Adjust the path if necessary
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout'; // Adjust the path if necessary
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/collection" element={<HomePage />} />
             <Route path="/product/:imageId" element={<Product />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/checkout' element={<Checkout />} />
             <Route path='*' element={<div>404 Not Found</div>} />
           </Routes>
         </Router>

@@ -73,6 +73,13 @@ const Cart = () => {
                         <Button variant="warning" className="mt-3" onClick={clearCart}>
                             Clear Cart
                         </Button>
+                        <Button 
+                            variant="primary" 
+                            className="mt-3 ms-2" 
+                            onClick={() => window.location.href = '/checkout'}
+                        >
+                            Checkout
+                        </Button>
                     </Col>
                 </Row>
             </Container>

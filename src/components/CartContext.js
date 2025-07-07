@@ -26,8 +26,18 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
+    // Function to update cart details (e.g., address)
+    const updateCartDetails = (details) => {
+        setCart((prevCart) => {
+            return prevCart.map(item => ({
+                ...item,
+                ...details // Merge details into each item
+            }));
+        });
+    }
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, updateCartDetails }}>
       {children}
     </CartContext.Provider>
   );
