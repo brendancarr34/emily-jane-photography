@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
 
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Fetch photo info from the API
@@ -23,6 +24,7 @@ const HomePage = () => {
       .catch(error => {
         console.error('Error fetching photo info:', error);
       });
+    setLoading(false);
   }, []);
 
   const styles = {
@@ -48,8 +50,7 @@ const HomePage = () => {
     },
     photoGrid: {
       display: "grid",
-      gridTemplateColumns: "repeat(4, minmax(200px, 1fr))", // Ensure a maximum of 4 items per row
-      gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", // Adjusts to available space
+      gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", // Adjusts to smaller windows
       gap: "1rem",
       padding: "1rem",
     },
@@ -67,7 +68,7 @@ const HomePage = () => {
       height: "auto",
       display: "block",
       margin: "5px",
-      border: "20px solid white", 
+      border: "10px solid white", 
       backgroundColor: "white",
       boxShadow: "0 0 0 5px black", 
     },
@@ -85,12 +86,14 @@ const HomePage = () => {
         <br/>
         <br/>
       </div>
-      <main style={styles.photoGrid}>
-        {images.map((photo, index) => (
-          <div key={index} style={styles.photoCard}>
-            <Link to={`/product/${photo.id}`} style={{ textDecoration: 'none', color: 'black' }}>
-              <img
-                src={photo.url}
+      {loading && <p>Loading...</p>}
+      {!loading && (
+        <main style={styles.photoGrid}>
+          {images.map((photo, index) => (
+            <div key={index} style={styles.photoCard}>
+              <Link to={`/product/${photo.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                <img
+                  src={photo.url}
                 alt={`Photo ${index + 1}`}
                 style={styles.photoImage}
               />
@@ -100,9 +103,9 @@ const HomePage = () => {
             </Link>
           </div>
         ))}
-      </main>
+      </main>)}
     </div>
-  );
+  );  
 };
 
 export default HomePage;

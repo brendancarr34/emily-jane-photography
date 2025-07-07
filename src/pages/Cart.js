@@ -11,7 +11,6 @@ const Cart = () => {
     const { cart, removeFromCart, clearCart, total } = useContext(CartContext);
     // Check if cartItems is defined and has items
     console.log("Cart items:", cart);
-    console.log(cart[0].url);
 
     if (cart && cart.length === 0) {
         return (
