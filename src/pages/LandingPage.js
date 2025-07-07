@@ -28,8 +28,8 @@ const LandingPage = () => {
                     <div className="col text-center">
                         <h1>Original Photography<br/>by Emily Teves</h1>
                         <div style={{ marginBottom: '300px' }}>
-                            <button onClick={() => window.location.href = '/collection'} style={{ padding: '10px 20px', fontSize: '1rem', backgroundColor: '#A7C7E7', color: 'black', border: 'none', borderRadius: '5px' }}>
-                                Go to Collection
+                            <button onClick={() => window.location.href = '/collection'} style={{ padding: '10px 20px', fontSize: '1rem', backgroundColor: '#A7C7E7', color: 'black', border: 'none', borderRadius: '5px', marginTop: '40px' }}>
+                                <h2 style={{ margin: 0, padding: '10px 20px' }}>Go to Gallery</h2>
                             </button>
                         </div>
                     </div>

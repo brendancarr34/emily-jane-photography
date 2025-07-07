@@ -9,21 +9,27 @@ import Menu from '../components/Menu';
 
 const Cart = () => {
     const { cart, removeFromCart, clearCart, total } = useContext(CartContext);
-    // Check if cartItems is defined and has items
-    console.log("Cart items:", cart);
 
     if (cart && cart.length === 0) {
         return (
             <div>
-                <Menu />
-                <Container className="cart-page mt-4">
-                    <Row>
-                        <Col>
-                            <h2>Your Cart</h2>
-                            <p>Your cart is empty.</p>
-                        </Col>
-                    </Row>
-                </Container>
+            <Menu />
+            <br/>
+            <br/>
+            <Container className="cart-page mt-4 d-flex flex-column align-items-center justify-content-center" style={{ height: '80vh' }}>
+            <Row className="justify-content-center">
+            <Col className="text-center">
+                <h2>Your Cart is empty.</h2>
+            </Col>
+            </Row>
+            <Row className="justify-content-center mt-3">
+            <Col className="text-center">
+                <Button variant="primary" style={{ backgroundColor: '#A7C7E7', color: 'black', border: 'none', padding: '20px 50px', marginTop: '20px' }} onClick={() => window.location.href = '/collection'}>
+                    <h2 style={{ margin: 0 }}>Go to Gallery</h2>
+                </Button>
+            </Col>
+            </Row>
+            </Container>
             </div>
         );
     }
