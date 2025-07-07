@@ -91,63 +91,76 @@ const Product = () => {
 
     return (
       <div>
-        <Menu/>
-        <div style={{ paddingLeft: '50px', paddingRight: '50px', paddingTop: '80px' }}>
-          {selectedImage && selectedImage.title != null ? <img src={selectedImage.url} style={styles.photoImage} /> : <p>Loading...</p>}
-          <h1 style={{paddingTop: '20px' }}>{selectedImage && selectedImage.title != null ? `${selectedImage.title}` : ''}</h1>
-          {/* Input box for customer name */}
-          {/* <input
-            type="text"
-            placeholder="Enter your name"
-            value={customerName}
-            onChange={(e) => setCustomerName(e.target.value)}
-            style={{ marginBottom: "10px", padding: "5px" }}
-          /> */}
-          {/* <button onClick={handleOrder}>Place Order</button> */}
-          {/* Add to Cart Button */}
-          <p>{selectedImage && selectedImage.description != null ? `${selectedImage.description}` : ''}</p>
+      <Menu />
+      <div style={{ paddingLeft: '50px', paddingRight: '50px', paddingTop: '80px' }}>
 
-          <Button
-            variant="primary"
-            onClick={() => {
-              if (selectedImage) {
-                addToCart({
-                  id: selectedImage.id,
-                  title: selectedImage.title,
-                  price: selectedImage.price,
-                  url: selectedImage.url,
-                });
-                handleShowModal();
-                console.log("Added to cart:", selectedImage);
-                console.log("Current cart:", cart);
-              }
-            }}
-            style={{ marginLeft: "10px" }}
-          >
-            Add to Cart...
-          </Button>
-          {/* <p>{selectedImage && selectedImage.price != null ? `Price: $${selectedImage.price}` : ''}</p> */}
-        </div>
-        {/* React Bootstrap Modal */}
-        <Modal show={showModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Added to Cart</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            {selectedImage && selectedImage.title ? (
-              <div>
-                <p>{selectedImage.title} has been added to your cart.</p>
-              </div>
-            ) : (
-              <p>Loading...</p>
-            )}
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+      <Button
+      variant="secondary"
+      onClick={() => {
+      window.location.href = '/collection'; // Replace '/collection' with the actual route to your collection page
+      }}
+      style={{ marginBottom: '20px', backgroundColor: 'white', color: 'gray', display: 'flex', alignItems: 'center', border: 'none' }}
+      >
+      <span style={{ marginRight: '10px' }}>←</span> Back to Collection
+      </Button>
+
+      {/* <div style={{ paddingLeft: '50px', paddingRight: '50px' }}> */}
+      <div>
+        {selectedImage && selectedImage.title ? (
+          <img src={selectedImage.url} style={{ ...styles.photoImage, border: 'none' }} alt={selectedImage.title} />
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+
+
+      <h1 style={{ paddingTop: '20px' }}>
+      {selectedImage && selectedImage.title ? selectedImage.title : ''}
+      </h1>
+      
+      <p>
+      {selectedImage && selectedImage.description ? selectedImage.description : ''}
+      </p>
+
+      <Button
+      variant="primary"
+      onClick={() => {
+      if (selectedImage) {
+      addToCart({
+      id: selectedImage.id,
+      title: selectedImage.title,
+      price: selectedImage.price,
+      url: selectedImage.url,
+      });
+      handleShowModal();
+      }
+      }}
+      style={{ backgroundColor: 'white', color: 'blue', border: '1px solid blue', display: 'flex', alignItems: 'center' }}
+      >
+      <strong>Add to Cart...</strong>
+      </Button>
+      </div>
+
+      {/* React Bootstrap Modal */}
+      <Modal show={showModal} onHide={handleCloseModal}>
+      <Modal.Header closeButton>
+      <Modal.Title>Added to Cart</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      {selectedImage && selectedImage.title ? (
+      <div>
+      <p>{selectedImage.title} has been added to your cart.</p>
+      </div>
+      ) : (
+      <p>Loading...</p>
+      )}
+      </Modal.Body>
+      <Modal.Footer>
+      <Button variant="secondary" onClick={handleCloseModal} style={{ backgroundColor: 'white', color: 'gray', border: 'none' }}>
+      Close
+      </Button>
+      </Modal.Footer>
+      </Modal>
       </div>
     );
 };

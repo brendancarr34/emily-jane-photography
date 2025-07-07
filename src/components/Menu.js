@@ -11,8 +11,8 @@ const Menu = () => {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px 20px',
-        backgroundColor: '#333',
-        color: 'white',
+        backgroundColor: '#A7C7E7',
+        color: 'black',
         position: 'fixed',
         top: 0,
         width: '100%',
@@ -20,7 +20,7 @@ const Menu = () => {
     };
 
     const linkStyle = {
-        color: 'white',
+        color: 'black',
         textDecoration: 'none',
         fontSize: '1.2rem',
     };
@@ -34,7 +34,7 @@ const Menu = () => {
                     style={{
                         background: 'none',
                         border: 'none',
-                        color: 'white',
+                        color: 'black',
                         fontSize: '1.5rem',
                         cursor: 'pointer',
                     }}
@@ -48,7 +48,7 @@ const Menu = () => {
                             position: 'absolute',
                             top: '100%',
                             left: 0,
-                            backgroundColor: '#333',
+                            backgroundColor: '#A7C7E7',
                             color: 'white',
                             boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
                             borderRadius: '4px',
@@ -60,7 +60,7 @@ const Menu = () => {
                             style={{
                                 display: 'block',
                                 padding: '10px 20px',
-                                color: 'white',
+                                color: 'black',
                                 textDecoration: 'none',
                             }}
                         >
@@ -71,7 +71,7 @@ const Menu = () => {
                             style={{
                                 display: 'block',
                                 padding: '10px 20px',
-                                color: 'white',
+                                color: 'black',
                                 textDecoration: 'none',
                             }}
                         >
@@ -87,7 +87,7 @@ const Menu = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
-                        fill="white"
+                        fill="black"
                         viewBox="0 0 24 24"
                         style={{ marginRight: '2px' }}
                     >

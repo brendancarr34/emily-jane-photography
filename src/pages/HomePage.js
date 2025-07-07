@@ -80,30 +80,33 @@ const HomePage = () => {
   };
 
   return (
-    <div style={styles.homepage}>
+    <div>
       <Menu/>
       <div>
         <br/>
         <br/>
       </div>
-      {loading && <p>Loading...</p>}
-      {!loading && (
-        <main style={styles.photoGrid}>
-          {images.map((photo, index) => (
-            <div key={index} style={styles.photoCard}>
-              <Link to={`/product/${photo.id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                <img
-                  src={photo.url}
-                alt={`Photo ${index + 1}`}
-                style={styles.photoImage}
-              />
-              <div style={styles.photoInfo}>
-                <p>{photo.title}</p>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </main>)}
+      <div style={styles.homepage}>
+        {loading && <p>Loading...</p>}
+        {!loading && (
+          <main style={styles.photoGrid}>
+            {images.map((photo, index) => (
+              <div key={index} style={styles.photoCard}>
+                <Link to={`/product/${photo.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                  <img
+                    src={photo.url}
+                  alt={`Photo ${index + 1}`}
+                  style={styles.photoImage}
+                />
+                <div style={styles.photoInfo}>
+                  <p>{photo.title}</p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </main>)}
+      </div>
+      
     </div>
   );  
 };
