@@ -2,11 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './pages/deprecated/Home5.js';
-import HomePage from './pages/HomePage.js';
 import App from './App.js';
-
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
