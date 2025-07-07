@@ -15,15 +15,17 @@ const Checkout = () => {
     React.useEffect(() => {
         if (cart && cart.length > 0) {
             const firstItem = cart[0];
-            setFormData({
-                name: firstItem.name || '',
-                address: firstItem.address || '',
-                email: firstItem.email || '',
-                addressLine2: firstItem.addressLine2 || '',
-                city: firstItem.city || '',
-                state: firstItem.state || '',
-                zipCode: firstItem.zipCode || '',
-            });
+            setFormData((prevData) => ({
+                ...prevData,
+                firstName: prevData.firstName || firstItem.firstName || '',
+                lastName: prevData.lastName || firstItem.lastName || '',
+                address: prevData.address || firstItem.address || '',
+                email: prevData.email || firstItem.email || '',
+                addressLine2: prevData.addressLine2 || firstItem.addressLine2 || '',
+                city: prevData.city || firstItem.city || '',
+                state: prevData.state || firstItem.state || '',
+                zipCode: prevData.zipCode || firstItem.zipCode || '',
+            }));
         }
     }, [cart]);
 
@@ -49,8 +51,12 @@ const Checkout = () => {
             <br />
             <br />
             <Container>
-                <h2 style={{ marginBottom: '15px' }}>Checkout</h2>
-                <CheckoutForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
+                <h2 style={{ margin: '15px 0', width: '100%', textAlign: 'center' }}>Checkout</h2>
+                <CheckoutForm 
+                    formData={formData} 
+                    handleChange={handleChange} 
+                    handleSubmit={handleSubmit} 
+                />
             </Container>
         </div>
     );

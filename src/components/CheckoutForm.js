@@ -1,24 +1,42 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const CheckoutForm = ({ formData, handleChange, handleSubmit }) => {
+const CheckoutForm = ({ formData = {}, handleChange, handleSubmit }) => {
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formName" style={{ marginBottom: '10px' }}>
-                <Form.Label style={{ marginBottom: '5px', paddingLeft: '5px' }}>Name</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    onInvalid={(e) => e.target.setCustomValidity('Please enter your name.')}
-                    onInput={(e) => {
-                        if (e.target.value.trim() !== '') {
-                            e.target.setCustomValidity('');
-                        }
-                    }}
-                    required
-                />
+            <Form.Group style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                <div style={{ flex: 1 }}>
+                    <Form.Label style={{ marginBottom: '5px', paddingLeft: '5px' }}>First Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="firstName"
+                        value={formData.firstName || ''}
+                        onChange={handleChange}
+                        onInvalid={(e) => e.target.setCustomValidity('Please enter your first name.')}
+                        onInput={(e) => {
+                            if (e.target.value.trim() !== '') {
+                                e.target.setCustomValidity('');
+                            }
+                        }}
+                        required
+                    />
+                </div>
+                <div style={{ flex: 1 }}>
+                    <Form.Label style={{ marginBottom: '5px', paddingLeft: '5px' }}>Last Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="lastName"
+                        value={formData.lastName || ''}
+                        onChange={handleChange}
+                        onInvalid={(e) => e.target.setCustomValidity('Please enter your last name.')}
+                        onInput={(e) => {
+                            if (e.target.value.trim() !== '') {
+                                e.target.setCustomValidity('');
+                            }
+                        }}
+                        required
+                    />
+                </div>
             </Form.Group>
             <Form.Group controlId="formAddress" style={{ marginBottom: '10px' }}>
                 <Form.Label style={{ marginBottom: '5px', paddingLeft: '5px' }}>Address Line 1</Form.Label>
