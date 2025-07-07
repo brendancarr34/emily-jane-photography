@@ -1,6 +1,5 @@
-import Menu from "../components/Menu";
-// import { Row, Col } from 'react-bootstrap';
 import React, { useState, useEffect } from "react";
+import Menu from "../components/Menu";
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -17,7 +16,7 @@ const HomePage = () => {
         const constructedImages = data.map((item) => ({
           id: item.id,
           url: `/images/photo${item.id}.jpg`,
-          title: `${item.title}` // Placeholder title, can be customized
+          title: `${item.title}`
         }));
         setImages(constructedImages);
       })

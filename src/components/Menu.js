@@ -56,17 +56,6 @@ const Menu = () => {
                         }}
                     >
                         <Link
-                            to="/about"
-                            style={{
-                                display: 'block',
-                                padding: '10px 20px',
-                                color: 'black',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            About Me
-                        </Link>
-                        <Link
                             to="/collection"
                             style={{
                                 display: 'block',
@@ -76,6 +65,17 @@ const Menu = () => {
                             }}
                         >
                             Gallery
+                        </Link>
+                        <Link
+                            to="/about"
+                            style={{
+                                display: 'block',
+                                padding: '10px 20px',
+                                color: 'black',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            About Me
                         </Link>
                     </div>
                 )}

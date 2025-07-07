@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import Menu from '../components/Menu';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { CartContext } from '../components/CartContext';
 
 const Product = () => {
@@ -38,15 +40,17 @@ const Product = () => {
     }, []);
 
     const styles = {
-        photoImage: {
-            maxWidth: "100%",
-            height: "auto",
-            display: "block",
-            margin: "5px",
-            border: "20px solid white", 
-            backgroundColor: "white",
-            boxShadow: "0 0 0 5px black"
-          },
+      photoImage: {
+        maxHeight: "70vh",
+        maxWidth: "70vw",
+        width: "auto",
+        height: "auto",
+        display: "block",
+        margin: "5px",
+        border: "20px solid white", 
+        backgroundColor: "white",
+        boxShadow: "0 0 0 5px black"
+      },
     }
 
     const handleOrder = async () => {
@@ -91,76 +95,78 @@ const Product = () => {
 
     return (
       <div>
-      <Menu />
-      <div style={{ paddingLeft: '50px', paddingRight: '50px', paddingTop: '80px' }}>
+        <Menu />
+        <div style={{ paddingLeft: '50px', paddingRight: '50px', paddingTop: '80px' }}>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              window.location.href = '/collection'; // Replace '/collection' with the actual route to your collection page
+            }}
+            style={{ marginBottom: '20px', backgroundColor: 'white', color: 'gray', display: 'flex', alignItems: 'center', border: 'none' }}
+            >
+              <span style={{ marginRight: '10px' }}>←</span> Back to Collection
+          </Button>
 
-      <Button
-      variant="secondary"
-      onClick={() => {
-      window.location.href = '/collection'; // Replace '/collection' with the actual route to your collection page
-      }}
-      style={{ marginBottom: '20px', backgroundColor: 'white', color: 'gray', display: 'flex', alignItems: 'center', border: 'none' }}
-      >
-      <span style={{ marginRight: '10px' }}>←</span> Back to Collection
-      </Button>
+          <Row>
+            <Col>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              {selectedImage && selectedImage.title ? (
+              <img src={selectedImage.url} style={{ ...styles.photoImage, border: 'none' }} alt={selectedImage.title} />
+              ) : (
+              <p>Loading...</p>
+              )}
+              </div>
+            </Col>
+            <Col>
+              <h1 style={{ paddingTop: '20px', paddingLeft: '20px' }}>
+              {selectedImage && selectedImage.title ? selectedImage.title : ''}
+              </h1>
+              
+              <p style={{ paddingLeft: '20px' }}>
+              {selectedImage && selectedImage.description ? selectedImage.description : ''}
+              </p>
 
-      {/* <div style={{ paddingLeft: '50px', paddingRight: '50px' }}> */}
-      <div>
-        {selectedImage && selectedImage.title ? (
-          <img src={selectedImage.url} style={{ ...styles.photoImage, border: 'none' }} alt={selectedImage.title} />
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  if (selectedImage) {
+                    addToCart({
+                      id: selectedImage.id,
+                      title: selectedImage.title,
+                      price: selectedImage.price,
+                      url: selectedImage.url,
+                    });
+                    handleShowModal();
+                  }
+                }}
+                style={{ backgroundColor: 'white', color: 'blue', border: '1px solid blue', display: 'flex', alignItems: 'center', marginLeft: '20px' }}
+              >
+                <strong>Add to Cart...</strong>
+              </Button>
+            </Col>
+          </Row>
+        </div>
 
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Added to Cart</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {selectedImage && selectedImage.title ? (
+              <div>
+                <p>{selectedImage.title} has been added to your cart.</p>
+              </div>
+            ) : (
+              <p>Loading...</p>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal} style={{ backgroundColor: 'white', color: 'gray', border: 'none' }}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
 
-      <h1 style={{ paddingTop: '20px' }}>
-      {selectedImage && selectedImage.title ? selectedImage.title : ''}
-      </h1>
-      
-      <p>
-      {selectedImage && selectedImage.description ? selectedImage.description : ''}
-      </p>
-
-      <Button
-      variant="primary"
-      onClick={() => {
-      if (selectedImage) {
-      addToCart({
-      id: selectedImage.id,
-      title: selectedImage.title,
-      price: selectedImage.price,
-      url: selectedImage.url,
-      });
-      handleShowModal();
-      }
-      }}
-      style={{ backgroundColor: 'white', color: 'blue', border: '1px solid blue', display: 'flex', alignItems: 'center' }}
-      >
-      <strong>Add to Cart...</strong>
-      </Button>
-      </div>
-
-      {/* React Bootstrap Modal */}
-      <Modal show={showModal} onHide={handleCloseModal}>
-      <Modal.Header closeButton>
-      <Modal.Title>Added to Cart</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-      {selectedImage && selectedImage.title ? (
-      <div>
-      <p>{selectedImage.title} has been added to your cart.</p>
-      </div>
-      ) : (
-      <p>Loading...</p>
-      )}
-      </Modal.Body>
-      <Modal.Footer>
-      <Button variant="secondary" onClick={handleCloseModal} style={{ backgroundColor: 'white', color: 'gray', border: 'none' }}>
-      Close
-      </Button>
-      </Modal.Footer>
-      </Modal>
       </div>
     );
 };
