@@ -10,6 +10,8 @@ import Menu from '../components/Menu';
 const Cart = () => {
     const { cart, removeFromCart, clearCart, total } = useContext(CartContext);
 
+    console.log('Cart items:', cart);
+
     if (cart && cart.length === 0) {
         return (
             <div>

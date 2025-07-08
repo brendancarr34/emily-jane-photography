@@ -1,16 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Menu from "../components/Menu";
 import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
+import { CartContext } from "../components/CartContext";
 
 const HomePage = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalImage, setModalImage] = useState(null); // State for modal image
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const [selectedSize, setSelectedSize] = useState(''); // State for selected size
+  const [selectedQuantity, setSelectedQuantity] = useState(1); // State for selected quantity
+  const [selectedBorderSize, setSelectedBorderSize] = useState('none'); // State for selected border size
+
+  const { cart, addToCart } = React.useContext(CartContext); // Access cart context
 
   useEffect(() => {
     // Fetch photo info from the API
@@ -20,9 +26,12 @@ const HomePage = () => {
         const constructedImages = data.map((item) => ({
           id: item.id,
           url: `/images/photo${item.id}.jpg`,
-          title: `${item.title}`
+          title: `${item.title}`,
+          price: item.price,
+          // description: item.description,
         }));
         setImages(constructedImages);
+        console.log('Fetched photo info:', constructedImages);
       })
       .catch(error => {
         console.error('Error fetching photo info:', error);
@@ -87,29 +96,84 @@ const HomePage = () => {
                   <Col>
                     <Form.Group className="mb-3" controlId="size">
                       <Form.Label>Size:</Form.Label>
-                      <Form.Select>
-                        <option value="small">Small</option>
-                        <option value="medium">Medium</option>
-                        <option value="large">Large</option>
+                      <Form.Select onChange={(e) => {
+                        const size = e.target.value;
+                        console.log(`Selected size: ${size}`);
+                        setSelectedSize(size);
+                      }}>
+                        <option value="small">5" x 8"</option>
+                        <option value="medium">8" x 10"</option>
+                        <option value="large">12" x 16"</option>
                       </Form.Select>
                     </Form.Group>
                   </Col>
                   <Col>
                     <Form.Group className="mb-3" controlId="quantity">
                       <Form.Label>Quantity:</Form.Label>
-                      <Form.Control type="number" min="1" defaultValue="1" />
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <Button
+                          variant="outline-secondary"
+                          style={{ width: "40px", height: "40px" }}
+                          onClick={() => {
+                            const quantityInput = document.getElementById("quantity");
+                            const currentValue = parseInt(quantityInput.value, 10) || 1;
+                            quantityInput.value = Math.max(1, currentValue - 1);
+                            console.log(`Updated quantity: ${quantityInput.value}`);
+                            setSelectedQuantity(quantityInput.value);
+                          }}
+                        >
+                          -
+                        </Button>
+                        <Form.Control
+                          type="number"
+                          min="1"
+                          defaultValue="1"
+                          style={{ textAlign: "center", margin: "0 10px", pointerEvents: "none" }}
+                          readOnly={true}
+                          onChange={(e) => {
+                            const quantity = Math.max(1, parseInt(e.target.value, 10) || 1);
+                            console.log(`Selected quantity: ${quantity}`);
+
+                          }}
+                        />
+                        <Button
+                          variant="outline-secondary"
+                          style={{ width: "40px", height: "40px" }}
+                          onClick={() => {
+                            const quantityInput = document.getElementById("quantity");
+                            const currentValue = parseInt(quantityInput.value, 10) || 1;
+                            quantityInput.value = currentValue + 1;
+                            console.log(`Updated quantity: ${quantityInput.value}`);
+                            setSelectedQuantity(quantityInput.value);
+                          }}
+                        >
+                          +
+                        </Button>
+                      </div>
                     </Form.Group>
                   </Col>
                 </Row>
-                <Form.Group className="mb-3" controlId="borderSize">
-                  <Form.Label>Border Size:</Form.Label>
-                  <Form.Select>
-                    <option value="none">None</option>
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="large">Large</option>
-                  </Form.Select>
-                </Form.Group>
+                <Row>
+                  <Col>
+                    <Form.Group className="mb-3" controlId="borderSize">
+                      <Form.Label>Border Size:</Form.Label>
+                      <Form.Select onChange={(e) => {
+                        const selectedBorderSize = e.target.value;
+                        console.log(`Selected border size: ${selectedBorderSize}`);
+                        setSelectedBorderSize(selectedBorderSize);
+                      }}>
+                        <option value="none">None</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                  <Col className="d-flex align-items-center justify-content-center">
+                    <h5>Price: ${modalImage?.price}</h5>
+                  </Col>
+                </Row>
+
               </form>
             </Col>
           </Row>
@@ -119,8 +183,11 @@ const HomePage = () => {
             <Button style={{ backgroundColor: "lightgray", color: "black" }} variant="secondary">Go to Product Page</Button>
           </Link>
           <Button variant="primary" onClick={() => {
-            // Add to cart logic here
-            alert(`Added ${modalImage?.title} to cart`);
+            modalImage.size = selectedSize;
+            modalImage.quantity = selectedQuantity;
+            modalImage.borderSize = selectedBorderSize;
+            console.log(`Added ${JSON.stringify(modalImage)} to cart`);
+            addToCart(modalImage); // Call the addToCart function from context
             closeModal();
           }}>
             Add to Cart
@@ -130,5 +197,6 @@ const HomePage = () => {
     </div>
   );
 };
+
 
 export default HomePage;
