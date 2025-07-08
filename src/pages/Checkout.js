@@ -12,6 +12,38 @@ const Checkout = () => {
         email: '',
     });
 
+
+    // const handleOrder = async () => {
+    //   if (!customerName) {
+    //     alert("Please enter your name before placing an order.");
+    //     return;
+    //   }
+    //   const orderData = {
+    //     customerName: customerName, // Replace with actual customer name
+    //     item: decodeURIComponent(imageId),
+    //     quantity: 1, // Replace with actual quantity
+    //     price: 100 // Replace with actual price
+    //   };
+    //   try {
+    //     const response = await fetch('https://superbowl-squares-api-2-637010006131.us-central1.run.app/api/ejt-photography/orders', {
+    //       method: 'POST',
+    //       headers: {
+    //       'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify(orderData),
+    //     });
+    //     const data = await response.json();
+    //     if (response.ok) {
+    //       alert(`Order placed successfully: ${data.message}`);
+    //     } else {
+    //       alert(`Error: ${data.error}`);
+    //     }
+    //   } catch (error) {
+    //     console.error('Error placing order:', error);
+    //     alert('Error placing order. Please try again.');
+    //   }
+    // };
+
     React.useEffect(() => {
         if (cart && cart.length > 0) {
             const firstItem = cart[0];

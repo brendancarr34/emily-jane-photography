@@ -15,6 +15,7 @@ const HomePage = () => {
   const [selectedSize, setSelectedSize] = useState(''); // State for selected size
   const [selectedQuantity, setSelectedQuantity] = useState(1); // State for selected quantity
   const [selectedBorderSize, setSelectedBorderSize] = useState('none'); // State for selected border size
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // State for success modal visibility
 
   const { cart, addToCart } = React.useContext(CartContext); // Access cart context
 
@@ -173,7 +174,6 @@ const HomePage = () => {
                     <h5>Price: ${modalImage?.price}</h5>
                   </Col>
                 </Row>
-
               </form>
             </Col>
           </Row>
@@ -189,9 +189,30 @@ const HomePage = () => {
             console.log(`Added ${JSON.stringify(modalImage)} to cart`);
             addToCart(modalImage); // Call the addToCart function from context
             closeModal();
+            // Open success modal
+            setIsSuccessModalOpen(true);
           }}>
             Add to Cart
           </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={isSuccessModalOpen} onHide={() => setIsSuccessModalOpen(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Success!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Your item has been added to the cart.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setIsSuccessModalOpen(false)}>
+            Back to Gallery 
+          </Button>
+          <Link to="/cart">
+            <Button variant="primary">
+              Go to Cart
+            </Button>
+          </Link>
         </Modal.Footer>
       </Modal>
     </div>

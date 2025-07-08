@@ -5,17 +5,20 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Form } from 'react-bootstrap';
 import { CartContext } from '../components/CartContext';
+import { Link } from 'react-router-dom';
 
 const Product = () => {
     const { imageId } = useParams();
 
-    // Inside your component:
-    const { cart, addToCart, removeFromCart } = useContext(CartContext);
+    const { addToCart } = useContext(CartContext);
 
     const [selectedImage, setSelectedImage] = useState(null);
-    const [customerName, setCustomerName] = useState("");
     const [showModal, setShowModal] = useState(false);
+    const [selectedSize, setSelectedSize] = useState('small'); // Default size
+    const [selectedQuantity, setSelectedQuantity] = useState(1); // Default quantity
+    const [selectedBorderSize, setSelectedBorderSize] = useState('none'); // Default border size
 
     useEffect(() => {
       // Fetch photo info from the API
@@ -52,42 +55,6 @@ const Product = () => {
         boxShadow: "0 0 0 5px black"
       },
     }
-
-    const handleOrder = async () => {
-
-      if (!customerName) {
-        alert("Please enter your name before placing an order.");
-        return;
-      }
-
-      const orderData = {
-        customerName: customerName, // Replace with actual customer name
-        item: decodeURIComponent(imageId),
-        quantity: 1, // Replace with actual quantity
-        price: 100 // Replace with actual price
-      };
-
-      try {
-        const response = await fetch('https://superbowl-squares-api-2-637010006131.us-central1.run.app/api/ejt-photography/orders', {
-          method: 'POST',
-          headers: {
-          'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(orderData),
-        });
-
-        const data = await response.json();
-        
-        if (response.ok) {
-          alert(`Order placed successfully: ${data.message}`);
-        } else {
-          alert(`Error: ${data.error}`);
-        }
-      } catch (error) {
-        console.error('Error placing order:', error);
-        alert('Error placing order. Please try again.');
-      }
-    };
 
     // Handlers for modal
     const handleShowModal = () => setShowModal(true);
@@ -130,12 +97,10 @@ const Product = () => {
                 variant="primary"
                 onClick={() => {
                   if (selectedImage) {
-                    addToCart({
-                      id: selectedImage.id,
-                      title: selectedImage.title,
-                      price: selectedImage.price,
-                      url: selectedImage.url,
-                    });
+                    selectedImage.size = selectedSize;
+                    selectedImage.quantity = selectedQuantity;
+                    selectedImage.borderSize = selectedBorderSize;
+                    addToCart(selectedImage);
                     handleShowModal();
                   }
                 }}
@@ -144,26 +109,110 @@ const Product = () => {
                 <strong>Add to Cart...</strong>
               </Button>
             </Col>
+            <Col style={{ minWidth: "100%" }}>
+              <form>
+                <Row>
+                  <Col>
+                    <Form.Group className="mb-3" controlId="size">
+                      <Form.Label>Size:</Form.Label>
+                      <Form.Select onChange={(e) => {
+                        const size = e.target.value;
+                        console.log(`Selected size: ${size}`);
+                        setSelectedSize(size);
+                      }}>
+                        <option value="small">5" x 8"</option>
+                        <option value="medium">8" x 10"</option>
+                        <option value="large">12" x 16"</option>
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group className="mb-3" controlId="quantity">
+                      <Form.Label>Quantity:</Form.Label>
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <Button
+                          variant="outline-secondary"
+                          style={{ width: "40px", height: "40px" }}
+                          onClick={() => {
+                            const quantityInput = document.getElementById("quantity");
+                            const currentValue = parseInt(quantityInput.value, 10) || 1;
+                            quantityInput.value = Math.max(1, currentValue - 1);
+                            console.log(`Updated quantity: ${quantityInput.value}`);
+                            setSelectedQuantity(quantityInput.value);
+                          }}
+                        >
+                          -
+                        </Button>
+                        <Form.Control
+                          type="number"
+                          min="1"
+                          defaultValue="1"
+                          style={{ textAlign: "center", margin: "0 10px", pointerEvents: "none" }}
+                          readOnly={true}
+                          onChange={(e) => {
+                            const quantity = Math.max(1, parseInt(e.target.value, 10) || 1);
+                            console.log(`Selected quantity: ${quantity}`);
+
+                          }}
+                        />
+                        <Button
+                          variant="outline-secondary"
+                          style={{ width: "40px", height: "40px" }}
+                          onClick={() => {
+                            const quantityInput = document.getElementById("quantity");
+                            const currentValue = parseInt(quantityInput.value, 10) || 1;
+                            quantityInput.value = currentValue + 1;
+                            console.log(`Updated quantity: ${quantityInput.value}`);
+                            setSelectedQuantity(quantityInput.value);
+                          }}
+                        >
+                          +
+                        </Button>
+                      </div>
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Form.Group className="mb-3" controlId="borderSize">
+                      <Form.Label>Border Size:</Form.Label>
+                      <Form.Select onChange={(e) => {
+                        const selectedBorderSize = e.target.value;
+                        console.log(`Selected border size: ${selectedBorderSize}`);
+                        setSelectedBorderSize(selectedBorderSize);
+                      }}>
+                        <option value="none">None</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                  <Col className="d-flex align-items-center justify-content-center">
+                    <h5>Price: ${selectedImage?.price}</h5>
+                  </Col>
+                </Row>
+              </form>
+            </Col>
           </Row>
         </div>
 
-        <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal show={showModal} onHide={handleCloseModal} centered>
           <Modal.Header closeButton>
-            <Modal.Title>Added to Cart</Modal.Title>
+            <Modal.Title>Success!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {selectedImage && selectedImage.title ? (
-              <div>
-                <p>{selectedImage.title} has been added to your cart.</p>
-              </div>
-            ) : (
-              <p>Loading...</p>
-            )}
+            <p>Your item has been added to the cart.</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal} style={{ backgroundColor: 'white', color: 'gray', border: 'none' }}>
-              Close
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Back to Gallery 
             </Button>
+            <Link to="/cart">
+              <Button variant="primary">
+                Go to Cart
+              </Button>
+            </Link>
           </Modal.Footer>
         </Modal>
 

@@ -16,18 +16,26 @@ const LandingPage = () => {
         backgroundPosition: 'center',
         height: '100vh',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
+        // justifyContent: 'center',
+        // alignItems: 'center'
     };
 
     return (
         <div style={landingPageStyle}>
             <Menu />
             <div className="container" style={landingPageContainerStyle}>
-                <div className="row justify-content-center align-items-center" style={{ height: '100%' }}>
-                    <div className="col text-center">
+                <div 
+                    // className="row justify-content-center align-items-center" 
+                    style={{ height: '100%' }}>
+                    <div 
+                        // className="col text-center"
+                    >
+                        <br />
+                        <br />
                         <h1>Original Photography<br/>by Emily Teves</h1>
-                        <div style={{ marginBottom: '300px' }}>
+                        <div 
+                            // style={{ marginBottom: '300px' }}
+                        >
                             <button onClick={() => window.location.href = '/collection'} style={{ padding: '10px 20px', fontSize: '1rem', backgroundColor: '#A7C7E7', color: 'black', border: 'none', borderRadius: '5px', marginTop: '40px' }}>
                                 <p style={{ margin: 0, padding: '10px 20px' }}>Go to Gallery</p>
                             </button>

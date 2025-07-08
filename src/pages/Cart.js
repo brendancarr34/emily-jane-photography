@@ -64,11 +64,16 @@ const Cart = () => {
                                             <div>
                                                 <strong>{item.title}</strong>
                                                 <div>${item.price}</div>
+                                                <div>Size: {item.size}</div>
+                                                <div>Border Size: {item.borderSize}</div>
                                             </div>
                                         </div>
                                         <Button variant="danger" size="sm" onClick={() => removeFromCart(item.id)}>
                                             Remove
                                         </Button>
+                                        <div>
+                                            <span className="ms-2">({item.quantity})</span>
+                                        </div>
                                     </ListGroup.Item>
                                 ))
                             ) : (
