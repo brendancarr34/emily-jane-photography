@@ -44,12 +44,12 @@ const Cart = () => {
                     <Col>
                         <br/>
                         <br/>
-                        <h2>Your Cart</h2>
+                        <h4 style={{ marginTop: '10px', marginBottom: '20px', width: '100%', textAlign: 'center' }}>Your Cart</h4>
                         <ListGroup>
                             {cart && cart.length > 0 ? (
                                 cart.map((item, idx) => (
                                     <ListGroup.Item key={item.id || idx} className="d-flex justify-content-between align-items-center">
-                                        <div className="d-flex align-items-center">
+                                        <div className="d-flex align-items-center" style={{ width: '60%' }}>
                                             <img 
                                                 src={item.url} 
                                                 alt={item.name} 
@@ -68,12 +68,13 @@ const Cart = () => {
                                                 <div>Border Size: {item.borderSize}</div>
                                             </div>
                                         </div>
-                                        <Button variant="danger" size="sm" onClick={() => removeFromCart(item.id)}>
-                                            Remove
-                                        </Button>
                                         <div>
                                             <span className="ms-2">({item.quantity})</span>
                                         </div>
+                                        <Button variant="danger" size="sm" onClick={() => removeFromCart(item.id)}>
+                                            <h6 style={{ margin: 0 }}><strong>X</strong></h6>
+                                        </Button>
+                                        
                                     </ListGroup.Item>
                                 ))
                             ) : (

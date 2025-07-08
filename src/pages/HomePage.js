@@ -12,12 +12,12 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [modalImage, setModalImage] = useState(null); // State for modal image
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
-  const [selectedSize, setSelectedSize] = useState(''); // State for selected size
+  const [selectedSize, setSelectedSize] = useState('5" x 8"'); // State for selected size
   const [selectedQuantity, setSelectedQuantity] = useState(1); // State for selected quantity
   const [selectedBorderSize, setSelectedBorderSize] = useState('none'); // State for selected border size
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // State for success modal visibility
 
-  const { cart, addToCart } = React.useContext(CartContext); // Access cart context
+  const { addToCart } = React.useContext(CartContext); // Access cart context
 
   useEffect(() => {
     // Fetch photo info from the API
@@ -32,7 +32,6 @@ const HomePage = () => {
           // description: item.description,
         }));
         setImages(constructedImages);
-        console.log('Fetched photo info:', constructedImages);
       })
       .catch(error => {
         console.error('Error fetching photo info:', error);
@@ -98,13 +97,13 @@ const HomePage = () => {
                     <Form.Group className="mb-3" controlId="size">
                       <Form.Label>Size:</Form.Label>
                       <Form.Select onChange={(e) => {
-                        const size = e.target.value;
+                        const size = e.target.value || '5" x 8"'; // Set default size if no value is selected
                         console.log(`Selected size: ${size}`);
                         setSelectedSize(size);
                       }}>
-                        <option value="small">5" x 8"</option>
-                        <option value="medium">8" x 10"</option>
-                        <option value="large">12" x 16"</option>
+                        <option value={`5" x 8"`}>5" x 8"</option>
+                        <option value={`8" x 10"`}>8" x 10"</option>
+                        <option value={`12" x 16"`}>12" x 16"</option>
                       </Form.Select>
                     </Form.Group>
                   </Col>
@@ -159,14 +158,14 @@ const HomePage = () => {
                     <Form.Group className="mb-3" controlId="borderSize">
                       <Form.Label>Border Size:</Form.Label>
                       <Form.Select onChange={(e) => {
-                        const selectedBorderSize = e.target.value;
+                        const selectedBorderSize = e.target.value || 'none';
                         console.log(`Selected border size: ${selectedBorderSize}`);
                         setSelectedBorderSize(selectedBorderSize);
                       }}>
                         <option value="none">None</option>
-                        <option value="small">Small</option>
-                        <option value="medium">Medium</option>
-                        <option value="large">Large</option>
+                        <option value='3"'>3"</option>
+                        <option value='5"'>5"</option>
+                        <option value='8"'>8"</option>
                       </Form.Select>
                     </Form.Group>
                   </Col>
