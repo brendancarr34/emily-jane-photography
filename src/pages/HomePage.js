@@ -8,6 +8,7 @@ import { Form } from 'react-bootstrap';
 import { CartContext } from "../components/CartContext";
 
 const HomePage = () => {
+  
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalImage, setModalImage] = useState(null); // State for modal image

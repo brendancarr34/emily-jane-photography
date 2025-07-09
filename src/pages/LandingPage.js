@@ -26,7 +26,6 @@ const LandingPage = () => {
     return (
         <div>
             <Menu />
-
             <div style={landingPageContainerStyle}>
                 <Container>
                     <Row>
@@ -99,7 +98,6 @@ const LandingPage = () => {
                                     <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>CALIFORNIA</h4>
                                 </Col>
                             </Row>
-
                         </Col>
                         <Col xs={6} sm={6} lg={3}>
                             <Row style={{ padding: '8px', justifyContent: 'center', alignItems: 'center' }}>
@@ -130,7 +128,6 @@ const LandingPage = () => {
                                         <img src={require('../resources/collectionPhoto3.jpg')} alt="Collection 3" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                     </a>
                                     <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.5vw, 0.5px)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>NORTH CAROLINA</h4>
-
                                 </Col>
                             </Row>
                         </Col>

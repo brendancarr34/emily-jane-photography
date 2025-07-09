@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Badge } from 'react-bootstrap';
@@ -12,6 +12,34 @@ import { RiShoppingCartLine } from 'react-icons/ri';
 const Menu = () => {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const { cart } = useContext(CartContext);
+    const dropdownRef = useRef(null);
+
+    const [navBarBrandColor, setNavBarBrandColor] = useState('black');
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setDropdownVisible(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!dropdownVisible) {
+            // Delay the color change slightly to ensure the dropdown is fully closed
+            const timeout = setTimeout(() => {
+                setNavBarBrandColor('black');
+            }, 300); // Adjust the delay as needed
+            return () => clearTimeout(timeout);
+        } else {
+            setNavBarBrandColor('transparent');
+        }
+    }, [dropdownVisible]);
 
     return (
         <Navbar style={{ backgroundColor: '#A7C7E7' }} variant="dark" expand={false} fixed="top">
@@ -34,9 +62,10 @@ const Menu = () => {
                     id="basic-navbar-nav"
                     in={dropdownVisible}
                     style={{ color: 'black' }}
+                    ref={dropdownRef}
                 >
                     <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/collection" style={{ color: 'black' }}>
+                        <Nav.Link as={Link} to="/collection" style={{ color: 'black', marginTop: '20px' }}>
                             Gallery
                         </Nav.Link>
                         <Nav.Link as={Link} to="/about" style={{ color: 'black' }}>
@@ -44,6 +73,7 @@ const Menu = () => {
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
+
                 <Navbar.Brand
                     as={Link}
                     to="/"
@@ -54,8 +84,9 @@ const Menu = () => {
                         letterSpacing: '-1px',
                         wordSpacing: 'clamp(0px, 1vw, 6px)',
                         display: window.innerWidth < 350 ? 'none' : 'inline',
-                        color: 'black',
+                        color: navBarBrandColor,
                     }}
+                    display={dropdownVisible ? 'none' : 'inline'}
                 >
                     EMILY JANE PHOTOGRAPHY
                 </Navbar.Brand>
