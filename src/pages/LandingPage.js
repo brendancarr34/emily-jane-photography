@@ -47,17 +47,28 @@ const LandingPage = () => {
                                 letterSpacing: '-1px'
                             }}>BY EMILY JANE TEVES</h1>
                             <div>
-                                <button onClick={() => window.location.href = '/collection'} style={{ padding: '10px 10px', 
-                                    // paddingRight: '85px', 
-                                    backgroundColor: '#A7C7E7', color: 'black', border: 'none', borderRadius: '5px', marginTop: '40px' }}>
+                                <button onClick={() => window.location.href = '/collection'} style={{ 
+                                    padding: '10px 10px', 
+                                    backgroundColor: '#A7C7E7', 
+                                    color: 'black', 
+                                    border: 'none', 
+                                    borderRadius: '5px', 
+                                    marginTop: '40px', 
+                                    display: 'inline-block', // Ensures the button wraps around the content
+                                    transform: 'scaleX(1.4)',
+                                    transformOrigin: 'left', 
+                                }}>
                                     <p style={{
                                         margin: 0,
                                         padding: '8px 10px',
                                         fontFamily: '"Inter", sans-serif',
-                                        // transform: 'scaleX(1.4)', 
-                                        // transformOrigin: 'left', 
-                                        // letterSpacing: '-1px',
-                                        fontSize: 'clamp(0.8rem, 1.5vw, 1.5rem)', maxFontSize: '1rem',
+                                        fontSize: 'clamp(0.8rem, 1.5vw, 1.5rem)',
+                                        fontWeight: '600',
+                                        whiteSpace: 'nowrap', // Prevents text wrapping
+                                        letterSpacing: '-1px',
+                                        maxFontSize: '1rem',
+                                        width: '100%', // Makes the button extend with the content
+                                        textAlign: 'center', // Centers the text within the button
                                     }}>SHOP THE FULL COLLECTION</p>
                                 </button>
                             </div>
@@ -66,10 +77,10 @@ const LandingPage = () => {
                 </Container>
             </div>
             <div>
-                <Container style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '60vh' }}>
+                <Container style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%' }}>
                     <Row style={{ paddingTop: '20px', paddingBottom: '20px' }}>
                         <Col style={{ textAlign: 'center' }}>
-                            <h2 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(1rem, 2vw, 2rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>SHOP BY COLLECTION</h2>
+                            <h2 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(1rem, 2vw, 2rem)', fontWeight: '700', transform: 'scaleX(1.4)', letterSpacing: '-1px', }}>SHOP BY COLLECTION</h2>
                         </Col>
                     </Row>
                     <Row style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
@@ -85,7 +96,7 @@ const LandingPage = () => {
                                     <a href="/collection?title=Collection1">
                                         <img src={require('../resources/collectionPhoto1.jpg')} alt="Collection 1" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                     </a>
-                                    <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>CALIFORNIA</h4>
+                                    <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>CALIFORNIA</h4>
                                 </Col>
                             </Row>
 
@@ -102,7 +113,7 @@ const LandingPage = () => {
                                     <a href="/collection?title=Collection2">
                                         <img src={require('../resources/collectionPhoto2.jpg')} alt="Collection 2" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                     </a>
-                                    <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>HAWAII</h4>
+                                    <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>HAWAII</h4>
                                 </Col>
                             </Row>
                         </Col>
@@ -118,7 +129,7 @@ const LandingPage = () => {
                                     <a href="/collection?title=Collection3">
                                         <img src={require('../resources/collectionPhoto3.jpg')} alt="Collection 3" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                     </a>
-                                    <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.5vw, 0.5px)', fontWeight: '700', transform: 'scaleX(1.4)' }}>NORTH CAROLINA</h4>
+                                    <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.5vw, 0.5px)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>NORTH CAROLINA</h4>
 
                                 </Col>
                             </Row>
@@ -136,9 +147,31 @@ const LandingPage = () => {
                                     <a href="/collection?title=Collection4">
                                         <img src={require('../resources/collectionPhoto4.jpg')} alt="Collection 4" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                     </a>
-                                    <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>FILM</h4>
+                                    <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>FILM</h4>
                                 </Col>
                             </Row>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+            <div>
+                <Container style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%' }}>
+                    <Row style={{ paddingBottom: '20px' }}>
+                        <Col style={{ textAlign: 'center' }}>
+                            <h2 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(1rem, 2vw, 2rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>ABOUT ME</h2>
+                        </Col>
+                    </Row>
+                    <Row style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+                        <Col xs={12} sm={12} lg={6}>
+                            <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6' }}>
+                                Hi! I'm Emily Jane Teves, a photographer based in the beautiful state of North Carolina. I specialize in capturing the essence of nature and the beauty of the world around us through my lens.
+                            </p>
+                            <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6' }}>
+                                My journey into photography began as a way to document my travels and the stunning landscapes I encountered. Over time, it has evolved into a passion for sharing these moments with others.
+                            </p>
+                            <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6' }}>
+                                I hope my work inspires you to appreciate the beauty of our world and perhaps even embark on your own photographic journey.
+                            </p>
                         </Col>
                     </Row>
                 </Container>

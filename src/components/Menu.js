@@ -1,120 +1,79 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../components/CartContext';
 import { Link } from 'react-router-dom';
+import { Navbar, Nav, Container, Badge } from 'react-bootstrap';
+import { FaShoppingCart } from 'react-icons/fa';
+import { MdShoppingCart } from 'react-icons/md';
+import { IoCartOutline } from 'react-icons/io5';
+import { BsCart } from 'react-icons/bs';
+import { HiOutlineShoppingCart } from 'react-icons/hi';
+import { RiShoppingCartLine } from 'react-icons/ri';
 
 const Menu = () => {
-    const [dropdownVisible, setDropdownVisible] = React.useState(false);
-
-
-    const menuStyle = {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '10px 20px',
-        backgroundColor: '#A7C7E7',
-        color: 'black',
-        position: 'fixed',
-        top: 0,
-        width: '100%',
-        zIndex: 1000,
-        // fontFamily: '"Young Serif", serif',
-        fontFamily: '"Inter", sans-serif',
-        
-    
-    };
-
-    const linkStyle = {
-        color: 'black',
-        textDecoration: 'none',
-        fontSize: '1.2rem',
-    };
-
+    const [dropdownVisible, setDropdownVisible] = useState(false);
     const { cart } = useContext(CartContext);
 
     return (
-        <nav style={menuStyle}>
-            <div style={{ position: 'relative' }}>
-                <button
-                    style={{
-                        background: 'none',
-                        border: 'none',
-                        color: 'black',
-                        fontSize: '1.5rem',
-                        cursor: 'pointer',
-                    }}
+        <Navbar style={{ backgroundColor: '#A7C7E7' }} variant="dark" expand="lg" fixed="top">
+            <Container>
+                <Navbar.Toggle
+                    aria-controls="basic-navbar-nav"
                     onClick={() => setDropdownVisible(!dropdownVisible)}
+                    style={{
+                        border: 'none',
+                        borderColor: 'black',
+                        color: 'black',
+                    }}
                 >
-                    &#9776;
-                </button>
-                {dropdownVisible && (
-                    <div
-                        style={{
-                            position: 'absolute',
-                            top: '100%',
-                            left: 0,
-                            backgroundColor: '#A7C7E7',
-                            color: 'white',
-                            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-                            borderRadius: '4px',
-                            overflow: 'hidden',
-                        }}
-                    >
-                        <Link
-                            to="/collection"
-                            style={{
-                                display: 'block',
-                                padding: '10px 20px',
-                                color: 'black',
-                                textDecoration: 'none',
-                            }}
-                        >
+                    <span style={{ backgroundColor: 'black', display: 'block', height: '2px', margin: '4px 0', width: '20px' }}></span>
+                    <span style={{ backgroundColor: 'black', display: 'block', height: '2px', margin: '4px 0', width: '20px' }}></span>
+                    <span style={{ backgroundColor: 'black', display: 'block', height: '2px', margin: '4px 0', width: '20px' }}></span>
+                </Navbar.Toggle>
+                <Navbar.Collapse
+                    id="basic-navbar-nav"
+                    in={dropdownVisible}
+                    style={{ color: 'black' }}
+                >
+                    <Nav className="me-auto">
+                        <Nav.Link as={Link} to="/collection" style={{ color: 'black' }}>
                             Gallery
-                        </Link>
-                        <Link
-                            to="/about"
-                            style={{
-                                display: 'block',
-                                padding: '10px 20px',
-                                color: 'black',
-                                textDecoration: 'none',
-                            }}
-                        >
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="/about" style={{ color: 'black' }}>
                             About Me
-                        </Link>
-                    </div>
-                )}
-            </div>
-            <Link
-                to="/"
-                style={{
-                    ...linkStyle,
-                    transform: 'scaleX(1.4)',
-                    fontSize: 'clamp(0.8rem, 2vw, 1.5rem)',
-                    fontWeight: '600',
-                    letterSpacing: '-1px',
-                    wordSpacing: 'clamp(0px, 1vw, 6px)',
-                    display: window.innerWidth < 350 ? 'none' : 'inline', // Hide text if viewport width is too small
-                }}
-            >
-                EMILY JANE PHOTOGRAPHY
-            </Link>
-            <Link to="/cart" style={linkStyle}>
-                <span style={{ display: 'flex', alignItems: 'center' }}>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="black"
-                        viewBox="0 0 24 24"
-                        style={{ marginRight: '2px' }}
-                    >
-                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7.16 4.26L6.1 2H1v2h3.6l3.59 7.59-1.35 2.44C6.52 14.37 7 15.13 7 16h12v-2H7.42c-.14-.31-.22-.65-.22-1 0-.13.02-.26.05-.39l1.1-1.96h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49-1.74-1.01L16.16 8H8.53l-.37-.74z" />
-                    </svg>
-                    {cart.length > 0 ? `(${cart.reduce((total, item) => total + Number(item.quantity), 0)})` : ''}
-                </span>
-            </Link>
-        </nav>
+                        </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+                <Navbar.Brand
+                    as={Link}
+                    to="/"
+                    style={{
+                        transform: 'scaleX(1.4)',
+                        fontSize: 'clamp(0.8rem, 2vw, 1.5rem)',
+                        fontWeight: '600',
+                        letterSpacing: '-1px',
+                        wordSpacing: 'clamp(0px, 1vw, 6px)',
+                        display: window.innerWidth < 350 ? 'none' : 'inline',
+                        color: 'black',
+                    }}
+                >
+                    EMILY JANE PHOTOGRAPHY
+                </Navbar.Brand>
+                <Nav>
+                    <Nav.Link as={Link} to="/cart" style={{ color: 'black' }}>
+                        <span style={{ display: 'flex', alignItems: 'center' }}>
+                            {cart.length > 0 && (
+                                <Badge bg="light" text="dark">
+                                    {cart.reduce((total, item) => total + Number(item.quantity), 0)}
+                                </Badge>
+                            )}
+                            <HiOutlineShoppingCart size={26} style={{ marginLeft: '6px', color: 'black' }} />
+                        </span>
+                    </Nav.Link>
+                </Nav>
+            </Container>
+        </Navbar>
     );
+
 };
 
 export default Menu;
