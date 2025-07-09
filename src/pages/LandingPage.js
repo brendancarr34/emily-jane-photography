@@ -30,7 +30,7 @@ const LandingPage = () => {
             <div style={landingPageContainerStyle}>
                 <Container>
                     <Row>
-                        <Col style={{ padding: '40px' }}>
+                        <Col style={{ padding: '20px' }}>
                             <h1 style={{
                                 transform: 'scaleY(1.8)', paddingTop: '60px',
                                 fontSize: 'clamp(1.8rem, 6vw, 6rem)',
@@ -172,6 +172,43 @@ const LandingPage = () => {
                             <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6' }}>
                                 I hope my work inspires you to appreciate the beauty of our world and perhaps even embark on your own photographic journey.
                             </p>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+            <div>
+                {/* Container for getting in contact with me */}
+                <Container style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%' }}>
+                    <Row style={{ paddingBottom: '20px' }}>
+                        <Col style={{ textAlign: 'center' }}>
+                            <h2 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(1rem, 2vw, 2rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>GET IN TOUCH</h2>
+                        </Col>
+                    </Row>
+                    <Row style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+                        <Col xs={12} sm={12} lg={6}>
+                            <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6' }}>
+                                I would love to hear from you! Whether you have questions about my work, want to collaborate, or just want to say hello, feel free to reach out.
+                            </p>
+                            <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6' }}>
+                                You can contact me via email at <a href="mailto:emilyjaneteves@gmail.com">emilyjaneteves@gmail.com</a>
+                            </p>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+            <div>
+                <Container style={{fontFamily: '"Young Serif", serif', height: '100%' , margin: '0', width: '100vw'}}>
+                    <Row style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%', width: '100vw', backgroundColor: '#A7C7E7' }}>
+                        <Col style={{ textAlign: 'center', padding: '20px' }}>
+                            <h2 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(1rem, 2vw, 2rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>FOLLOW ME</h2>
+                            <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6' , margin: '0'}}>
+                                Stay updated with my latest work and adventures by following me on social media.
+                            </p>
+                            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+                                {/* <a href="https://www.instagram.com/emilyjaneteves/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'black' }}>
+                                    <img src={require('../resources/instagramIcon.png')} alt="Instagram" style={{ width: '40px', height: '40px' }} />
+                                </a> */}
+                            </div>
                         </Col>
                     </Row>
                 </Container>

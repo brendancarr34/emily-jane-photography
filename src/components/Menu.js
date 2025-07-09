@@ -14,14 +14,15 @@ const Menu = () => {
     const { cart } = useContext(CartContext);
 
     return (
-        <Navbar style={{ backgroundColor: '#A7C7E7' }} variant="dark" expand="lg" fixed="top">
+        <Navbar style={{ backgroundColor: '#A7C7E7' }} variant="dark" expand={false} fixed="top">
             <Container>
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"
                     onClick={() => setDropdownVisible(!dropdownVisible)}
                     style={{
                         border: 'none',
-                        borderColor: 'black',
+                        borderColor: 'transparent',
+                        backgroundColor: 'transparent',
                         color: 'black',
                     }}
                 >

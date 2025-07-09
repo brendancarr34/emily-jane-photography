@@ -8,7 +8,7 @@ const AboutMe = () => {
     return (
         <>
             <Menu />
-            <Container style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+            <Container style={{ padding: '20px', fontFamily: 'Arial, sans-serif', height: '100vh' }}>
                 <Row>
                     <Col>
                         <div
@@ -21,8 +21,8 @@ const AboutMe = () => {
                             }}
                         ></div>
                     </Col>
-                    <Col>
-                        <h1>About Me</h1>
+                    <Col style={{ height: '80vh', padding: '20px', color: 'black' }}>
+                        <h1 style={{ padding: '40px 0' }}>About Me</h1>
                         <p>
                             Hi! I'm Emily Jane, a passionate photographer dedicated to capturing life's most beautiful moments. 
                             With years of experience and a love for creativity, I strive to bring your vision to life through my lens.
