@@ -92,7 +92,7 @@ const LandingPage = () => {
                                     borderRadius: '10px',
                                     boxSizing: 'border-box', // Ensures the border is included within the element's dimensions
                                 }}>
-                                    <a href="/collection?title=Collection1">
+                                    <a href="/collection?collection=California">
                                         <img src={require('../resources/collectionPhoto1.jpg')} alt="Collection 1" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                     </a>
                                     <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>CALIFORNIA</h4>
@@ -108,7 +108,7 @@ const LandingPage = () => {
                                     borderRadius: '10px',
                                     boxSizing: 'border-box', // Ensures the border is included within the element's dimensions 
                                 }}>
-                                    <a href="/collection?title=Collection2">
+                                    <a href="/collection?collection=Hawaii">
                                         <img src={require('../resources/collectionPhoto2.jpg')} alt="Collection 2" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                     </a>
                                     <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>HAWAII</h4>
@@ -124,7 +124,7 @@ const LandingPage = () => {
                                     borderRadius: '10px',
                                     boxSizing: 'border-box', // Ensures the border is included within the element's dimensions
                                 }}>
-                                    <a href="/collection?title=Collection3">
+                                    <a href="/collection?collection=NorthCarolina">
                                         <img src={require('../resources/collectionPhoto3.jpg')} alt="Collection 3" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                     </a>
                                     <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.5vw, 0.5px)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>NORTH CAROLINA</h4>
@@ -141,7 +141,7 @@ const LandingPage = () => {
                                     boxSizing: 'border-box', // Ensures the border is included within the element's dimensions
                                     // margin: '10px',
                                 }}>
-                                    <a href="/collection?title=Collection4">
+                                    <a href="/collection?collection=Film">
                                         <img src={require('../resources/collectionPhoto4.jpg')} alt="Collection 4" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                     </a>
                                     <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>FILM</h4>

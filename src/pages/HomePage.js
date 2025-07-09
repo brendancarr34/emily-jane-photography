@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import Menu from "../components/Menu";
 import { Link } from 'react-router-dom';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Container } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
@@ -10,6 +10,7 @@ import { CartContext } from "../components/CartContext";
 const HomePage = () => {
   
   const [images, setImages] = useState([]);
+  const [filteredImages, setFilteredImages] = useState([]); // State for filtered images
   const [loading, setLoading] = useState(true);
   const [modalImage, setModalImage] = useState(null); // State for modal image
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
@@ -17,10 +18,17 @@ const HomePage = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(1); // State for selected quantity
   const [selectedBorderSize, setSelectedBorderSize] = useState('none'); // State for selected border size
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // State for success modal visibility
+  const [selectedFilter, setSelectedFilter] = useState("all"); // State for selected filter
 
   const { addToCart } = React.useContext(CartContext); // Access cart context
 
   useEffect(() => {
+
+    // Get the selected filter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const filterFromUrl = urlParams.get('collection') || 'all'; // Default to 'all' if no filter is specified
+    console.log(`Filter from URL: ${filterFromUrl}`);
+
     // Fetch photo info from the API
     fetch('https://superbowl-squares-api-2-637010006131.us-central1.run.app/api/ejt-photography/photo-info')
       .then(response => response.json())
@@ -30,15 +38,45 @@ const HomePage = () => {
           url: `/images/photo${item.id}.jpg`,
           title: `${item.title}`,
           price: item.price,
-          // description: item.description,
+          collection: item.collection,
         }));
+        console.log('Constructed images:', constructedImages);
         setImages(constructedImages);
+        setFilteredImages(filterImages(constructedImages, filterFromUrl)); // Initialize filtered images
       })
       .catch(error => {
         console.error('Error fetching photo info:', error);
       });
+
+      setSelectedFilter(filterFromUrl); // Update the selected filter state
+      // handleFilterChange(filterFromUrl); // Apply the filter to the images
+
     setLoading(false);
   }, []);
+
+  const handleFilterChange = (selectedFilter) => {
+    if (selectedFilter === "all" || selectedFilter === "") {
+      console.log('Showing all images');
+      setFilteredImages(images); // Show all images
+    } else {
+      console.log(`Filtering images by collection: ${selectedFilter}`);
+      console.log(`All images:`, images);
+      const filtered = images.filter(image => image.collection === selectedFilter);
+      console.log(`Filtered images:`, filtered);
+      setFilteredImages(filtered); // Update filtered images
+    }
+  };
+
+  const filterImages = (images, filter) => {
+    if (filter === "all") {
+      return images; // Return all images if filter is "all"
+    }
+    console.log(`Filtering images by collection: ${filter}`);
+    console.log(`All images:`, images);
+    const filtered = images.filter(image => image.collection === filter);
+    console.log(`Filtered images:`, filtered);
+    return filtered; // Return filtered images
+  };
 
   const openModal = (image) => {
     setModalImage(image);
@@ -57,11 +95,40 @@ const HomePage = () => {
         <br />
         <br />
       </div>
+      <div>
+        <Container style={{ textAlign: "center", paddingTop: "40px" }}>
+          <Row >
+            <Col>
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <Form.Group controlId="filterDropdown" style={{ display: "flex", alignItems: "center" }}>
+                  <Form.Label style={{ marginRight: "10px", marginBottom: "0" }}>Collection:</Form.Label>
+                  <Form.Select
+                    value={selectedFilter} // Bind the value to the state
+                    onChange={(e) => {
+                      const selectedFilter = e.target.value;
+                      console.log(`Selected filter: ${selectedFilter}`);
+                      const urlParams = new URLSearchParams(window.location.search);
+                      urlParams.set('collection', selectedFilter);
+                      window.history.replaceState(null, '', `${window.location.pathname}?${urlParams.toString()}`);
+                      handleFilterChange(selectedFilter);
+                      setSelectedFilter(selectedFilter); // Update the selected filter state
+                    }}
+                  >
+                    <option value="all">All</option>
+                    <option value="California">California</option>
+                    <option value="Hawaii">Hawaii</option>
+                  </Form.Select>
+                </Form.Group>
+              </div>
+            </Col>
+          </Row>
+        </Container>  
+      </div>
       <div style={{ textAlign: "center", paddingTop: "1.5rem" }}>
         {loading && <p>Loading...</p>}
         {!loading && (
           <main style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(120px, 1fr))`, gap: "1rem", padding: "1rem", maxWidth: "1200px", margin: "0 auto" }}>
-            {images.map((photo, index) => (
+            {filteredImages.map((photo, index) => (
               <div key={index} style={{ border: "1px solid #ddd", padding: "1rem", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                 <img
                   src={photo.url}
