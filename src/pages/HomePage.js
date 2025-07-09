@@ -56,10 +56,10 @@ const HomePage = () => {
         <br />
         <br />
       </div>
-      <div>
+      <div style={{ textAlign: "center", paddingTop: "1.5rem" }}>
         {loading && <p>Loading...</p>}
         {!loading && (
-          <main style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: "1rem", padding: "1rem" }}>
+          <main style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(120px, 1fr))`, gap: "1rem", padding: "1rem", maxWidth: "1200px", margin: "0 auto" }}>
             {images.map((photo, index) => (
               <div key={index} style={{ border: "1px solid #ddd", padding: "1rem", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                 <img
@@ -120,26 +120,25 @@ const HomePage = () => {
                             quantityInput.value = Math.max(1, currentValue - 1);
                             console.log(`Updated quantity: ${quantityInput.value}`);
                             setSelectedQuantity(quantityInput.value);
-                          }}
-                        >
-                          -
-                        </Button>
-                        <Form.Control
-                          type="number"
-                          min="1"
-                          defaultValue="1"
-                          style={{ textAlign: "center", margin: "0 10px", pointerEvents: "none" }}
-                          readOnly={true}
-                          onChange={(e) => {
-                            const quantity = Math.max(1, parseInt(e.target.value, 10) || 1);
-                            console.log(`Selected quantity: ${quantity}`);
-
-                          }}
-                        />
-                        <Button
-                          variant="outline-secondary"
-                          style={{ width: "40px", height: "40px" }}
-                          onClick={() => {
+                            }}
+                            >
+                            -
+                            </Button>
+                            <Form.Control
+                            type="number"
+                            min="1"
+                            defaultValue="1"
+                            style={{ textAlign: "center", margin: "0 10px", pointerEvents: "none", width: "100%", height: "40px", display: "flex", alignItems: "center", justifyContent: "center", paddingLeft: "20px" }}
+                            readOnly={true}
+                            onChange={(e) => {
+                              const quantity = Math.max(1, parseInt(e.target.value, 10) || 1);
+                              console.log(`Selected quantity: ${quantity}`);
+                            }}
+                            />
+                            <Button
+                            variant="outline-secondary"
+                            style={{ width: "40px", height: "40px" }}
+                            onClick={() => {
                             const quantityInput = document.getElementById("quantity");
                             const currentValue = parseInt(quantityInput.value, 10) || 1;
                             quantityInput.value = currentValue + 1;
@@ -170,7 +169,7 @@ const HomePage = () => {
                     </Form.Group>
                   </Col>
                   <Col className="d-flex align-items-center justify-content-center">
-                    <h5>Price: ${modalImage?.price}</h5>
+                    <h5 style={{ margin: 0 }}>Price: ${modalImage?.price}</h5>
                   </Col>
                 </Row>
               </form>

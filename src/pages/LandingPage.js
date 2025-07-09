@@ -5,7 +5,7 @@ import Menu from '../components/Menu';
 const LandingPage = () => {
     const landingPageContainerStyle = {
         color: 'white',
-        textAlign: 'center',
+        // textAlign: 'center',
         fontSize: '3rem',
         position: 'relative'
     };
@@ -24,20 +24,14 @@ const LandingPage = () => {
         <div style={landingPageStyle}>
             <Menu />
             <div className="container" style={landingPageContainerStyle}>
-                <div 
-                    // className="row justify-content-center align-items-center" 
-                    style={{ height: '100%' }}>
-                    <div 
-                        // className="col text-center"
-                    >
+                <div style={{ height: '100%' }}>
+                    <div>
                         <br />
                         <br />
                         <h1>Original Photography<br/>by Emily Teves</h1>
-                        <div 
-                            // style={{ marginBottom: '300px' }}
-                        >
+                        <div>
                             <button onClick={() => window.location.href = '/collection'} style={{ padding: '10px 20px', fontSize: '1rem', backgroundColor: '#A7C7E7', color: 'black', border: 'none', borderRadius: '5px', marginTop: '40px' }}>
-                                <p style={{ margin: 0, padding: '10px 20px' }}>Go to Gallery</p>
+                                <p style={{ margin: 0, padding: '10px 20px' }}>Shop the Full Collection</p>
                             </button>
                         </div>
                     </div>
