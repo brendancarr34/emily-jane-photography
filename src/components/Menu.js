@@ -85,6 +85,7 @@ const Menu = () => {
                         wordSpacing: 'clamp(0px, 1vw, 6px)',
                         display: window.innerWidth < 350 ? 'none' : 'inline',
                         color: navBarBrandColor,
+                        margin: 0
                     }}
                     display={dropdownVisible ? 'none' : 'inline'}
                 >
@@ -98,7 +99,7 @@ const Menu = () => {
                                     {cart.reduce((total, item) => total + Number(item.quantity), 0)}
                                 </Badge>
                             )}
-                            <HiOutlineShoppingCart size={26} style={{ marginLeft: '6px', color: 'black' }} />
+                            <HiOutlineShoppingCart size={26} style={{ marginLeft: '4px', color: 'black' }} />
                         </span>
                     </Nav.Link>
                 </Nav>

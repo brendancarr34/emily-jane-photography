@@ -27,7 +27,6 @@ const HomePage = () => {
     // Get the selected filter from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const filterFromUrl = urlParams.get('collection') || 'all'; // Default to 'all' if no filter is specified
-    console.log(`Filter from URL: ${filterFromUrl}`);
 
     // Fetch photo info from the API
     fetch('https://superbowl-squares-api-2-637010006131.us-central1.run.app/api/ejt-photography/photo-info')
@@ -40,7 +39,6 @@ const HomePage = () => {
           price: item.price,
           collection: item.collection,
         }));
-        console.log('Constructed images:', constructedImages);
         setImages(constructedImages);
         setFilteredImages(filterImages(constructedImages, filterFromUrl)); // Initialize filtered images
       })
@@ -49,20 +47,17 @@ const HomePage = () => {
       });
 
       setSelectedFilter(filterFromUrl); // Update the selected filter state
-      // handleFilterChange(filterFromUrl); // Apply the filter to the images
+      handleFilterChange(filterFromUrl); // Apply the filter to the images
 
     setLoading(false);
   }, []);
 
   const handleFilterChange = (selectedFilter) => {
     if (selectedFilter === "all" || selectedFilter === "") {
-      console.log('Showing all images');
+
       setFilteredImages(images); // Show all images
     } else {
-      console.log(`Filtering images by collection: ${selectedFilter}`);
-      console.log(`All images:`, images);
       const filtered = images.filter(image => image.collection === selectedFilter);
-      console.log(`Filtered images:`, filtered);
       setFilteredImages(filtered); // Update filtered images
     }
   };
@@ -71,10 +66,7 @@ const HomePage = () => {
     if (filter === "all") {
       return images; // Return all images if filter is "all"
     }
-    console.log(`Filtering images by collection: ${filter}`);
-    console.log(`All images:`, images);
     const filtered = images.filter(image => image.collection === filter);
-    console.log(`Filtered images:`, filtered);
     return filtered; // Return filtered images
   };
 
@@ -106,7 +98,6 @@ const HomePage = () => {
                     value={selectedFilter} // Bind the value to the state
                     onChange={(e) => {
                       const selectedFilter = e.target.value;
-                      console.log(`Selected filter: ${selectedFilter}`);
                       const urlParams = new URLSearchParams(window.location.search);
                       urlParams.set('collection', selectedFilter);
                       window.history.replaceState(null, '', `${window.location.pathname}?${urlParams.toString()}`);
@@ -117,6 +108,8 @@ const HomePage = () => {
                     <option value="all">All</option>
                     <option value="California">California</option>
                     <option value="Hawaii">Hawaii</option>
+                    <option value="NorthCarolina">North Carolina</option>
+                    <option value="Film">Film</option>
                   </Form.Select>
                 </Form.Group>
               </div>
@@ -126,6 +119,9 @@ const HomePage = () => {
       </div>
       <div style={{ textAlign: "center", paddingTop: "1.5rem" }}>
         {loading && <p>Loading...</p>}
+        {filteredImages.length == 0 && !loading && (
+          <p>No images found for the selected collection.</p>
+        )}
         {!loading && (
           <main style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(120px, 1fr))`, gap: "1rem", padding: "1rem", maxWidth: "1200px", margin: "0 auto" }}>
             {filteredImages.map((photo, index) => (
@@ -186,7 +182,6 @@ const HomePage = () => {
                             const quantityInput = document.getElementById("quantity");
                             const currentValue = parseInt(quantityInput.value, 10) || 1;
                             quantityInput.value = Math.max(1, currentValue - 1);
-                            console.log(`Updated quantity: ${quantityInput.value}`);
                             setSelectedQuantity(quantityInput.value);
                           }}
                         >
@@ -200,7 +195,7 @@ const HomePage = () => {
                           readOnly={true}
                           onChange={(e) => {
                             const quantity = Math.max(1, parseInt(e.target.value, 10) || 1);
-                            console.log(`Selected quantity: ${quantity}`);
+                            setSelectedQuantity(quantity);
                           }}
                         />
                         <Button
@@ -210,7 +205,6 @@ const HomePage = () => {
                             const quantityInput = document.getElementById("quantity");
                             const currentValue = parseInt(quantityInput.value, 10) || 1;
                             quantityInput.value = currentValue + 1;
-                            console.log(`Updated quantity: ${quantityInput.value}`);
                             setSelectedQuantity(quantityInput.value);
                           }}
                         >
@@ -226,7 +220,6 @@ const HomePage = () => {
                       <Form.Label>Border Size:</Form.Label>
                       <Form.Select onChange={(e) => {
                         const selectedBorderSize = e.target.value || 'none';
-                        console.log(`Selected border size: ${selectedBorderSize}`);
                         setSelectedBorderSize(selectedBorderSize);
                       }}>
                         <option value="none">None</option>
@@ -252,7 +245,6 @@ const HomePage = () => {
             modalImage.size = selectedSize;
             modalImage.quantity = selectedQuantity;
             modalImage.borderSize = selectedBorderSize;
-            console.log(`Added ${JSON.stringify(modalImage)} to cart`);
             addToCart(modalImage); // Call the addToCart function from context
             closeModal();
             // Open success modal
