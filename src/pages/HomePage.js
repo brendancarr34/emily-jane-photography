@@ -120,25 +120,25 @@ const HomePage = () => {
                             quantityInput.value = Math.max(1, currentValue - 1);
                             console.log(`Updated quantity: ${quantityInput.value}`);
                             setSelectedQuantity(quantityInput.value);
-                            }}
-                            >
-                            -
-                            </Button>
-                            <Form.Control
-                            type="number"
-                            min="1"
-                            defaultValue="1"
-                            style={{ textAlign: "center", margin: "0 10px", pointerEvents: "none", width: "100%", height: "40px", display: "flex", alignItems: "center", justifyContent: "center", paddingLeft: "20px" }}
-                            readOnly={true}
-                            onChange={(e) => {
-                              const quantity = Math.max(1, parseInt(e.target.value, 10) || 1);
-                              console.log(`Selected quantity: ${quantity}`);
-                            }}
-                            />
-                            <Button
-                            variant="outline-secondary"
-                            style={{ width: "40px", height: "40px" }}
-                            onClick={() => {
+                          }}
+                        >
+                          -
+                        </Button>
+                        <Form.Control
+                          type="number"
+                          min="1"
+                          defaultValue="1"
+                          style={{ textAlign: "center", margin: "0 10px", pointerEvents: "none", width: "100%", height: "40px", display: "flex", alignItems: "center", justifyContent: "center", paddingLeft: "20px" }}
+                          readOnly={true}
+                          onChange={(e) => {
+                            const quantity = Math.max(1, parseInt(e.target.value, 10) || 1);
+                            console.log(`Selected quantity: ${quantity}`);
+                          }}
+                        />
+                        <Button
+                          variant="outline-secondary"
+                          style={{ width: "40px", height: "40px" }}
+                          onClick={() => {
                             const quantityInput = document.getElementById("quantity");
                             const currentValue = parseInt(quantityInput.value, 10) || 1;
                             quantityInput.value = currentValue + 1;
@@ -204,7 +204,7 @@ const HomePage = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setIsSuccessModalOpen(false)}>
-            Back to Gallery 
+            Back to Gallery
           </Button>
           <Link to="/cart">
             <Button variant="primary">

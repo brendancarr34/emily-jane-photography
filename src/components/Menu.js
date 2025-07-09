@@ -17,6 +17,10 @@ const Menu = () => {
         top: 0,
         width: '100%',
         zIndex: 1000,
+        // fontFamily: '"Young Serif", serif',
+        fontFamily: '"Inter", sans-serif',
+        
+    
     };
 
     const linkStyle = {
@@ -80,7 +84,20 @@ const Menu = () => {
                     </div>
                 )}
             </div>
-            <Link to="/" style={linkStyle}>Emily Jane Photography</Link>
+            <Link
+                to="/"
+                style={{
+                    ...linkStyle,
+                    transform: 'scaleX(1.4)',
+                    fontSize: 'clamp(0.8rem, 2vw, 1.5rem)',
+                    fontWeight: '600',
+                    letterSpacing: '-1px',
+                    wordSpacing: 'clamp(0px, 1vw, 6px)',
+                    display: window.innerWidth < 350 ? 'none' : 'inline', // Hide text if viewport width is too small
+                }}
+            >
+                EMILY JANE PHOTOGRAPHY
+            </Link>
             <Link to="/cart" style={linkStyle}>
                 <span style={{ display: 'flex', alignItems: 'center' }}>
                     <svg
