@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Menu from "../components/Menu";
 import { Link } from 'react-router-dom';
 import { Modal, Button, Container } from 'react-bootstrap';
@@ -41,15 +41,14 @@ const HomePage = () => {
         }));
         setImages(constructedImages);
         setFilteredImages(filterImages(constructedImages, filterFromUrl)); // Initialize filtered images
+        setLoading(false); // Set loading to false after images are fetched
       })
       .catch(error => {
         console.error('Error fetching photo info:', error);
       });
 
-      setSelectedFilter(filterFromUrl); // Update the selected filter state
-      handleFilterChange(filterFromUrl); // Apply the filter to the images
-
-    setLoading(false);
+    setSelectedFilter(filterFromUrl); // Update the selected filter state
+    handleFilterChange(filterFromUrl); // Apply the filter to the images
   }, []);
 
   const handleFilterChange = (selectedFilter) => {
@@ -119,7 +118,7 @@ const HomePage = () => {
       </div>
       <div style={{ textAlign: "center", paddingTop: "1.5rem" }}>
         {loading && <p>Loading...</p>}
-        {filteredImages.length == 0 && !loading && (
+        {(filteredImages.length == 0 && !loading) && (
           <p>No images found for the selected collection.</p>
         )}
         {!loading && (
@@ -180,7 +179,7 @@ const HomePage = () => {
                       <div style={{ display: "flex", alignItems: "center" }}>
                         <Button
                           variant="outline-secondary"
-                          style={{ width: "40px", height: "40px" }}
+                          style={{ width: "40px", height: "40px", borderColor: "lightgray" }}
                           onClick={() => {
                             const quantityInput = document.getElementById("quantity");
                             const currentValue = parseInt(quantityInput.value, 10) || 1;
@@ -203,7 +202,7 @@ const HomePage = () => {
                         />
                         <Button
                           variant="outline-secondary"
-                          style={{ width: "40px", height: "40px" }}
+                          style={{ width: "40px", height: "40px", borderColor: "lightgray" }}
                           onClick={() => {
                             const quantityInput = document.getElementById("quantity");
                             const currentValue = parseInt(quantityInput.value, 10) || 1;
@@ -242,9 +241,11 @@ const HomePage = () => {
         </Modal.Body>
         <Modal.Footer>
           <Link to={`/product/${modalImage?.id}`}>
-            <Button style={{ backgroundColor: "lightgray", color: "black" }} variant="secondary">Go to Product Page</Button>
+            <Button style={{ backgroundColor: "lightgray", color: "black", border: 'none' }} variant="secondary">Go to Product Page</Button>
           </Link>
-          <Button variant="primary" onClick={() => {
+          <Button variant="primary" 
+          style={{ backgroundColor: "#A7C7E7", color: "black", border: 'none' }}
+          onClick={() => {
             modalImage.size = selectedSize;
             modalImage.quantity = selectedQuantity;
             modalImage.borderSize = selectedBorderSize;

@@ -9,21 +9,38 @@ export const CartProvider = ({ children }) => {
     return storedCart ? JSON.parse(storedCart) : [];
   });
 
+  const [total, setTotal] = useState(() => {
+    // Load total from localStorage if available
+    const storedTotal = localStorage.getItem('total');
+    return storedTotal ? JSON.parse(storedTotal) : 0;
+  });
+
   useEffect(() => {
     // Persist cart to localStorage on change
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
+  useEffect(() => {
+    // Persist total to localStorage on change
+    localStorage.setItem('total', JSON.stringify(total));
+  }, [total]);
+
   const addToCart = (item) => {
     setCart((prev) => [...prev, item]);
+    setTotal((prevTotal) => prevTotal + item.price * item.quantity);
   };
 
   const removeFromCart = (itemId) => {
     setCart((prev) => prev.filter(item => item.id !== itemId));
+    setTotal((prevTotal) => {
+      const itemToRemove = cart.find(item => item.id === itemId);
+      return itemToRemove ? prevTotal - (itemToRemove.price * itemToRemove.quantity) : prevTotal;
+    });
   };
 
   const clearCart = () => {
     setCart([]);
+    setTotal(0);
   };
 
     // Function to update cart details (e.g., address)
@@ -37,7 +54,7 @@ export const CartProvider = ({ children }) => {
     }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, updateCartDetails }}>
+    <CartContext.Provider value={{ cart, total, addToCart, removeFromCart, clearCart, updateCartDetails }}>
       {children}
     </CartContext.Provider>
   );
