@@ -1,9 +1,11 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const CheckoutForm = ({ formData = {}, handleChange, handleSubmit }) => {
+const CheckoutForm = ({ formData = {}, handleChange, handleSubmit
+    , handleOrder 
+}) => {
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={() => {handleSubmit(); handleOrder();}}>
             <Form.Group style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
                 <div style={{ flex: 1 }}>
                     <Form.Label style={{ marginBottom: '5px', paddingLeft: '5px' }}>First Name</Form.Label>
