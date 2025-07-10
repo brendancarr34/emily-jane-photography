@@ -171,17 +171,26 @@ const LandingPage = () => {
                             </p>
                         </Col>
                     </Row>
+                    <Row>
+                        <Button style={{backgroundColor: '#A7C7E7', border: 'none', padding: '10px 20px', marginTop: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                            <a href="/about" style={{ textDecoration: 'none', backgroundColor: '#A7C7E7', color: 'black', fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', fontWeight: '600' }}>
+                                Learn More About Me
+                            </a>
+                        </Button>
+                    </Row>
                 </Container>
             </div>
             <div>
                 {/* Container for getting in contact with me */}
-                <Container style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%' }}>
+                <Container style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%', 
+                    // marginBottom: '140px' 
+                    }}>
                     <Row style={{ paddingBottom: '20px' }}>
                         <Col style={{ textAlign: 'center' }}>
                             <h2 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(1rem, 2vw, 2rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>GET IN TOUCH</h2>
                         </Col>
                     </Row>
-                    <Row style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+                    <Row style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center'}}>
                         <Col xs={12} sm={12} lg={6}>
                             <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6' }}>
                                 I would love to hear from you! Whether you have questions about my work, want to collaborate, or just want to say hello, feel free to reach out.
@@ -210,6 +219,23 @@ const LandingPage = () => {
                     </Row>
                 </Container>
             </div>
+            {/* // <footer style={{ position: 'fixed', bottom: 0, width: '100%', backgroundColor: '#A7C7E7'}}>
+            //     <Container style={{fontFamily: '"Young Serif", serif', height: '100%' , margin: '0', width: '100vw'}}>
+            //         <Row style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%', width: '100vw', backgroundColor: '#A7C7E7' }}>
+            //             <Col style={{ textAlign: 'center', padding: '20px' }}>
+            //                 <h2 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(1rem, 2vw, 2rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>FOLLOW ME</h2>
+            //                 <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6' , margin: '0'}}>
+            //                     Stay updated with my latest work and adventures by following me on social media.
+            //                 </p>
+            //                 <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+            //                     {/* <a href="https://www.instagram.com/emilyjaneteves/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'black' }}>
+            //                         <img src={require('../resources/instagramIcon.png')} alt="Instagram" style={{ width: '40px', height: '40px' }} />
+            //                     </a> 
+            //                 </div>
+            //             </Col>
+            //         </Row>
+            //     </Container>
+            // </footer> */}
         </div>
     );
 };

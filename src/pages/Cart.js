@@ -37,9 +37,9 @@ const Cart = () => {
     }
 
     return (
-        <div>
+        <div className="d-flex flex-column" style={{ minHeight: '20vh', position: 'relative' }}>
             <Menu />
-            <Container className="cart-page mt-4">
+            <Container className="cart-page mt-4 flex-grow-1">
                 <Row>
                     <Col>
                         <br/>
@@ -84,19 +84,23 @@ const Cart = () => {
                         <div className="mt-3">
                             {total ? <strong>Total: ${total.toFixed(2)}</strong> : 'Total: $0.00'}
                         </div>
-                        <Button variant="warning" className="mt-3" onClick={clearCart}>
+                        {/* <Button variant="warning" className="mt-3" onClick={clearCart}>
                             Clear Cart
-                        </Button>
+                        </Button> */}
                         <Button 
                             variant="primary" 
-                            className="mt-3 ms-2" 
+                            className="ms-2 float-end" 
                             onClick={() => window.location.href = '/checkout'}
+
                         >
                             Checkout
                         </Button>
                     </Col>
                 </Row>
             </Container>
+            <footer style={{ position: 'fixed', bottom: 0, width: '100%', backgroundColor: '#A7C7E7', padding: '30px' }}>
+                
+            </footer>
         </div>
     );
 };

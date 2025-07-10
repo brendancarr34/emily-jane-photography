@@ -88,9 +88,9 @@ const HomePage = () => {
         <br />
       </div>
       <div>
-        <Container style={{ textAlign: "center", paddingTop: "40px" }}>
-          <Row >
-            <Col>
+        <Container style={{ textAlign: "center", paddingTop: "40px", margin: "0", width: "100vw", minWidth: "100vw", paddingRight: "40px" }}>
+          <Row style={{width: "100vw"}}>
+            <Col style={{ display: "flex", justifyContent: "flex-end", paddingRight: "20px" }}>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <Form.Group controlId="filterDropdown" style={{ display: "flex", alignItems: "center" }}>
                   <Form.Label style={{ marginRight: "10px", marginBottom: "0" }}>Collection:</Form.Label>
@@ -140,6 +140,9 @@ const HomePage = () => {
           </main>
         )}
       </div>
+      {/* <footer style={{ position: 'fixed', bottom: 0, width: '100%', backgroundColor: '#A7C7E7', padding: '30px' }}>
+                
+      </footer> */}
 
       <Modal show={isModalOpen} onHide={closeModal} centered>
         <Modal.Header closeButton>
