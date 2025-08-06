@@ -22,40 +22,40 @@ const Checkout = () => {
         zipCode: '',
     });
 
-    // const handleOrder = async () => {
-    //     console.log('Placing order with data:', formData);
-    //     const orderData = {
-    //         customerName: formData.firstName,
-    //         item: decodeURIComponent(cart[0].title), // Assuming the first item in the cart is the one to order
-    //         address: formData.address,
-    //         email: formData.email,
-    //         addressLine2: formData.addressLine2,
-    //         city: formData.city,
-    //         state: formData.state,
-    //         zipCode: formData.zipCode,
-    //         quantity: 1, // Replace with actual quantity
-    //         price: 100 // Replace with actual price
-    //     };
+    const handleOrder = async () => {
+        console.log('Placing order with data:', formData);
+        const orderData = {
+            customerName: clientSecret.slice(0, 28), // Example: using clientSecret as customer name
+            item: decodeURIComponent(cart[0].title), // Assuming the first item in the cart is the one to order
+            address: formData.address,
+            email: formData.email,
+            addressLine2: formData.addressLine2,
+            city: formData.city,
+            state: formData.state,
+            zipCode: formData.zipCode,
+            quantity: 1, // Replace with actual quantity
+            price: 100 // Replace with actual price
+        };
 
-    //     try {
-    //         const response = await fetch('http://localhost:3001/api/ejt-photography/orders', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify(orderData),
-    //         });
-    //         const data = await response.json();
-    //         if (response.ok) {
-    //             alert(`Order placed successfully: ${data.message}`);
-    //         } else {
-    //             alert(`Error: ${data.error}`);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error placing order:', error);
-    //         alert('Error placing order. Please try again.');
-    //     }
-    // };
+        try {
+            const response = await fetch('https://superbowl-squares-api-2-637010006131.us-central1.run.app/api/ejt-photography/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderData),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                alert(`Order placed successfully: ${data.message}`);
+            } else {
+                alert(`Error: ${data.error}`);
+            }
+        } catch (error) {
+            console.error('Error placing order:', error);
+            alert('Error placing order. Please try again.');
+        }
+    };
 
     useEffect(() => {
 
@@ -97,6 +97,7 @@ const Checkout = () => {
                     throw new Error('Failed to create payment intent.');
                 }
 
+                console.log('clientSecret:', data.clientSecret);
                 setClientSecret(data.clientSecret); // Set the clientSecret in state
             } catch (error) {
                 console.error('Error creating payment intent:', error);
@@ -121,40 +122,6 @@ const Checkout = () => {
         updateCartDetails({ [name]: value });
     };
 
-    // const handleSubmit = async (e) => {
-    //     console.log('Form submitted with data:', formData);
-    //     e.preventDefault();
-
-    //     try {
-    //         // Create a payment intent on your server
-    //         console.log('Creating payment intent with form data:', formData);
-    //         const response = await fetch('http://localhost:3001/api/ejt-photography/create-payment-intent', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({
-    //                 amount: total * 100, // Replace with actual amount in cents
-    //                 currency: 'usd',
-    //             }),
-    //         });
-
-    //         const data = await response.json();
-
-    //         if (!data.clientSecret) {
-    //             throw new Error('Failed to create payment intent.');
-    //         }
-
-    //         console.log('clientSecret:', data.clientSecret);
-
-    //         setClientSecret(data.clientSecret);
-    //         alert('Payment intent created successfully. Proceed to payment.');
-    //     } catch (error) {
-    //         console.error('Error creating payment intent:', error);
-    //         alert('Error processing payment. Please try again.');
-    //     }
-    // };
-
     return (
         // <Elements stripe={stripePromise} options={{ clientSecret }}>
             <div>
@@ -171,7 +138,7 @@ const Checkout = () => {
                                 formData={formData}
                                 handleChange={handleChange}
                                 // handleSubmit={handleSubmit}
-                                // handleOrder={handleOrder}
+                                handleOrder={handleOrder}
                                 clientSecret={clientSecret}
                             />
                         </Elements>

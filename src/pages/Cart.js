@@ -86,19 +86,94 @@ const Cart = () => {
                                 <ListGroup.Item>No items in cart</ListGroup.Item>
                             )}
                         </ListGroup>
-                        <div className="mt-3 text-end d-flex align-items-center justify-content-end" style={{ fontSize: '1.2rem', fontWeight: 'bold', paddingTop: '10px' }}>
-                            <strong className="me-3">{total ? `Total: $${total.toFixed(2)}` : 'Total: $0.00'}</strong>
+                        <div className="mt-2 text-end 
+                            d-flex 
+                            align-items-center 
+                            justify-content-end" style={{ 
+                                    // padding: '10px 10px',
+                                    padding: '0px',
+                                    backgroundColor: 'white', 
+                                    color: 'black', 
+                                    border: 'none', 
+                                    borderRadius: '5px', 
+                                    marginTop: '5px', 
+                                    display: 'inline-block', // Ensures the button wraps around the content
+                                    transform: 'scaleX(1.4)',
+                                    transformOrigin: 'right', 
+                                    width: '100%',
+                                    
+                                }}>
+                            <p style={{
+                                        margin: 0,
+                                        padding: '8px 0px',
+                                        fontFamily: '"Inter", sans-serif',
+                                        fontSize: 'clamp(0.8rem, 1.5vw, 1.5rem)',
+                                        fontWeight: '600',
+                                        whiteSpace: 'nowrap', // Prevents text wrapping
+                                        letterSpacing: '-1px',
+                                        maxFontSize: '1rem',
+                                        width: '100%', // Makes the button extend with the content
+                                        textAlign: 'right', // Centers the text within the button
+                                        marginRight: '10px',
+                                    }}>
+                                        {total ? `Total: $${total.toFixed(2)}` : 'Total: $0.00'}
+                                    </p>
+                        </div>
+                        <div 
+                        className="
+                            
+                            text-end 
+                            d-flex 
+                            align-items-center 
+                            justify-content-end" 
+                        style={{ fontSize: '1.2rem', fontWeight: 'bold', marginTop:'0px' }}>
+                            {/* <strong className="me-3">{total ? `Total: $${total.toFixed(2)}` : 'Total: $0.00'}</strong> */}
                             <Button
                                 variant="primary"
                                 onClick={() => window.location.href = '/checkout'}
+                                style={{ 
+                                    padding: '10px 10px', 
+                                    backgroundColor: '#A7C7E7', 
+                                    color: 'black', 
+                                    border: 'none', 
+                                    borderRadius: '5px', 
+                                    marginTop: '5px', 
+                                    display: 'inline-block', // Ensures the button wraps around the content
+                                    transform: 'scaleX(1.4)',
+                                    transformOrigin: 'right', 
+                                    marginRight: '10px',
+                                }}
                             >
-                                Checkout
+                                <p style={{
+                                        margin: 0,
+                                        padding: '8px 10px',
+                                        fontFamily: '"Inter", sans-serif',
+                                        fontSize: 'clamp(0.8rem, 1.5vw, 1.5rem)',
+                                        fontWeight: '600',
+                                        whiteSpace: 'nowrap', // Prevents text wrapping
+                                        letterSpacing: '-1px',
+                                        maxFontSize: '1rem',
+                                        width: '100%', // Makes the button extend with the content
+                                        textAlign: 'center', // Centers the text within the button
+                                    }}>CHECKOUT</p>
                             </Button>
                         </div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                     </Col>
                 </Row>
             </Container>
-            <footer style={{ position: 'fixed', bottom: 0, width: '100%', backgroundColor: '#A7C7E7', padding: '30px' }}>
+            <footer style={{ 
+                // position: 'fixed', 
+                // bottom: 0, width: '100%', backgroundColor: '#A7C7E7', padding: '30px',
+                marginTop: 'auto', 
+                bottom: 0, 
+                width: '100%', 
+                backgroundColor: '#A7C7E7', 
+                padding: '30px'  
+                }}>
 
             </footer>
         </div>

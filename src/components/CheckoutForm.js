@@ -1,88 +1,16 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { CartContext } from '../components/CartContext';
 import { Form, Button } from 'react-bootstrap';
 
-const CheckoutForm = ({ formData = {}, handleChange, handleSubmit, handleOrder,
-    clientSecret 
-}) => {
+const CheckoutForm = ({ formData = {}, handleChange, handleOrder, clientSecret }) => {
 
-    const { cart, total, updateCartDetails } = useContext(CartContext);
-    // const [clientSecret, setClientSecret] = useState('');
+    const { total, clearCart } = useContext(CartContext);
     const stripe = useStripe();
     const elements = useElements();
 
-    // const [createdIntent, setCreatedIntent] = useState(false);
-    // useEffect(() => {
-    //     const setClientSecret = async () => {
-    //         try {
-    //             console.log('Creating payment intent with total:', total);
-
-    //             const response = await fetch('http://localhost:3001/api/ejt-photography/create-payment-intent', {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                 },
-    //                 body: JSON.stringify({
-    //                     amount: total * 100, // Replace with actual amount in cents
-    //                     currency: 'usd',
-    //                 }),
-    //             });
-
-    //             const data = await response.json();
-
-    //             if (!data.clientSecret) {
-    //                 throw new Error('Failed to create payment intent.');
-    //             }
-
-    //             console.log('clientSecret:', data.clientSecret);
-    //             setClientSecret(data.clientSecret); // Set the clientSecret in state
-    //         } catch (error) {
-    //             console.error('Error creating payment intent:', error);
-    //             alert('Error processing payment. Please try again.');
-    //         }
-    //     };
-
-    //     // if (total > 0) {
-    //     //     createPaymentIntent(); // Call the function to create the payment intent
-    //     // }
-    // }, []); // Run this effect whenever the total changes
-
     const handlePayment = async (e) => {
         e.preventDefault();
-
-        // const createPaymentIntent = async () => {
-        //     try {
-        //         console.log('Creating payment intent with total:', total);
-
-        //         const response = await fetch('http://localhost:3001/api/ejt-photography/create-payment-intent', {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //             },
-        //             body: JSON.stringify({
-        //                 amount: total * 100, // Replace with actual amount in cents
-        //                 currency: 'usd',
-        //             }),
-        //         });
-
-        //         const data = await response.json();
-
-        //         if (!data.clientSecret) {
-        //             throw new Error('Failed to create payment intent.');
-        //         }
-
-        //         console.log('clientSecret:', data.clientSecret);
-        //         setClientSecret(data.clientSecret); // Set the clientSecret in state
-        //     } catch (error) {
-        //         console.error('Error creating payment intent:', error);
-        //         alert('Error processing payment. Please try again.');
-        //     }
-        // };
-
-        // if (total > 0) {
-        //     createPaymentIntent(); // Call the function to create the payment intent
-        // }
 
         if (!stripe || !elements) {
             alert('Stripe has not loaded yet.');
@@ -112,10 +40,10 @@ const CheckoutForm = ({ formData = {}, handleChange, handleSubmit, handleOrder,
             alert('Payment failed. Please try again.');
         } else if (paymentIntent.status === 'succeeded') {
             alert('Payment successful!');
+            handleOrder();
+            clearCart();
         }
     };
-
-
 
     return (
         <div>

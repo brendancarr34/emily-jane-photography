@@ -79,7 +79,7 @@ const Menu = () => {
                     to="/"
                     style={{
                         transform: 'scaleX(1.4)',
-                        fontSize: 'clamp(0.8rem, 2vw, 1.5rem)',
+                        fontSize: window.innerWidth > 350 ? 'clamp(0.8rem, 2vw, 1.5rem)': 'clamp(0.7rem, 1.5vw, 1rem)',
                         fontWeight: '600',
                         letterSpacing: '-1px',
                         wordSpacing: 'clamp(0px, 1vw, 6px)',
