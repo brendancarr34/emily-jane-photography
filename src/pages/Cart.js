@@ -14,11 +14,11 @@ const Cart = () => {
 
     if (cart && cart.length === 0) {
         return (
-            <div>
+            <div className="cart-wrapper d-flex flex-column" style={{ minHeight: '100vh' }}>
                 <Menu />
                 <br />
                 <br />
-                <Container className="cart-page mt-4 d-flex flex-column align-items-center justify-content-center" style={{ height: '80vh' }}>
+                <Container className="cart-page mt-4 d-flex flex-column align-items-center justify-content-center" style={{ flexGrow: 1 }}>
                     <Row className="justify-content-center">
                         <Col className="text-center">
                             <h2>Your Cart is empty.</h2>
@@ -32,12 +32,21 @@ const Cart = () => {
                         </Col>
                     </Row>
                 </Container>
+                <footer style={{ 
+                    marginTop: 'auto', 
+                    width: '100%', 
+                    backgroundColor: '#A7C7E7', 
+                    padding: '30px',
+                    textAlign: 'center',
+                }}>
+                    <p>© 2025 Emily Jane Photography</p>
+                </footer>
             </div>
         );
     }
 
     return (
-        <div className="d-flex flex-column" style={{ minHeight: '20vh', position: 'relative' }}>
+        <div className="cart-wrapper d-flex flex-column" style={{ minHeight: '100vh' }}>
             <Menu />
             <Container className="cart-page mt-4 flex-grow-1">
                 <Row>
@@ -86,95 +95,66 @@ const Cart = () => {
                                 <ListGroup.Item>No items in cart</ListGroup.Item>
                             )}
                         </ListGroup>
-                        <div className="mt-2 text-end 
-                            d-flex 
-                            align-items-center 
-                            justify-content-end" style={{ 
-                                    // padding: '10px 10px',
-                                    padding: '0px',
-                                    backgroundColor: 'white', 
-                                    color: 'black', 
-                                    border: 'none', 
-                                    borderRadius: '5px', 
-                                    marginTop: '5px', 
-                                    display: 'inline-block', // Ensures the button wraps around the content
-                                    transform: 'scaleX(1.4)',
-                                    transformOrigin: 'right', 
-                                    width: '100%',
-                                    
-                                }}>
+                        <div className="mt-2 text-end d-flex align-items-center justify-content-end" style={{ padding: '0px', backgroundColor: 'white', color: 'black', border: 'none', borderRadius: '5px', marginTop: '5px', display: 'inline-block', transform: 'scaleX(1.4)', transformOrigin: 'right', width: '100%' }}>
                             <p style={{
-                                        margin: 0,
-                                        padding: '8px 0px',
-                                        fontFamily: '"Inter", sans-serif',
-                                        fontSize: 'clamp(0.8rem, 1.5vw, 1.5rem)',
-                                        fontWeight: '600',
-                                        whiteSpace: 'nowrap', // Prevents text wrapping
-                                        letterSpacing: '-1px',
-                                        maxFontSize: '1rem',
-                                        width: '100%', // Makes the button extend with the content
-                                        textAlign: 'right', // Centers the text within the button
-                                        marginRight: '10px',
-                                    }}>
-                                        {total ? `Total: $${total.toFixed(2)}` : 'Total: $0.00'}
-                                    </p>
+                                margin: 0,
+                                padding: '8px 0px',
+                                fontFamily: '"Inter", sans-serif',
+                                fontSize: 'clamp(0.8rem, 1.5vw, 1.5rem)',
+                                fontWeight: '600',
+                                whiteSpace: 'nowrap',
+                                letterSpacing: '-1px',
+                                maxFontSize: '1rem',
+                                width: '100%',
+                                textAlign: 'right',
+                                marginRight: '10px',
+                            }}>
+                                {total ? `Total: $${total.toFixed(2)}` : 'Total: $0.00'}
+                            </p>
                         </div>
-                        <div 
-                        className="
-                            
-                            text-end 
-                            d-flex 
-                            align-items-center 
-                            justify-content-end" 
-                        style={{ fontSize: '1.2rem', fontWeight: 'bold', marginTop:'0px' }}>
-                            {/* <strong className="me-3">{total ? `Total: $${total.toFixed(2)}` : 'Total: $0.00'}</strong> */}
+                        <div className="text-end d-flex align-items-center justify-content-end" style={{ fontSize: '1.2rem', fontWeight: 'bold', marginTop: '0px' }}>
                             <Button
                                 variant="primary"
                                 onClick={() => window.location.href = '/checkout'}
-                                style={{ 
-                                    padding: '10px 10px', 
-                                    backgroundColor: '#A7C7E7', 
-                                    color: 'black', 
-                                    border: 'none', 
-                                    borderRadius: '5px', 
-                                    marginTop: '5px', 
-                                    display: 'inline-block', // Ensures the button wraps around the content
+                                style={{
+                                    padding: '10px 10px',
+                                    backgroundColor: '#A7C7E7',
+                                    color: 'black',
+                                    border: 'none',
+                                    borderRadius: '5px',
+                                    marginTop: '5px',
+                                    display: 'inline-block',
                                     transform: 'scaleX(1.4)',
-                                    transformOrigin: 'right', 
+                                    transformOrigin: 'right',
                                     marginRight: '10px',
                                 }}
                             >
                                 <p style={{
-                                        margin: 0,
-                                        padding: '8px 10px',
-                                        fontFamily: '"Inter", sans-serif',
-                                        fontSize: 'clamp(0.8rem, 1.5vw, 1.5rem)',
-                                        fontWeight: '600',
-                                        whiteSpace: 'nowrap', // Prevents text wrapping
-                                        letterSpacing: '-1px',
-                                        maxFontSize: '1rem',
-                                        width: '100%', // Makes the button extend with the content
-                                        textAlign: 'center', // Centers the text within the button
-                                    }}>CHECKOUT</p>
+                                    margin: 0,
+                                    padding: '8px 10px',
+                                    fontFamily: '"Inter", sans-serif',
+                                    fontSize: 'clamp(0.8rem, 1.5vw, 1.5rem)',
+                                    fontWeight: '600',
+                                    whiteSpace: 'nowrap',
+                                    letterSpacing: '-1px',
+                                    maxFontSize: '1rem',
+                                    width: '100%',
+                                    textAlign: 'center',
+                                }}>CHECKOUT</p>
                             </Button>
                         </div>
-                        <br />
-                        <br />
-                        <br />
                         <br />
                     </Col>
                 </Row>
             </Container>
-            <footer style={{ 
-                // position: 'fixed', 
-                // bottom: 0, width: '100%', backgroundColor: '#A7C7E7', padding: '30px',
-                marginTop: 'auto', 
-                bottom: 0, 
-                width: '100%', 
-                backgroundColor: '#A7C7E7', 
-                padding: '30px'  
-                }}>
-
+            <footer style={{
+                marginTop: 'auto',
+                width: '100%',
+                backgroundColor: '#A7C7E7',
+                padding: '30px',
+                textAlign: 'center',
+            }}>
+                <p>© 2025 Emily Jane Photography</p>
             </footer>
         </div>
     );
