@@ -9,6 +9,8 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout'; // Adjust the path if necessary
 import Menu from './components/Menu';
 import AboutMe from './pages/AboutMe';
+import ShippingDetails from './pages/ShippingDetails'; // Adjust the path if necessary
+import PaymentDetails from './pages/PaymentDetails'; // Adjust the path if necessary
 
 function App() {
     return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/product/:imageId" element={<Product />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/checkout' element={<Checkout />} />
+            <Route path='/checkout/shipping' element={<ShippingDetails />} />
+            <Route path='/checkout/payment' element={<PaymentDetails />} />
             <Route path='/about' element={<AboutMe />} />
             <Route path='*' element={<div style={{ marginTop: '200px', textAlign: 'center' }}><Menu />404 Not Found</div>} />
           </Routes>

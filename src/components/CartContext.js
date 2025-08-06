@@ -53,8 +53,11 @@ export const CartProvider = ({ children }) => {
         });
     }
 
+  // Example state for shipping information
+  const [shippingInfo, setShippingInfo] = useState({});
+
   return (
-    <CartContext.Provider value={{ cart, total, addToCart, removeFromCart, clearCart, updateCartDetails }}>
+    <CartContext.Provider value={{ cart, total, addToCart, removeFromCart, clearCart, updateCartDetails, setShippingInfo, shippingInfo }}>
       {children}
     </CartContext.Provider>
   );

@@ -115,7 +115,7 @@ const Cart = () => {
                         <div className="text-end d-flex align-items-center justify-content-end" style={{ fontSize: '1.2rem', fontWeight: 'bold', marginTop: '0px' }}>
                             <Button
                                 variant="primary"
-                                onClick={() => window.location.href = '/checkout'}
+                                onClick={() => window.location.href = '/checkout/shipping'}
                                 style={{
                                     padding: '10px 10px',
                                     backgroundColor: '#A7C7E7',
