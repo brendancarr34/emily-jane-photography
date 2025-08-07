@@ -61,26 +61,28 @@ const ShippingDetails = () => {
     };
 
     return (
-        <div>
+        <div className="cart-wrapper d-flex flex-column" style={{ minHeight: '100vh' }}>
             <Menu />
             <br />
             <br />
             <br />
             {/* if the window is less than 768, show the total from cartContext */}
-
-            <Container className="d-flex justify-content-center align-items-center" style={{ marginBottom: '20px' }}>
+            <Container 
+                // className="d-flex justify-content-center align-items-center" 
+                style={{ 
+                    // textAlign: 'center',
+                    marginBottom: '10px' }}>
                 {window.innerWidth < 768 && (
-                    <div style={{ textAlign: 'center', padding: '10px' }}>
-                        <p style={{ margin: '0' }}>{`${cart.length} Items - Total $${total.toFixed(2)}`}</p>
-                        <ul style={{ listStyleType: 'none', padding: '0', margin: '10px 0' }}>
+                    <div style={{  padding: '10px' }}>
+                        <p style={{ margin: '0' }}>{`${cart.length} Item${cart.length !== 1 ? 's' : ''} - Total $${total.toFixed(2)}`}</p>
+                        {/* <ul style={{ listStyleType: 'none', padding: '0', margin: '10px 0' }}>
                             {cart.map((item, index) => (
                                 <li key={index} style={{ marginBottom: '5px' }}>{item.title}</li>
                             ))}
-                        </ul>
+                        </ul> */}
                     </div>
                 )}
             </Container>
-
             <Row style={{ width: '100%' }}>
                 <Col
                     style={{
@@ -91,8 +93,8 @@ const ShippingDetails = () => {
                         paddingRight: window.innerWidth < 768 ? '12px' : '0px',
                     }}
                 >
-                    <Container className="shipping-details-container" style={{ padding: '20px', borderRadius: '15px', backgroundColor: '#f8f9fa' }}>
-                        <h2 style={{ margin: '15px 0', width: '100%', textAlign: 'center' }}>Shipping Details</h2>
+                    <Container className="shipping-details-container" style={{ padding: '20px', borderRadius: '15px', backgroundColor: '#f8f9fa', marginBottom: '20px' }}>
+                        <h2 style={{ margin: '0px 0px 20px 0px', width: '100%', textAlign: 'center' }}>Shipping Details</h2>
                         <Form onSubmit={handleProceed}>
                             <Form.Group style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
                                 <div style={{ flex: 1 }}>
@@ -274,7 +276,7 @@ const ShippingDetails = () => {
                 padding: '30px',
                 textAlign: 'center',
             }}>
-                <p>© 2025 Emily Jane Photography</p>
+                <p style={{ margin: 0 }}>© 2025 Emily Jane Photography</p>
             </footer>
         </div>
     );
