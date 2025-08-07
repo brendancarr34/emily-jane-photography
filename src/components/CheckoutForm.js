@@ -4,7 +4,7 @@ import { CartContext } from '../components/CartContext';
 import { Form, Button } from 'react-bootstrap';
 
 const CheckoutForm = ({
-    formData = {},
+    billingData = {},
     handleChange,
     handleOrder,
     clientSecret,
@@ -20,7 +20,7 @@ const CheckoutForm = ({
     const elements = useElements();
 
     // Use billing info if checkbox is checked, otherwise use shipping info
-    const paymentData = useDifferentBilling ? billingInfo : formData;
+    const paymentData = useDifferentBilling ? billingInfo : billingData;
 
     const handlePayment = async (e) => {
         e.preventDefault();
@@ -76,7 +76,7 @@ const CheckoutForm = ({
                         <>
                             <Form.Group style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
                                 <div style={{ flex: 1 }}>
-                                    <Form.Label style={{ marginBottom: '5px', paddingLeft: '5px' }}>First Name</Form.Label>
+                                    <Form.Label style={{ marginBottom: '5px', paddingLeft: '5px' }}>Card Holder First Name</Form.Label>
                                     <Form.Control
                                         type="text"
                                         name="firstName"
@@ -86,7 +86,7 @@ const CheckoutForm = ({
                                     />
                                 </div>
                                 <div style={{ flex: 1 }}>
-                                    <Form.Label style={{ marginBottom: '5px', paddingLeft: '5px' }}>Last Name</Form.Label>
+                                    <Form.Label style={{ marginBottom: '5px', paddingLeft: '5px' }}>Card Holder Last Name</Form.Label>
                                     <Form.Control
                                         type="text"
                                         name="lastName"
@@ -219,7 +219,7 @@ const CheckoutForm = ({
                                     <Form.Control
                                         type="text"
                                         name="firstName"
-                                        value={formData.firstName || ''}
+                                        value={billingData.firstName || ''}
                                         onChange={handleChange}
                                         required
                                     />
@@ -229,7 +229,7 @@ const CheckoutForm = ({
                                     <Form.Control
                                         type="text"
                                         name="lastName"
-                                        value={formData.lastName || ''}
+                                        value={billingData.lastName || ''}
                                         onChange={handleChange}
                                         required
                                     />
@@ -240,7 +240,7 @@ const CheckoutForm = ({
                                 <Form.Control
                                     type="text"
                                     name="address"
-                                    value={formData.address}
+                                    value={billingData.address}
                                     onChange={handleChange}
                                     required
                                 />
@@ -250,7 +250,7 @@ const CheckoutForm = ({
                                 <Form.Control
                                     type="text"
                                     name="addressLine2"
-                                    value={formData.addressLine2 || ''}
+                                    value={billingData.addressLine2 || ''}
                                     onChange={handleChange}
                                 />
                             </Form.Group>
@@ -259,7 +259,7 @@ const CheckoutForm = ({
                                 <Form.Control
                                     type="text"
                                     name="city"
-                                    value={formData.city || ''}
+                                    value={billingData.city || ''}
                                     onChange={handleChange}
                                     required
                                 />
@@ -270,7 +270,7 @@ const CheckoutForm = ({
                                     <Form.Control
                                         as="select"
                                         name="state"
-                                        value={formData.state || ''}
+                                        value={billingData.state || ''}
                                         onChange={handleChange}
                                         required
                                     >
@@ -333,7 +333,7 @@ const CheckoutForm = ({
                                     <Form.Control
                                         type="text"
                                         name="zipCode"
-                                        value={formData.zipCode || ''}
+                                        value={billingData.zipCode || ''}
                                         onChange={handleChange}
                                         required
                                     />
@@ -344,7 +344,7 @@ const CheckoutForm = ({
                                 <Form.Control
                                     type="email"
                                     name="email"
-                                    value={formData.email || ''}
+                                    value={billingData.email || ''}
                                     onChange={handleChange}
                                     required
                                 />

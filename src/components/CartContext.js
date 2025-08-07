@@ -57,7 +57,7 @@ export const CartProvider = ({ children }) => {
   const [shippingInfo, setShippingInfo] = useState({});
 
   return (
-    <CartContext.Provider value={{ cart, total, addToCart, removeFromCart, clearCart, updateCartDetails, setShippingInfo, shippingInfo }}>
+    <CartContext.Provider value={{ cart, total, shippingInfo, addToCart, removeFromCart, clearCart, updateCartDetails, setShippingInfo }}>
       {children}
     </CartContext.Provider>
   );

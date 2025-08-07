@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../components/CartContext';
 import { Container, Form, Button } from 'react-bootstrap';
@@ -7,20 +7,37 @@ import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from '../components/Menu';
 
+const LOCAL_STORAGE_KEY = 'shippingFormData';
+
 const ShippingDetails = () => {
-    const { setShippingInfo, total, cart } = useContext(CartContext);
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        address: '',
-        addressLine2: '',
-        city: '',
-        state: '',
-        zipCode: '',
-        email: '',
+    const { setShippingInfo, total, cart, shippingInfo } = useContext(CartContext);
+    const [formData, setFormData] = useState(() => {
+        // Load from localStorage if available
+        const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+        return saved ? JSON.parse(saved) : {
+            firstName: '',
+            lastName: '',
+            address: '',
+            addressLine2: '',
+            city: '',
+            state: '',
+            zipCode: '',
+            email: '',
+        };
     });
     const navigate = useNavigate();
-    console.log('Cart contents:', cart);
+
+    // Save formData to localStorage on every change
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData));
+    }, [formData]);
+
+    // Optionally sync with context shippingInfo
+    useEffect(() => {
+        if (shippingInfo && Object.keys(shippingInfo).length > 0) {
+            setFormData(shippingInfo);
+        }
+    }, [shippingInfo]);
 
     if (!Array.isArray(cart) || cart.length === 0) {
         console.warn('Cart is empty or not properly populated.');

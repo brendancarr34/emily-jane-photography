@@ -8,9 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Menu from '../components/Menu';
 
 const Cart = () => {
-    const { cart, removeFromCart, clearCart, total } = useContext(CartContext);
-
-    console.log('Cart items:', cart);
+    const { cart, removeFromCart, total } = useContext(CartContext);
 
     if (cart && cart.length === 0) {
         return (
@@ -54,9 +52,6 @@ const Cart = () => {
                         <br />
                         <br />
                         <div className="d-flex justify-content-between align-items-center">
-                            <Button variant="warning" className="ms-3" onClick={clearCart}>
-                                Clear Cart
-                            </Button>
                             <h4 style={{ marginTop: '10px', marginBottom: '20px', textAlign: 'center', flexGrow: 1 }}>
                                 Your Cart
                             </h4>
