@@ -6,9 +6,10 @@ import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { CartContext } from "../components/CartContext";
+import { Spinner } from 'react-bootstrap';
 
 const HomePage = () => {
-  
+
   const [images, setImages] = useState([]);
   const [filteredImages, setFilteredImages] = useState([]); // State for filtered images
   const [loading, setLoading] = useState(true);
@@ -19,6 +20,7 @@ const HomePage = () => {
   const [selectedBorderSize, setSelectedBorderSize] = useState('none'); // State for selected border size
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // State for success modal visibility
   const [selectedFilter, setSelectedFilter] = useState("all"); // State for selected filter
+  const [loaded, setLoaded] = useState(false);
 
   const { addToCart } = React.useContext(CartContext); // Access cart context
 
@@ -80,7 +82,7 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div className="cart-wrapper d-flex flex-column" style={{ minHeight: '100vh' }}>
       <Menu />
       <div>
         <br />
@@ -88,7 +90,7 @@ const HomePage = () => {
       </div>
       <div>
         <Container style={{ textAlign: "center", paddingTop: "40px", margin: "0", width: "100vw", minWidth: "100vw", paddingRight: "40px" }}>
-          <Row style={{width: "100vw"}}>
+          <Row style={{ width: "100vw" }}>
             <Col style={{ display: "flex", justifyContent: "flex-end", paddingRight: "20px" }}>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <Form.Group controlId="filterDropdown" style={{ display: "flex", alignItems: "center" }}>
@@ -114,34 +116,59 @@ const HomePage = () => {
               </div>
             </Col>
           </Row>
-        </Container>  
+        </Container>
       </div>
-      <div style={{ textAlign: "center", paddingTop: "1.5rem" }}>
-        {loading && <p>Loading...</p>}
-        {(filteredImages.length == 0 && !loading) && (
-          <p>No images found for the selected collection.</p>
-        )}
-        {!loading && (
-          <main style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(120px, 1fr))`, gap: "1rem", padding: "1rem", maxWidth: "1200px", margin: "0 auto" }}>
-            {filteredImages.map((photo, index) => (
-              <div key={index} style={{ border: "1px solid #ddd", padding: "1rem", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-                <img
-                  src={photo.url}
-                  alt={`Photo ${index + 1}`}
-                  style={{ maxWidth: "100%", height: "auto", display: "block", margin: "5px", border: "10px solid white", backgroundColor: "white", boxShadow: "0 0 0 5px black" }}
-                  onClick={() => openModal(photo)} // Open modal on click
-                />
-                <div style={{ alignSelf: "flex-start", textAlign: "left", marginTop: "1rem" }}>
-                  <p>{photo.title}</p>
+      <>
+        {loading ? (
+          <div style={{ minHeight: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Spinner animation="border" role="status" style={{ width: '4rem', height: '4rem', color: '#A7C7E7' }}>
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        ) : (
+          <div style={{ textAlign: "center", paddingTop: "1.5rem" }}>
+            {(filteredImages.length === 0) && (
+              <p>No images found for the selected collection.</p>
+            )}
+            <main style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(120px, 1fr))`, gap: "1rem", padding: "1rem", maxWidth: "1200px", margin: "0 auto" }}>
+              {filteredImages.map((photo, index) => (
+                <div key={index} style={{ border: "1px solid #ddd", padding: "1rem", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                  opacity: loaded ? 1 : 0,
+                      transition: "opacity 1s ease"
+                 }}>
+                  <img
+                    src={photo.url}
+                    alt={`Photo ${index + 1}`}
+                    style={{ maxWidth: "100%", 
+                      height: "auto", 
+                      display: "block", 
+                      margin: "5px", 
+                      border: "10px solid white", 
+                      backgroundColor: "white", 
+                      boxShadow: "0 0 0 5px black",
+                    }}
+                    onLoad={() => setLoaded(true)}
+                    onClick={() => openModal(photo)}
+                  />
+                  <div style={{ alignSelf: "flex-start", textAlign: "left", marginTop: "1rem" }}>
+                    <p>{photo.title}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </main>
+              ))}
+            </main>
+          </div>
         )}
-      </div>
-      {/* <footer style={{ position: 'fixed', bottom: 0, width: '100%', backgroundColor: '#A7C7E7', padding: '30px' }}>
-                
-      </footer> */}
+      </>
+
+      <footer style={{
+        marginTop: 'auto',
+        width: '100%',
+        backgroundColor: '#A7C7E7',
+        padding: '30px',
+        textAlign: 'center',
+      }}>
+        <p style={{ margin: 0 }}>© 2025 Emily Jane Photography</p>
+      </footer>
 
       <Modal show={isModalOpen} onHide={closeModal} centered>
         <Modal.Header closeButton>
@@ -243,17 +270,17 @@ const HomePage = () => {
           <Link to={`/product/${modalImage?.id}`}>
             <Button style={{ backgroundColor: "lightgray", color: "black", border: 'none' }} variant="secondary">Go to Product Page</Button>
           </Link>
-          <Button variant="primary" 
-          style={{ backgroundColor: "#A7C7E7", color: "black", border: 'none' }}
-          onClick={() => {
-            modalImage.size = selectedSize;
-            modalImage.quantity = selectedQuantity;
-            modalImage.borderSize = selectedBorderSize;
-            addToCart(modalImage); // Call the addToCart function from context
-            closeModal();
-            // Open success modal
-            setIsSuccessModalOpen(true);
-          }}>
+          <Button variant="primary"
+            style={{ backgroundColor: "#A7C7E7", color: "black", border: 'none' }}
+            onClick={() => {
+              modalImage.size = selectedSize;
+              modalImage.quantity = selectedQuantity;
+              modalImage.borderSize = selectedBorderSize;
+              addToCart(modalImage); // Call the addToCart function from context
+              closeModal();
+              // Open success modal
+              setIsSuccessModalOpen(true);
+            }}>
             Add to Cart
           </Button>
         </Modal.Footer>
@@ -278,6 +305,8 @@ const HomePage = () => {
         </Modal.Footer>
       </Modal>
     </div>
+
+
   );
 };
 

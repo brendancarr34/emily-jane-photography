@@ -37,7 +37,7 @@ const Cart = () => {
                     padding: '30px',
                     textAlign: 'center',
                 }}>
-                    <p>© 2025 Emily Jane Photography</p>
+                    <p style={{ margin: 0 }}>© 2025 Emily Jane Photography</p>
                 </footer>
             </div>
         );
