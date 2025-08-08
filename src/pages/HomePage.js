@@ -30,6 +30,7 @@ const HomePage = () => {
     const hash = window.location.hash; // "#/collection?collection=Hawaii"
     const hashParams = new URLSearchParams(hash.split('?')[1]);
     const filterFromUrl = hashParams.get('collection') || 'all';
+    console.log('Filter from URL:', filterFromUrl);
 
     // Fetch photo info from the API
     fetch('https://superbowl-squares-api-2-637010006131.us-central1.run.app/api/ejt-photography/photo-info')
