@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Menu from '../components/Menu';
 
 const Cart = () => {
-    const { cart, removeFromCart, total } = useContext(CartContext);
+    const { cart, removeFromCart, total, clearCart } = useContext(CartContext);
 
     if (cart && cart.length === 0) {
         return (
@@ -55,6 +55,9 @@ const Cart = () => {
                             <h4 style={{ marginTop: '10px', marginBottom: '20px', textAlign: 'center', flexGrow: 1 }}>
                                 Your Cart
                             </h4>
+                            <Button variant="danger" onClick={clearCart} style={{ marginLeft: '20px' }}>
+                                Clear Cart
+                            </Button>
                         </div>
                         <ListGroup>
                             {cart && cart.length > 0 ? (
@@ -81,7 +84,9 @@ const Cart = () => {
                                         <div>
                                             <span className="ms-2">{item.quantity} x ${item.price}</span>
                                         </div>
-                                        <Button variant="danger" size="sm" onClick={() => removeFromCart(item.id)}>
+                                        <Button variant="danger" size="sm" onClick={() => {
+                                            removeFromCart(item.cartId);
+                                        }}>
                                             <h6 style={{ margin: 0 }}><strong>X</strong></h6>
                                         </Button>
                                     </ListGroup.Item>

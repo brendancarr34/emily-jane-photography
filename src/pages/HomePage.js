@@ -273,10 +273,17 @@ const HomePage = () => {
           <Button variant="primary"
             style={{ backgroundColor: "#A7C7E7", color: "black", border: 'none' }}
             onClick={() => {
-              modalImage.size = selectedSize;
-              modalImage.quantity = selectedQuantity;
-              modalImage.borderSize = selectedBorderSize;
-              addToCart(modalImage); // Call the addToCart function from context
+              const cartItem = {
+                ...modalImage, // Create a new object based on modalImage
+                cartId: Math.floor(Math.random() * 1000000), // Generate a unique cartId
+                size: selectedSize,
+                quantity: selectedQuantity,
+                borderSize: selectedBorderSize,
+              };
+              addToCart(cartItem); // Call the addToCart function from context
+              setSelectedSize('5" x 8"'); // Reset size to default
+              setSelectedQuantity(1); // Reset quantity to default
+              setSelectedBorderSize('none'); // Reset border size to default
               closeModal();
               // Open success modal
               setIsSuccessModalOpen(true);

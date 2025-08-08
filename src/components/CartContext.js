@@ -30,10 +30,10 @@ export const CartProvider = ({ children }) => {
     setTotal((prevTotal) => prevTotal + item.price * item.quantity);
   };
 
-  const removeFromCart = (itemId) => {
-    setCart((prev) => prev.filter(item => item.id !== itemId));
+  const removeFromCart = (cartId) => {
+    setCart((prev) => prev.filter(item => item.cartId !== cartId));
     setTotal((prevTotal) => {
-      const itemToRemove = cart.find(item => item.id === itemId);
+      const itemToRemove = cart.find(item => item.cartId === cartId);
       return itemToRemove ? prevTotal - (itemToRemove.price * itemToRemove.quantity) : prevTotal;
     });
   };
