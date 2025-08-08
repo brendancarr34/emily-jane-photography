@@ -26,8 +26,19 @@ export const CartProvider = ({ children }) => {
   }, [total]);
 
   const addToCart = (item) => {
-    setCart((prev) => [...prev, item]);
-    setTotal((prevTotal) => prevTotal + item.price * item.quantity);
+    // Check if item already exists in cart
+    const existingItemIndex = cart.findIndex(cartItem => cartItem.title === item.title && cartItem.size === item.size && cartItem.borderSize === item.borderSize);
+    if (existingItemIndex !== -1) {
+      // If item exists, update its quantity
+      const updatedCart = [...cart];
+      updatedCart[existingItemIndex].quantity = parseInt(item.quantity) + parseInt(updatedCart[existingItemIndex].quantity);
+      setCart(updatedCart);
+      setTotal((prevTotal) => prevTotal + item.price * item.quantity);
+    } else {
+      // If item does not exist, add it to the cart
+      setCart((prev) => [...prev, item]);
+      setTotal((prevTotal) => prevTotal + item.price * item.quantity);
+    }
   };
 
   const removeFromCart = (cartId) => {

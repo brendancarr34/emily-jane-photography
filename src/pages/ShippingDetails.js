@@ -66,20 +66,30 @@ const ShippingDetails = () => {
             <br />
             <br />
             <br />
-            {/* if the window is less than 768, show the total from cartContext */}
-            <Container 
-                // className="d-flex justify-content-center align-items-center" 
-                style={{ 
-                    // textAlign: 'center',
-                    marginBottom: '10px' }}>
+            <Container className="shipping-details-image" style={{ padding: '0px', marginBottom: '10px' }}>
                 {window.innerWidth < 768 && (
-                    <div style={{  padding: '10px' }}>
-                        <p style={{ margin: '0' }}>{`${cart.length} Item${cart.length !== 1 ? 's' : ''} - Total $${total.toFixed(2)}`}</p>
-                        {/* <ul style={{ listStyleType: 'none', padding: '0', margin: '10px 0' }}>
-                            {cart.map((item, index) => (
-                                <li key={index} style={{ marginBottom: '5px' }}>{item.title}</li>
-                            ))}
-                        </ul> */}
+                    <div style={{ padding: '10px', borderRadius: '15px', backgroundColor: '#f8f9fa', margin: '10px' }}>
+                        <h2 style={{ textAlign: 'center', marginBottom: '25px', marginTop: '15px' }}>Your Cart</h2>
+                        {cart.map((item, index) => (
+                            <Row key={index} style={{ width: '100%', marginBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                                <Col style={{ paddingLeft: '0px', flex: '0 0 20%', textAlign: 'right' }}>
+                                    <span><img src={item.url} alt={item.title} style={{ maxWidth: '40px', borderRadius: '8px' }} /></span>
+                                </Col>
+                                <Col style={{ paddingRight: '0px', flex: '0 0 50%', paddingLeft: '0px' }}>
+                                    <strong>{item.title}</strong>
+                                    <p style={{ margin: 0, fontSize: '0.8rem', color: '#6c757d' }}>({item.size}), Border: {item.borderSize}</p>
+                                </Col>
+                                {/* display price and quantity on the far right */}
+                                <Col style={{ paddingRight: '0px', flex: '0 0 30%', textAlign: 'right' }}>
+                                    <span>{`${item.quantity} x $${item.price.toFixed(2)}`}</span>
+                                </Col>
+                            </Row>
+                        ))}
+                        <hr />
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', margin: '10px' }}>
+                            <span>Total</span>
+                            <span>{`$${total.toFixed(2)}`}</span>
+                        </div>
                     </div>
                 )}
             </Container>
@@ -94,7 +104,7 @@ const ShippingDetails = () => {
                     }}
                 >
                     <Container className="shipping-details-container" style={{ padding: '20px', borderRadius: '15px', backgroundColor: '#f8f9fa', marginBottom: '20px' }}>
-                        <h2 style={{ margin: '0px 0px 20px 0px', width: '100%', textAlign: 'center' }}>Shipping Details</h2>
+                        <h2 style={{ margin: '10px 0px 30px 0px', width: '100%', textAlign: 'center' }}>Shipping Details</h2>
                         <Form onSubmit={handleProceed}>
                             <Form.Group style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
                                 <div style={{ flex: 1 }}>
@@ -250,7 +260,7 @@ const ShippingDetails = () => {
                             padding: '0px'
                         }}
                     >
-                        <Container className="shipping-details-image" style={{ padding: '0px'}}>
+                        <Container className="shipping-details-image" style={{ padding: '0px' }}>
                             <div style={{ padding: '10px', borderRadius: '15px', backgroundColor: '#f8f9fa' }}>
                                 <h4 style={{ textAlign: 'center', marginBottom: '15px' }}>Your Cart</h4>
                                 {cart.map((item, index) => (

@@ -301,11 +301,11 @@ const HomePage = () => {
           <p>Your item has been added to the cart.</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setIsSuccessModalOpen(false)}>
+          <Button variant="secondary" style={{ backgroundColor: "lightgray", color: "black", border: 'none' }} onClick={() => setIsSuccessModalOpen(false)}>
             Back to Gallery
           </Button>
           <Link to="/cart">
-            <Button variant="primary">
+            <Button variant="primary" style={{ backgroundColor: "#A7C7E7", color: "black", border: 'none' }}>
               Go to Cart
             </Button>
           </Link>
