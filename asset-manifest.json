@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.317eccfd.css",
-    "main.js": "/static/js/main.ce02bbeb.js",
-    "static/media/aboutMeBackground.jpeg": "/static/media/aboutMeBackground.e0e88b5a8bcb12de83d9.jpeg",
-    "static/media/landingPageBackground.jpg": "/static/media/landingPageBackground.14e3654cdbbd405b5c6e.jpg",
-    "static/media/collectionPhoto2.jpg": "/static/media/collectionPhoto2.34884f17aab1eb474b2f.jpg",
-    "static/media/collectionPhoto3.jpg": "/static/media/collectionPhoto3.f390d14b252f7e038d3e.jpg",
-    "static/media/collectionPhoto4.jpg": "/static/media/collectionPhoto4.f4137b0314112cbe2377.jpg",
-    "static/media/collectionPhoto1.jpg": "/static/media/collectionPhoto1.2ef6f74dbce7176a76ab.jpg",
-    "index.html": "/index.html",
-    "main.317eccfd.css.map": "/static/css/main.317eccfd.css.map",
-    "main.ce02bbeb.js.map": "/static/js/main.ce02bbeb.js.map"
+    "main.css": "/emily-jane-photography/static/css/main.317eccfd.css",
+    "main.js": "/emily-jane-photography/static/js/main.e985f606.js",
+    "static/media/aboutMeBackground.jpeg": "/emily-jane-photography/static/media/aboutMeBackground.e0e88b5a8bcb12de83d9.jpeg",
+    "static/media/landingPageBackground.jpg": "/emily-jane-photography/static/media/landingPageBackground.14e3654cdbbd405b5c6e.jpg",
+    "static/media/collectionPhoto2.jpg": "/emily-jane-photography/static/media/collectionPhoto2.34884f17aab1eb474b2f.jpg",
+    "static/media/collectionPhoto3.jpg": "/emily-jane-photography/static/media/collectionPhoto3.f390d14b252f7e038d3e.jpg",
+    "static/media/collectionPhoto4.jpg": "/emily-jane-photography/static/media/collectionPhoto4.f4137b0314112cbe2377.jpg",
+    "static/media/collectionPhoto1.jpg": "/emily-jane-photography/static/media/collectionPhoto1.2ef6f74dbce7176a76ab.jpg",
+    "index.html": "/emily-jane-photography/index.html",
+    "main.317eccfd.css.map": "/emily-jane-photography/static/css/main.317eccfd.css.map",
+    "main.e985f606.js.map": "/emily-jane-photography/static/js/main.e985f606.js.map"
   },
   "entrypoints": [
     "static/css/main.317eccfd.css",
-    "static/js/main.ce02bbeb.js"
+    "static/js/main.e985f606.js"
   ]
 }
