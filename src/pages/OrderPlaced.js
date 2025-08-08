@@ -59,7 +59,7 @@ const OrderPlaced = () => {
                             <p style={{ fontSize: '1rem', color: '#6C757D' }}>
                                 {shippingInfo.firstName} {shippingInfo.lastName}
                                 <br />
-                                {shippingInfo.address}
+                                {shippingInfo.address}{shippingInfo.addressLine2 && `, ${shippingInfo.addressLine2}`}
                                 <br />
                                 {shippingInfo.city}, {shippingInfo.state} {shippingInfo.zipCode}
                             </p>
