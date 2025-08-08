@@ -1,0 +1,9 @@
+{
+  "short_name": "EJT Photography",
+  "name": "EJT Photography",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
