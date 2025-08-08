@@ -36,7 +36,7 @@ const HomePage = () => {
       .then(data => {
         const constructedImages = data.map((item) => ({
           id: item.id,
-          url: `/images/photo${item.id}.jpg`,
+          url: process.env.PUBLIC_URL + `/images/photo${item.id}.jpg`,
           title: `${item.title}`,
           price: item.price,
           collection: item.collection,

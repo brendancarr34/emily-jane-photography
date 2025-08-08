@@ -29,7 +29,7 @@ const Product = () => {
         const constructedImages = data.filter(item => item.id === imageId)
           .map(item => ({
             id: item.id,
-            url: `/images/photo${item.id}.jpg`,
+            url: `images/photo${item.id}.jpg`,
             title: item.title,
             price: item.price,
             description: item.description
