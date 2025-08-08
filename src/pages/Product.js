@@ -67,7 +67,7 @@ const Product = () => {
         <Button
           variant="secondary"
           onClick={() => {
-            window.location.href = '/collection'; // Replace '/collection' with the actual route to your collection page
+            window.location.href = '/#/collection'; // Replace '/collection' with the actual route to your collection page
           }}
           style={{ marginBottom: '20px', backgroundColor: 'white', color: 'gray', display: 'flex', alignItems: 'center', border: 'none' }}
         >

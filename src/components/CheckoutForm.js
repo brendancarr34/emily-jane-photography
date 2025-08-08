@@ -53,7 +53,7 @@ const CheckoutForm = ({
             });
             const data = await response.json();
             if (response.ok) {
-                alert(`Order placed successfully: ${data.message}`);
+                // alert(`Order placed successfully: ${data.message}`);
             } else {
                 alert(`Error: ${data.error}`);
             }
@@ -109,11 +109,11 @@ const CheckoutForm = ({
             console.error('Payment error:', error);
             alert('Payment failed. Please try again.');
         } else if (paymentIntent.status === 'succeeded') {
-            alert('Payment successful!');
+            // alert('Payment successful!');
             // create confirmation code
             const confirmationCode = Math.random().toString(36).substring(2, 15).toUpperCase();
             console.log('Confirmation Code:', confirmationCode);
-            alert(`Your confirmation code is: ${confirmationCode}`);
+            // alert(`Your confirmation code is: ${confirmationCode}`);
             // Pass shippingInfo to handleOrder if needed
             handleOrder(shippingInfo, confirmationCode);
 
@@ -125,7 +125,7 @@ const CheckoutForm = ({
             localStorage.setItem('shippingInfo', JSON.stringify(shippingInfo));
 
             // Redirect to order placed page
-            window.location.href = '/order-placed';
+            window.location.href = '/#/order-placed';
             
             // Clear the cart after successful payment
             console.log('Clearing cart after successful payment');

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import Menu from '../components/Menu';
@@ -8,6 +8,10 @@ const OrderPlaced = () => {
     const confirmationCode = localStorage.getItem('confirmationCode') || '';
     const items = JSON.parse(localStorage.getItem('cartItems')) || [];
     const shippingInfo = JSON.parse(localStorage.getItem('shippingInfo')) || {};
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     console.log('OrderPlaced location:', location);
 

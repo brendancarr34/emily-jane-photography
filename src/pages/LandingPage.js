@@ -43,9 +43,9 @@ const LandingPage = () => {
                 onLoad={() => setLoaded(true)}
             />
             <div style={{
-    opacity: loadPage ? 1 : 0,
-    transition: "opacity 2s ease",
-  }}>
+                opacity: loadPage ? 1 : 0,
+                transition: "opacity 2s ease",
+            }}>
 
                 {!loadPage ? (
                     <div style={{ minHeight: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -75,7 +75,7 @@ const LandingPage = () => {
                                             letterSpacing: '-1px'
                                         }}>BY EMILY JANE TEVES</h1>
                                         <div>
-                                            <button onClick={() => window.location.href = '/collection'} style={{
+                                            <button onClick={() => window.location.href = '/#/collection'} style={{
                                                 padding: '10px 10px',
                                                 backgroundColor: '#A7C7E7',
                                                 color: 'black',
@@ -202,7 +202,7 @@ const LandingPage = () => {
                                 </Row>
                                 <Row>
                                     <Button style={{ backgroundColor: '#A7C7E7', border: 'none', padding: '10px 20px', marginTop: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                        <a href="/about" style={{ textDecoration: 'none', backgroundColor: '#A7C7E7', color: 'black', fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', fontWeight: '600' }}>
+                                        <a href="/#/about" style={{ textDecoration: 'none', backgroundColor: '#A7C7E7', color: 'black', fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', fontWeight: '600' }}>
                                             Learn More About Me
                                         </a>
                                     </Button>

@@ -55,9 +55,9 @@ const Cart = () => {
                             <h4 style={{ marginTop: '10px', marginBottom: '20px', textAlign: 'center', flexGrow: 1 }}>
                                 Your Cart
                             </h4>
-                            <Button variant="danger" onClick={clearCart} style={{ marginLeft: '20px' }}>
+                            {/* <Button variant="danger" onClick={clearCart} style={{ marginLeft: '20px' }}>
                                 Clear Cart
-                            </Button>
+                            </Button> */}
                         </div>
                         <ListGroup>
                             {cart && cart.length > 0 ? (
@@ -115,7 +115,7 @@ const Cart = () => {
                         <div className="text-end d-flex align-items-center justify-content-end" style={{ fontSize: '1.2rem', fontWeight: 'bold', marginTop: '0px' }}>
                             <Button
                                 variant="primary"
-                                onClick={() => window.location.href = '/checkout/shipping'}
+                                onClick={() => window.location.href = '/#/checkout/shipping'}
                                 style={{
                                     padding: '10px 10px',
                                     backgroundColor: '#A7C7E7',
