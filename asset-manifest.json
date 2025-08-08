@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/emily-jane-photography/static/css/main.317eccfd.css",
-    "main.js": "/emily-jane-photography/static/js/main.34dfd2eb.js",
+    "main.js": "/emily-jane-photography/static/js/main.72d20991.js",
     "static/media/aboutMeBackground.jpeg": "/emily-jane-photography/static/media/aboutMeBackground.e0e88b5a8bcb12de83d9.jpeg",
     "static/media/landingPageBackground.jpg": "/emily-jane-photography/static/media/landingPageBackground.14e3654cdbbd405b5c6e.jpg",
     "static/media/collectionPhoto2.jpg": "/emily-jane-photography/static/media/collectionPhoto2.34884f17aab1eb474b2f.jpg",
@@ -10,10 +10,10 @@
     "static/media/collectionPhoto1.jpg": "/emily-jane-photography/static/media/collectionPhoto1.2ef6f74dbce7176a76ab.jpg",
     "index.html": "/emily-jane-photography/index.html",
     "main.317eccfd.css.map": "/emily-jane-photography/static/css/main.317eccfd.css.map",
-    "main.34dfd2eb.js.map": "/emily-jane-photography/static/js/main.34dfd2eb.js.map"
+    "main.72d20991.js.map": "/emily-jane-photography/static/js/main.72d20991.js.map"
   },
   "entrypoints": [
     "static/css/main.317eccfd.css",
-    "static/js/main.34dfd2eb.js"
+    "static/js/main.72d20991.js"
   ]
 }
