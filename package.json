@@ -2,7 +2,7 @@
   "name": "emily-jane-photography",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/",
+  "homepage": "/emily-jane-photography",
   "dependencies": {
     "@stripe/react-stripe-js": "^3.7.0",
     "@stripe/stripe-js": "^7.4.0",
