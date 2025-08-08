@@ -27,8 +27,9 @@ const HomePage = () => {
   useEffect(() => {
 
     // Get the selected filter from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const filterFromUrl = urlParams.get('collection') || 'all'; // Default to 'all' if no filter is specified
+    const hash = window.location.hash; // "#/collection?collection=Hawaii"
+    const hashParams = new URLSearchParams(hash.split('?')[1]);
+    const filterFromUrl = hashParams.get('collection') || 'all';
 
     // Fetch photo info from the API
     fetch('https://superbowl-squares-api-2-637010006131.us-central1.run.app/api/ejt-photography/photo-info')
