@@ -39,6 +39,14 @@ const ShippingDetails = () => {
         }
     }, [shippingInfo]);
 
+    // useEffect(() => {  
+    //     if (cart.length === 0) {
+    //         // Redirect to cart if no items are in the cart
+    //         window.location.href = '/emily-jane-photography/#/cart';
+    //         return;
+    //     }
+    // }, [cart]);
+
     if (!Array.isArray(cart) || cart.length === 0) {
         console.warn('Cart is empty or not properly populated.');
     } else {

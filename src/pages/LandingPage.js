@@ -34,7 +34,7 @@ const LandingPage = () => {
     }, [loaded]);
 
     return (
-        <div >
+        <div style={{ overflowX: 'hidden' }}>
             <Menu />
             <img
                 src={backgroundImage}
@@ -233,8 +233,8 @@ const LandingPage = () => {
                             </Container>
                         </div>
                         <div>
-                            <Container style={{ fontFamily: '"Young Serif", serif', height: '100%', margin: '0', width: '100vw' }}>
-                                <Row style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%', width: '100vw', backgroundColor: '#A7C7E7' }}>
+                            <Container style={{ fontFamily: '"Young Serif", serif', height: '100%' }}>
+                                <Row style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%', backgroundColor: '#A7C7E7' }}>
                                     <Col style={{ textAlign: 'center', padding: '20px' }}>
                                         <h2 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(1rem, 2vw, 2rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>FOLLOW ME</h2>
                                         <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6', margin: '0' }}>

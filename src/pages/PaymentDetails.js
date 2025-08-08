@@ -13,6 +13,12 @@ const PaymentDetails = () => {
     const [clientSecret, setClientSecret] = useState('');
 
     useEffect(() => {
+        // if (cart.length === 0) {
+        //     // Redirect to cart if no items are in the cart
+        //     window.location.href = '/emily-jane-photography/#/cart';
+        //     return;
+        // }
+
         const createPaymentIntent = async () => {
             try {
                 console.log('Creating payment intent with total:', total);
