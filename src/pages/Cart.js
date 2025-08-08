@@ -24,7 +24,7 @@ const Cart = () => {
                     </Row>
                     <Row className="justify-content-center mt-3">
                         <Col className="text-center">
-                            <Button variant="primary" style={{ backgroundColor: '#A7C7E7', color: 'black', border: 'none', padding: '20px 50px', marginTop: '20px' }} onClick={() => window.location.href = '/collection'}>
+                            <Button variant="primary" style={{ backgroundColor: '#A7C7E7', color: 'black', border: 'none', padding: '20px 50px', marginTop: '20px' }} onClick={() => window.location.href = '/emily-jane-photography/#/collection'}>
                                 <h2 style={{ margin: 0 }}>Go to Gallery</h2>
                             </Button>
                         </Col>
@@ -115,7 +115,7 @@ const Cart = () => {
                         <div className="text-end d-flex align-items-center justify-content-end" style={{ fontSize: '1.2rem', fontWeight: 'bold', marginTop: '0px' }}>
                             <Button
                                 variant="primary"
-                                onClick={() => window.location.href = '/#/checkout/shipping'}
+                                onClick={() => window.location.href = '/emily-jane-photography/#/checkout/shipping'}
                                 style={{
                                     padding: '10px 10px',
                                     backgroundColor: '#A7C7E7',

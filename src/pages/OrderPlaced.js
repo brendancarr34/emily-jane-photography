@@ -43,8 +43,8 @@ const OrderPlaced = () => {
             <br />
             <br />
             <Container>
-                <div className="order-placed-container text-center" style={{ margin: '40px 0' }}>
-                    <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#4A4A4A' }}>Thank You for Your Order!</h1>
+                <div className="order-placed-container text-center" style={{ margin: '20px 0' }}>
+                    <h6 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#4A4A4A' }}>Thank You for Your Order!</h6>
                     <p style={{ fontSize: '1.2rem', color: '#6C757D' }}>Your order has been successfully placed.</p>
                     <p style={{ fontSize: '1.2rem', color: '#6C757D' }}>Confirmation Code:
                         <p style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#4A4A4A' }}>

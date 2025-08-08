@@ -125,8 +125,8 @@ const CheckoutForm = ({
             localStorage.setItem('shippingInfo', JSON.stringify(shippingInfo));
 
             // Redirect to order placed page
-            window.location.href = '/#/order-placed';
-            
+            window.location.href = '/emily-jane-photography/#/order-placed';
+
             // Clear the cart after successful payment
             console.log('Clearing cart after successful payment');
             clearCart();

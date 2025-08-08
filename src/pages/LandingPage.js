@@ -75,7 +75,7 @@ const LandingPage = () => {
                                             letterSpacing: '-1px'
                                         }}>BY EMILY JANE TEVES</h1>
                                         <div>
-                                            <button onClick={() => window.location.href = '/#/collection'} style={{
+                                            <button onClick={() => window.location.href = '/emily-jane-photography/#/collection'} style={{
                                                 padding: '10px 10px',
                                                 backgroundColor: '#A7C7E7',
                                                 color: 'black',
@@ -121,7 +121,7 @@ const LandingPage = () => {
                                                 borderRadius: '10px',
                                                 boxSizing: 'border-box', // Ensures the border is included within the element's dimensions
                                             }}>
-                                                <a href="/collection?collection=California">
+                                                <a href="/emily-jane-photography/#/collection?collection=California">
                                                     <img src={require('../resources/collectionPhoto1.jpg')} alt="Collection 1" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                                 </a>
                                                 <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>CALIFORNIA</h4>
@@ -137,7 +137,7 @@ const LandingPage = () => {
                                                 borderRadius: '10px',
                                                 boxSizing: 'border-box', // Ensures the border is included within the element's dimensions 
                                             }}>
-                                                <a href="/collection?collection=Hawaii">
+                                                <a href="/emily-jane-photography/#/collection?collection=Hawaii">
                                                     <img src={require('../resources/collectionPhoto2.jpg')} alt="Collection 2" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                                 </a>
                                                 <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>HAWAII</h4>
@@ -153,7 +153,7 @@ const LandingPage = () => {
                                                 borderRadius: '10px',
                                                 boxSizing: 'border-box', // Ensures the border is included within the element's dimensions
                                             }}>
-                                                <a href="/collection?collection=NorthCarolina">
+                                                <a href="/emily-jane-photography/#/collection?collection=NorthCarolina">
                                                     <img src={require('../resources/collectionPhoto3.jpg')} alt="Collection 3" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                                 </a>
                                                 <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.5vw, 0.5px)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>NORTH CAROLINA</h4>
@@ -170,7 +170,7 @@ const LandingPage = () => {
                                                 boxSizing: 'border-box', // Ensures the border is included within the element's dimensions
                                                 // margin: '10px',
                                             }}>
-                                                <a href="/collection?collection=Film">
+                                                <a href="/emily-jane-photography/#/collection?collection=Film">
                                                     <img src={require('../resources/collectionPhoto4.jpg')} alt="Collection 4" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} />
                                                 </a>
                                                 <h4 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 0.8vw, 0.8rem)', fontWeight: '700', letterSpacing: '-1px', transform: 'scaleX(1.4)' }}>FILM</h4>
