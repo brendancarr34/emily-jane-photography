@@ -55,9 +55,9 @@ const Cart = () => {
                             <h4 style={{ marginTop: '10px', marginBottom: '20px', textAlign: 'center', flexGrow: 1 }}>
                                 Your Cart
                             </h4>
-                            <Button variant="danger" onClick={clearCart} style={{ marginLeft: '20px' }}>
+                            {/* <Button variant="danger" onClick={clearCart} style={{ marginLeft: '20px' }}>
                                 Clear Cart
-                            </Button>
+                            </Button> */}
                         </div>
                         <ListGroup>
                             {cart && cart.length > 0 ? (

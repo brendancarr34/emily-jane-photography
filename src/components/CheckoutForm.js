@@ -26,10 +26,11 @@ const CheckoutForm = ({
         }));
     };
 
-    const handleOrder = async () => {
+    const handleOrder = async (shippingInfo, confirmationCode) => {
         console.log('Placing order with shipping data:', shippingInfo);
         const orderData = {
-            customerName: clientSecret.slice(0, 27), // Example: using clientSecret as customer name
+            id: clientSecret.slice(0, 27),
+            customerName: shippingInfo.firstName + ' ' + shippingInfo.lastName,
             item: cart,
             address: shippingInfo.address,
             email: shippingInfo.email,
@@ -38,7 +39,8 @@ const CheckoutForm = ({
             state: shippingInfo.state,
             zipCode: shippingInfo.zipCode,
             quantity: cart.length,
-            price: total
+            price: total,
+            confirmationCode: confirmationCode
         };
 
         try {
@@ -108,8 +110,25 @@ const CheckoutForm = ({
             alert('Payment failed. Please try again.');
         } else if (paymentIntent.status === 'succeeded') {
             alert('Payment successful!');
+            // create confirmation code
+            const confirmationCode = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            console.log('Confirmation Code:', confirmationCode);
+            alert(`Your confirmation code is: ${confirmationCode}`);
             // Pass shippingInfo to handleOrder if needed
-            handleOrder(shippingInfo);
+            handleOrder(shippingInfo, confirmationCode);
+
+            // Redirect to order placed page and pass shippingInfo and confirmationCode
+            console.log('Redirecting to order placed page with confirmation code:', confirmationCode);
+            // Store confirmationCode and items in localStorage
+            localStorage.setItem('confirmationCode', confirmationCode);
+            localStorage.setItem('cartItems', JSON.stringify(cart));
+            localStorage.setItem('shippingInfo', JSON.stringify(shippingInfo));
+
+            // Redirect to order placed page
+            window.location.href = '/order-placed';
+            
+            // Clear the cart after successful payment
+            console.log('Clearing cart after successful payment');
             clearCart();
         }
     };
@@ -271,15 +290,6 @@ const CheckoutForm = ({
                     </div>)
 
                     }
-
-                    {/* <Button
-                        variant="primary"
-                        type="submit"
-                        disabled={!stripe}
-                        style={{ backgroundColor: '#A7C7E7', color: 'black', border: 'none', padding: '10px 20px', marginTop: '10px' }}
-                    >
-                        Pay ${total.toFixed(2)}
-                    </Button> */}
 
                     <div className="text-end d-flex align-items-center justify-content-end" style={{ fontSize: '1.2rem', fontWeight: 'bold', marginTop: '0px' }}>
                         <Button
