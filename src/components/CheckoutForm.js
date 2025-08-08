@@ -111,7 +111,7 @@ const CheckoutForm = ({
         } else if (paymentIntent.status === 'succeeded') {
             alert('Payment successful!');
             // create confirmation code
-            const confirmationCode = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            const confirmationCode = Math.random().toString(36).substring(2, 15).toUpperCase();
             console.log('Confirmation Code:', confirmationCode);
             alert(`Your confirmation code is: ${confirmationCode}`);
             // Pass shippingInfo to handleOrder if needed
