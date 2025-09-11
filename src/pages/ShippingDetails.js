@@ -252,7 +252,7 @@ const ShippingDetails = () => {
                             <Button
                                 variant="primary"
                                 type="submit"
-                                style={{ backgroundColor: '#A7C7E7', color: 'black', border: 'none', padding: '10px 20px', marginTop: '20px' }}
+                                style={{ backgroundColor: '#55020e', color: 'black', border: 'none', padding: '10px 20px', marginTop: '20px' }}
                             >
                                 Proceed to Payment
                             </Button>
@@ -290,7 +290,7 @@ const ShippingDetails = () => {
             <footer style={{
                 marginTop: 'auto',
                 width: '100%',
-                backgroundColor: '#A7C7E7',
+                backgroundColor: '#55020e',
                 padding: '30px',
                 textAlign: 'center',
             }}>

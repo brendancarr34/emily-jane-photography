@@ -123,7 +123,7 @@ const HomePage = () => {
       <>
         {loading ? (
           <div style={{ minHeight: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Spinner animation="border" role="status" style={{ width: '4rem', height: '4rem', color: '#A7C7E7' }}>
+            <Spinner animation="border" role="status" style={{ width: '4rem', height: '4rem', color: '#55020e' }}>
               <span className="visually-hidden">Loading...</span>
             </Spinner>
           </div>
@@ -165,7 +165,7 @@ const HomePage = () => {
       <footer style={{
         marginTop: 'auto',
         width: '100%',
-        backgroundColor: '#A7C7E7',
+        backgroundColor: '#55020e',
         padding: '30px',
         textAlign: 'center',
       }}>
@@ -273,7 +273,7 @@ const HomePage = () => {
             <Button style={{ backgroundColor: "lightgray", color: "black", border: 'none' }} variant="secondary">Go to Product Page</Button>
           </Link>
           <Button variant="primary"
-            style={{ backgroundColor: "#A7C7E7", color: "black", border: 'none' }}
+            style={{ backgroundColor: "#55020e", color: "black", border: 'none' }}
             onClick={() => {
               const cartItem = {
                 ...modalImage, // Create a new object based on modalImage
@@ -307,7 +307,7 @@ const HomePage = () => {
             Back to Gallery
           </Button>
           <Link to="/cart">
-            <Button variant="primary" style={{ backgroundColor: "#A7C7E7", color: "black", border: 'none' }}>
+            <Button variant="primary" style={{ backgroundColor: "#55020e", color: "black", border: 'none' }}>
               Go to Cart
             </Button>
           </Link>

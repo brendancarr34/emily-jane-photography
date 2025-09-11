@@ -24,7 +24,7 @@ const Cart = () => {
                     </Row>
                     <Row className="justify-content-center mt-3">
                         <Col className="text-center">
-                            <Button variant="primary" style={{ backgroundColor: '#A7C7E7', color: 'black', border: 'none', padding: '20px 50px', marginTop: '20px' }} onClick={() => window.location.href = '/emily-jane-photography/#/collection'}>
+                            <Button variant="primary" style={{ backgroundColor: '#55020e', color: 'black', border: 'none', padding: '20px 50px', marginTop: '20px' }} onClick={() => window.location.href = '/emily-jane-photography/#/collection'}>
                                 <h2 style={{ margin: 0 }}>Go to Gallery</h2>
                             </Button>
                         </Col>
@@ -33,7 +33,7 @@ const Cart = () => {
                 <footer style={{ 
                     marginTop: 'auto', 
                     width: '100%', 
-                    backgroundColor: '#A7C7E7', 
+                    backgroundColor: '#55020e', 
                     padding: '30px',
                     textAlign: 'center',
                 }}>
@@ -118,7 +118,7 @@ const Cart = () => {
                                 onClick={() => window.location.href = '/emily-jane-photography/#/checkout/shipping'}
                                 style={{
                                     padding: '10px 10px',
-                                    backgroundColor: '#A7C7E7',
+                                    backgroundColor: '#55020e',
                                     color: 'black',
                                     border: 'none',
                                     borderRadius: '5px',
@@ -150,7 +150,7 @@ const Cart = () => {
             <footer style={{
                 marginTop: 'auto',
                 width: '100%',
-                backgroundColor: '#A7C7E7',
+                backgroundColor: '#55020e',
                 padding: '30px',
                 textAlign: 'center',
             }}>
