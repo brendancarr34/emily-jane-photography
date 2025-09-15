@@ -26,7 +26,7 @@ const OrderPlaced = () => {
                 <footer style={{
                     marginTop: 'auto',
                     width: '100%',
-                    backgroundColor: '#A7C7E7',
+                    backgroundColor: '#55020e',
                     padding: '30px',
                     textAlign: 'center',
                 }}>
@@ -91,7 +91,7 @@ const OrderPlaced = () => {
             <footer style={{
                 marginTop: 'auto',
                 width: '100%',
-                backgroundColor: '#A7C7E7',
+                backgroundColor: '#55020e',
                 padding: '30px',
                 textAlign: 'center',
                 fontSize: '1rem',

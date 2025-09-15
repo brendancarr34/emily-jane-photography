@@ -49,7 +49,7 @@ const LandingPage = () => {
 
                 {!loadPage ? (
                     <div style={{ minHeight: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Spinner animation="border" role="status" style={{ width: '4rem', height: '4rem', color: '#A7C7E7' }}>
+                        <Spinner animation="border" role="status" style={{ width: '4rem', height: '4rem', color: '#55020e' }}>
                             <span className="visually-hidden">Loading...</span>
                         </Spinner>
                     </div>
@@ -63,7 +63,7 @@ const LandingPage = () => {
                                             transform: 'scaleY(1.8)', paddingTop: '60px',
                                             fontSize: 'clamp(1.8rem, 6vw, 6rem)',
                                             fontWeight: '800', wordSpacing: 'clamp(10px, 2vw, 100px)'
-                                        }}>PHOTOGRAPHY PRINTS</h1>
+                                        }}>PHOTOGRAPHY</h1>
                                         <h1 style={{
                                             fontFamily: '"Inter", sans-serif',
                                             paddingTop: '100px',
@@ -77,9 +77,9 @@ const LandingPage = () => {
                                         <div>
                                             <button onClick={() => window.location.href = '/emily-jane-photography/#/collection'} style={{
                                                 padding: '10px 10px',
-                                                backgroundColor: '#A7C7E7',
-                                                color: 'black',
-                                                border: 'none',
+                                                backgroundColor: 'rgba(0,0,0,0.0)', // transparent
+                                                color: 'white',
+                                                border: '1px solid white',
                                                 borderRadius: '5px',
                                                 marginTop: '40px',
                                                 display: 'inline-block', // Ensures the button wraps around the content
@@ -97,6 +97,7 @@ const LandingPage = () => {
                                                     maxFontSize: '1rem',
                                                     width: '100%', // Makes the button extend with the content
                                                     textAlign: 'center', // Centers the text within the button
+                                                    color: 'white',
                                                 }}>SHOP THE FULL COLLECTION</p>
                                             </button>
                                         </div>
@@ -201,8 +202,8 @@ const LandingPage = () => {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Button style={{ backgroundColor: '#A7C7E7', border: 'none', padding: '10px 20px', marginTop: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                        <a href="/#/about" style={{ textDecoration: 'none', backgroundColor: '#A7C7E7', color: 'black', fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', fontWeight: '600' }}>
+                                    <Button style={{ backgroundColor: '#55020e', border: 'none', padding: '10px 20px', marginTop: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                        <a href="/#/about" style={{ textDecoration: 'none', backgroundColor: '#55020e', color: 'black', fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', fontWeight: '600' }}>
                                             Learn More About Me
                                         </a>
                                     </Button>
@@ -233,21 +234,9 @@ const LandingPage = () => {
                             </Container>
                         </div>
                         <div>
-                            <Container style={{ fontFamily: '"Young Serif", serif', height: '100%' }}>
-                                <Row style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%', backgroundColor: '#A7C7E7' }}>
-                                    <Col style={{ textAlign: 'center', padding: '20px' }}>
-                                        <h2 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(1rem, 2vw, 2rem)', fontWeight: '700', transform: 'scaleX(1.4)' }}>FOLLOW ME</h2>
-                                        <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', lineHeight: '1.6', margin: '0' }}>
-                                            Stay updated with my latest work and adventures by following me on social media.
-                                        </p>
-                                        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-                                            {/* <a href="https://www.instagram.com/emilyjaneteves/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'black' }}>
-                                    <img src={require('../resources/instagramIcon.png')} alt="Instagram" style={{ width: '40px', height: '40px' }} />
-                                </a> */}
-                                        </div>
-                                    </Col>
-                                </Row>
-                            </Container>
+                            <div style={{ width: '100vw', position: 'relative', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw', backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                {/* You can add content inside the footer image if needed */}
+                            </div>
                         </div>
                     </div>
                 )}

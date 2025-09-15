@@ -299,7 +299,7 @@ const CheckoutForm = ({
                             // onClick={() => window.location.href = '/checkout/shipping'}
                             style={{
                                 padding: '10px 10px',
-                                backgroundColor: '#A7C7E7',
+                                backgroundColor: '#55020e',
                                 color: 'black',
                                 border: 'none',
                                 borderRadius: '5px',
