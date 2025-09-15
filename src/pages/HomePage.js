@@ -136,25 +136,30 @@ const HomePage = () => {
               {filteredImages.map((photo, index) => (
                 <div key={index} style={{ border: "1px solid #ddd", padding: "1rem", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
                   opacity: loaded ? 1 : 0,
-                      transition: "opacity 1s ease"
-                 }}>
-                  <img
-                    src={photo.url}
-                    alt={`Photo ${index + 1}`}
-                    style={{ maxWidth: "100%", 
-                      height: "auto", 
-                      display: "block", 
-                      margin: "5px", 
-                      border: "10px solid white", 
-                      backgroundColor: "white", 
-                      boxShadow: "0 0 0 5px black",
-                    }}
-                    onLoad={() => setLoaded(true)}
-                    onClick={() => openModal(photo)}
-                  />
+                  transition: "opacity 1s ease"
+                }}>
+                  <Link to={`/product/${photo.id}`} style={{ textDecoration: 'none', width: '100%' }}>
+                    <img
+                      src={photo.url}
+                      alt={`Photo ${index + 1}`}
+                      style={{ maxWidth: "100%", 
+                        height: "auto", 
+                        display: "block", 
+                        margin: "5px", 
+                        border: "10px solid white", 
+                        backgroundColor: "white", 
+                        boxShadow: "0 0 0 5px black",
+                        cursor: 'pointer'
+                      }}
+                      onLoad={() => setLoaded(true)}
+                    />
+                  </Link>
                   <div style={{ alignSelf: "flex-start", textAlign: "left", marginTop: "1rem" }}>
                     <p>{photo.title}</p>
                   </div>
+                  <Button variant="primary" style={{ marginTop: '10px', backgroundColor: '#55020e', border: 'none', fontWeight: 600 }} onClick={() => openModal(photo)}>
+                    Quick Add
+                  </Button>
                 </div>
               ))}
             </main>

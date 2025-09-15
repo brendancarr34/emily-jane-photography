@@ -59,47 +59,30 @@ const LandingPage = () => {
                             <Container>
                                 <Row>
                                     <Col style={{ padding: '20px' }}>
-                                        <h1 style={{
-                                            transform: 'scaleY(1.8)', paddingTop: '60px',
-                                            fontSize: 'clamp(1.8rem, 6vw, 6rem)',
-                                            fontWeight: '800', wordSpacing: 'clamp(10px, 2vw, 100px)'
-                                        }}>PHOTOGRAPHY</h1>
-                                        <h1 style={{
-                                            fontFamily: '"Inter", sans-serif',
-                                            paddingTop: '100px',
-                                            fontSize: 'clamp(1rem, 2.5vw, 2.5rem)',
-                                            wordSpacing: '6px',
-                                            transform: 'scaleX(1.4)',
-                                            transformOrigin: 'left',
-                                            fontWeight: '600',
-                                            letterSpacing: '-1px'
-                                        }}>BY EMILY JANE TEVES</h1>
+                                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '60px', marginBottom: '40px' }}>
+                                            <h1 style={{
+                                                fontFamily: '"Inter", sans-serif',
+                                                fontSize: 'clamp(1.8rem, 6vw, 6rem)',
+                                                fontWeight: '800',
+                                                wordSpacing: 'clamp(10px, 2vw, 100px)',
+                                                letterSpacing: '-1px',
+                                                textAlign: 'center',
+                                                margin: 0,
+                                                marginTop: '120px'
+                                            }}>PHOTOGRAPHY</h1>
+                                            <h2 style={{
+                                                fontFamily: '"Inter", sans-serif',
+                                                fontSize: 'clamp(1rem, 2.5vw, 2.5rem)',
+                                                fontWeight: '600',
+                                                wordSpacing: '6px',
+                                                letterSpacing: '-1px',
+                                                textAlign: 'center',
+                                                marginTop: '24px',
+                                                marginBottom: 0
+                                            }}>BY EMILY JANE TEVES</h2>
+                                        </div>
                                         <div>
-                                            <button onClick={() => window.location.href = '/emily-jane-photography/#/collection'} style={{
-                                                padding: '10px 10px',
-                                                backgroundColor: 'rgba(0,0,0,0.0)', // transparent
-                                                color: 'white',
-                                                border: '1px solid white',
-                                                borderRadius: '5px',
-                                                marginTop: '40px',
-                                                display: 'inline-block', // Ensures the button wraps around the content
-                                                transform: 'scaleX(1.4)',
-                                                transformOrigin: 'left',
-                                            }}>
-                                                <p style={{
-                                                    margin: 0,
-                                                    padding: '8px 10px',
-                                                    fontFamily: '"Inter", sans-serif',
-                                                    fontSize: 'clamp(0.8rem, 1.5vw, 1.5rem)',
-                                                    fontWeight: '600',
-                                                    whiteSpace: 'nowrap', // Prevents text wrapping
-                                                    letterSpacing: '-1px',
-                                                    maxFontSize: '1rem',
-                                                    width: '100%', // Makes the button extend with the content
-                                                    textAlign: 'center', // Centers the text within the button
-                                                    color: 'white',
-                                                }}>SHOP THE FULL COLLECTION</p>
-                                            </button>
+                                            {/* Removed SHOP THE FULL COLLECTION button as requested */}
                                         </div>
                                     </Col>
                                 </Row>
@@ -202,11 +185,7 @@ const LandingPage = () => {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Button style={{ backgroundColor: '#55020e', border: 'none', padding: '10px 20px', marginTop: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                        <a href="/#/about" style={{ textDecoration: 'none', backgroundColor: '#55020e', color: 'black', fontFamily: '"Inter", sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.5rem)', fontWeight: '600' }}>
-                                            Learn More About Me
-                                        </a>
-                                    </Button>
+                                    {/* Learn More About Me button removed */}
                                 </Row>
                             </Container>
                         </div>
