@@ -8,21 +8,17 @@ const LandingPage = () => {
     const [loaded, setLoaded] = useState(false);
     const landingPageContainerStyle = {
         color: 'white',
-        // fontFamily: '"Young Serif", serif',
-        // fontFamily: '"Inter", sans-serif',
         fontFamily: '"Playfair Display", serif',
         fontWeight: '800',
-        // fontWeight: '400',
         fontStyle: 'normal',
         fontSize: '5rem',
-        letterSpacing: '-2px', // Adjusts the space between letters
-        wordSpacing: '25px', // Adjusts the space between words
-        // position: 'relative',
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '80vh',
+        letterSpacing: '-2px',
+        wordSpacing: '25px',
+        position: 'relative',
+        minHeight: '80vh',
         display: 'flex',
+        alignItems: 'flex-start',
+        padding: 0,
     };
     const [loadPage, setLoadPage] = useState(false);
     useEffect(() => {
@@ -34,8 +30,22 @@ const LandingPage = () => {
     }, [loaded]);
 
     return (
-        <div style={{ overflowX: 'hidden' }}>
-            <Menu />
+        <div style={{ overflowX: 'hidden', margin: 0, padding: 0, position: 'relative' }}>
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                zIndex: 0,
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+            }} />
+            <div style={{ position: 'relative', zIndex: 2 }}>
+                <Menu />
+            </div>
             <img
                 src={backgroundImage}
                 alt="background"
@@ -45,6 +55,8 @@ const LandingPage = () => {
             <div style={{
                 opacity: loadPage ? 1 : 0,
                 transition: "opacity 2s ease",
+                position: 'relative',
+                zIndex: 1,
             }}>
 
                 {!loadPage ? (
