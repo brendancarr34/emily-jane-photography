@@ -86,28 +86,41 @@ const Portfolio = () => {
         fontSize: '5rem',
         letterSpacing: '-2px',
         wordSpacing: '25px',
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '80vh',
+        height: '50vh',
         display: 'flex',
+        position: 'relative',
+        padding: 0,
     };
     useEffect(() => {
         setLoaded(true);
     }, []);
 
     return (
-        <div style={{ overflowX: 'hidden' }}>
-            <Menu logoOverride={require('../resources/5.png').default} />
+        <div style={{ overflowX: 'hidden', margin: 0, padding: 0, position: 'relative' }}>
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '70vh',
+                zIndex: 0,
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+            }} />
+            <div style={{ position: 'relative', zIndex: 2 }}>
+                <Menu logoOverride={require('../resources/5.png').default} />
+            </div>
             <img
                 src={backgroundImage}
                 alt="background"
                 style={{ display: 'none' }}
                 onLoad={() => setLoaded(true)}
             />
-            <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 2s ease" }}>
+            <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 2s ease", position: 'relative', zIndex: 1 }}>
                 <div style={landingPageContainerStyle}>
-                    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '60px', marginBottom: '40px' }}>
+                    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '30px', marginBottom: '40px' }}>
                         <h1 style={{ fontFamily: '"Inter", sans-serif', fontWeight: 800, fontSize: '2.5rem', marginBottom: '32px', color: 'white', textAlign: 'center' }}>Portfolio</h1>
                         <p style={{ fontFamily: '"Inter", sans-serif', fontSize: '1.2rem', color: 'white', textAlign: 'center', maxWidth: '600px' }}>
                             Welcome to my portfolio! Here you'll find a curated selection of my favorite work and projects.
@@ -115,15 +128,7 @@ const Portfolio = () => {
                     </div>
                 </div>
                 {/* Photo Grid Section */}
-                <div style={{
-                    columnCount: 4,
-                    columnGap: '18px',
-                    padding: '40px 32px',
-                    background: '#fff',
-                    borderRadius: '18px',
-                    margin: '40px auto',
-                    maxWidth: '1600px',
-                }}>
+                <div className="portfolio-photo-grid">
                     {[
                         // Curated: some featured images (by file name, variety)
                         // Best work (IMG_8853 close to top)
