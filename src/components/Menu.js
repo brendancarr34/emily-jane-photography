@@ -45,70 +45,50 @@ const Menu = ({ logoOverride }) => {
 
     return (
     <Navbar style={{ backgroundColor: 'rgba(0,0,0,0)', boxShadow: 'none' }} variant="dark" expand={false} fixed="top">
-            <Container fluid style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingLeft: '40px', paddingRight: '40px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
-                    <Navbar.Brand
-                        as={Link}
-                        to="/"
-                        style={{
-                            display: window.innerWidth < 350 ? 'none' : 'inline',
-                            margin: '24px 0 0 24px', // top and left margin equal
-                            padding: 0
-                        }}
-                        display={dropdownVisible ? 'none' : 'inline'}
-                    >
-                        <img 
-                            src={logoOverride ? logoOverride : image1} 
-                            alt="Emily Jane Photography Logo" 
-                            style={{ height: '100px', width: 'auto', objectFit: 'contain', display: 'block' }} 
-                        />
-                    </Navbar.Brand>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                    <Navbar.Toggle
-                        aria-controls="basic-navbar-nav"
-                        onClick={() => setDropdownVisible(!dropdownVisible)}
-                        style={{
-                            border: 'none',
-                            borderColor: 'transparent',
-                            backgroundColor: 'transparent',
-                            color: 'black',
-                        }}
-                    >
-                        <span style={{ backgroundColor: 'black', display: 'block', height: '2px', margin: '4px 0', width: '20px' }}></span>
-                        <span style={{ backgroundColor: 'black', display: 'block', height: '2px', margin: '4px 0', width: '20px' }}></span>
-                        <span style={{ backgroundColor: 'black', display: 'block', height: '2px', margin: '4px 0', width: '20px' }}></span>
-                    </Navbar.Toggle>
-                    <Navbar.Collapse
-                        id="basic-navbar-nav"
-                        in={dropdownVisible}
-                        style={{ color: 'black' }}
-                        ref={dropdownRef}
-                    >
-                        <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/collection" style={{ color: 'black', marginTop: '20px' }}>
-                                Gallery
-                            </Nav.Link>
-                            <Nav.Link as={Link} to="/about" style={{ color: 'black' }}>
-                                About Me
-                            </Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                    <Nav>
-                        <Nav.Link as={Link} to="/cart" style={{ color: 'black' }}>
-                            <span style={{ display: 'flex', alignItems: 'center' }}>
-                                {cart.length > 0 && (
-                                    <Badge bg="light" text="dark">
-                                        {cart.reduce((total, item) => total + Number(item.quantity), 0)}
-                                    </Badge>
-                                )}
-                                <HiOutlineShoppingCart size={26} style={{ marginLeft: '4px', color: 'black' }} />
-                            </span>
-                        </Nav.Link>
-                    </Nav>
-                </div>
-            </Container>
-        </Navbar>
+        <Container fluid style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingLeft: '40px', paddingRight: '40px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                <Navbar.Brand
+                    as={Link}
+                    to="/"
+                    style={{
+                        display: window.innerWidth < 350 ? 'none' : 'inline',
+                        margin: '24px 0 0 24px',
+                        padding: 0
+                    }}
+                >
+                    <img 
+                        src={logoOverride ? logoOverride : image1} 
+                        alt="Emily Jane Photography Logo" 
+                        style={{ height: '100px', width: 'auto', objectFit: 'contain', display: 'block' }} 
+                    />
+                </Navbar.Brand>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+                    <Nav.Link as={Link} to="/" style={{ color: 'white', fontWeight: 600, fontSize: '1.15rem', fontFamily: 'Montserrat, Inter, Arial, sans-serif', letterSpacing: '1px' }}>
+                    Home
+                </Nav.Link>
+                    <Nav.Link as={Link} to="/collection" style={{ color: 'white', fontWeight: 600, fontSize: '1.15rem', fontFamily: 'Montserrat, Inter, Arial, sans-serif', letterSpacing: '1px' }}>
+                    Gallery
+                </Nav.Link>
+                    <Nav.Link as={Link} to="/portfolio" style={{ color: 'white', fontWeight: 600, fontSize: '1.15rem', fontFamily: 'Montserrat, Inter, Arial, sans-serif', letterSpacing: '1px' }}>
+                    Portfolio
+                </Nav.Link>
+                    <Nav.Link as={Link} to="/about" style={{ color: 'white', fontWeight: 600, fontSize: '1.15rem', fontFamily: 'Montserrat, Inter, Arial, sans-serif', letterSpacing: '1px' }}>
+                    About Me
+                </Nav.Link>
+                    <Nav.Link as={Link} to="/cart" style={{ color: 'white', fontWeight: 600, fontSize: '1.15rem', fontFamily: 'Montserrat, Inter, Arial, sans-serif', letterSpacing: '1px', display: 'flex', alignItems: 'center' }}>
+                    <span style={{ display: 'flex', alignItems: 'center' }}>
+                        {cart.length > 0 && (
+                            <Badge bg="light" text="dark">
+                                {cart.reduce((total, item) => total + Number(item.quantity), 0)}
+                            </Badge>
+                        )}
+                        <HiOutlineShoppingCart size={26} style={{ marginLeft: '4px', color: 'white' }} />
+                    </span>
+                </Nav.Link>
+            </div>
+        </Container>
+    </Navbar>
     );
 
 };
