@@ -95,6 +95,8 @@ const Menu = ({ logoOverride }) => {
                                 boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
                                 borderRadius: 8,
                                 padding: '8px 24px',
+                                // make background of button see through
+                                backgroundColor: 'rgba(162, 160, 44, 0.4)',
                             }}
                         >
                             Menu
@@ -136,7 +138,7 @@ const Menu = ({ logoOverride }) => {
                             Portfolio
                         </Nav.Link>
                         <Nav.Link as={Link} to="/about" style={{ color: 'white', fontWeight: 600, fontSize: '1.15rem', fontFamily: 'Montserrat, Inter, Arial, sans-serif', letterSpacing: '1px' }}>
-                            About Me
+                            About
                         </Nav.Link>
                         <Nav.Link as={Link} to="/cart" style={{ color: 'white', fontWeight: 600, fontSize: '1.15rem', fontFamily: 'Montserrat, Inter, Arial, sans-serif', letterSpacing: '1px', display: 'flex', alignItems: 'center' }}>
                             <span style={{ display: 'flex', alignItems: 'center' }}>
