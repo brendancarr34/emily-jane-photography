@@ -133,11 +133,35 @@ const LandingPage = () => {
                         BY EMILY JANE TEVES
                       </h2>
                     </div>
-                    <div>
-                      {/* Removed SHOP THE FULL COLLECTION button as requested */}
-                    </div>
                   </Col>
                 </Row>
+              </Container>
+            </div>
+
+            {/* Portfolio Section */}
+            <div>
+              <Container style={{ padding: "20px", textAlign: "center" }}>
+                <Button
+                  variant="dark"
+                  href="/emily-jane-photography/#/portfolio"
+                  style={{
+                    fontFamily: '"Inter", sans-serif',
+                    fontWeight: 800,
+                    fontSize: "2.2rem",
+                    padding: "32px 80px",
+                    borderRadius: "40px",
+                    background: "#222",
+                    border: "none",
+                    marginBottom: "18px",
+                    letterSpacing: "1px",
+                    boxShadow: "0 6px 32px rgba(0,0,0,0.18)",
+                    transition: "transform 0.2s",
+                  }}
+                  onMouseOver={e => e.currentTarget.style.transform = 'scale(1.04)'}
+                  onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  See My Work
+                </Button>
               </Container>
             </div>
             <div>
@@ -412,65 +436,6 @@ const LandingPage = () => {
                 <Row>{/* Learn More About Me button removed */}</Row>
               </Container>
             </div>
-            {/* <div>
-              // Container for getting in contact with me 
-              <Container
-                style={{
-                  padding: "20px",
-                  fontFamily: '"Young Serif", serif',
-                  height: "100%",
-                  // marginBottom: '140px'
-                }}
-              >
-                <Row style={{ paddingBottom: "20px" }}>
-                  <Col style={{ textAlign: "center" }}>
-                    <h2
-                      style={{
-                        fontFamily: '"Inter", sans-serif',
-                        fontSize: "clamp(1rem, 2vw, 2rem)",
-                        fontWeight: "700",
-                        transform: "scaleX(1.4)",
-                      }}
-                    >
-                      GET IN TOUCH
-                    </h2>
-                  </Col>
-                </Row>
-                <Row
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  <Col xs={12} sm={12} lg={6}>
-                    <p
-                      style={{
-                        fontFamily: '"Inter", sans-serif',
-                        fontSize: "clamp(0.8rem, 1vw, 1.5rem)",
-                        lineHeight: "1.6",
-                      }}
-                    >
-                      I would love to hear from you! Whether you have questions
-                      about my work, want to collaborate, or just want to say
-                      hello, feel free to reach out.
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: '"Inter", sans-serif',
-                        fontSize: "clamp(0.8rem, 1vw, 1.5rem)",
-                        lineHeight: "1.6",
-                      }}
-                    >
-                      You can contact me via email at{" "}
-                      <a href="mailto:emilyjaneteves@gmail.com">
-                        emilyjaneteves@gmail.com
-                      </a>
-                    </p>
-                  </Col>
-                </Row>
-              </Container>
-            </div> */}
             <div>
               <div
                 style={{
@@ -490,16 +455,13 @@ const LandingPage = () => {
                   justifyContent: "center",
                 }}
               >
-                {/* You can add content inside the footer image if needed */}
                 <div>
-                  {/* Container for getting in contact with me */}
                   <Container
                     style={{
                       padding: "20px",
                       paddingTop: "40px",
                       fontFamily: '"Young Serif", serif',
                       height: "100%",
-                      // marginBottom: '140px'
                     }}
                   >
                     <Row style={{ paddingBottom: "20px" }}>
@@ -549,7 +511,7 @@ const LandingPage = () => {
                           <a stylehref="mailto:emilyjaneteves@gmail.com">
                             emilyjaneteves@gmail.com
                           </a>
-                          or reach me on social media:
+                          <br /> or reach me on social media:
                         </p>
                         <p
                           style={{
@@ -559,35 +521,21 @@ const LandingPage = () => {
                             color: "white",
                           }}
                         >
-                          Instagram:{" "}
                           <a
                             href="https://www.instagram.com/emily.janepg/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ color: "white", textDecoration: "underline" }}
                           >
-                            @emily.janepg
+                            <img
+                              src={require("../resources/instagramLogo.png")}
+                              alt="Instagram"
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                                marginRight: "10px",
+                              }}
+                            />
                           </a>
-                          <br />
-                          Facebook:{" "}
-                          <a
-                            href="https://www.facebook.com/emily.janepg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ color: "white", textDecoration: "underline" }}
-                          >
-                            Emily Jane Teves
-                          </a>
-                        </p>
-                        <p
-                          style={{
-                            fontFamily: '"Inter", sans-serif',
-                            fontSize: "clamp(0.8rem, 1vw, 1.5rem)",
-                            lineHeight: "1.6",
-                            color: "white",
-                          }}
-                        >
-                          I look forward to connecting with you!
                         </p>
                       </Col>
                     </Row>
