@@ -104,7 +104,12 @@ const LandingPage = () => {
                             <Container style={{ padding: '20px', fontFamily: '"Young Serif", serif', height: '100%' }}>
                                 <Row style={{ paddingTop: '20px', paddingBottom: '20px' }}>
                                     <Col style={{ textAlign: 'center' }}>
-                                        <h2 style={{ fontFamily: '"Inter", sans-serif', fontSize: 'clamp(1rem, 2vw, 2rem)', fontWeight: '700', transform: 'scaleX(1.4)', letterSpacing: '-1px', }}>SHOP BY COLLECTION</h2>
+                                        <h2 style={{
+                                            fontFamily: '"Inter", sans-serif',
+                                            fontSize: 'clamp(1rem, 2vw, 2rem)',
+                                            fontWeight: '700',
+                                            transform: 'scaleX(1.4)', letterSpacing: '-1px',
+                                        }}>SHOP BY COLLECTION</h2>
                                     </Col>
                                 </Row>
                                 <Row style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>

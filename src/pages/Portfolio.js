@@ -100,7 +100,7 @@ const Portfolio = () => {
             <div style={{
                 position: 'absolute',
                 top: 0,
-                left: 0,
+                left: '50%', // removes white line on right-side
                 width: '100vw',
                 height: '70vh',
                 zIndex: 0,
@@ -108,6 +108,7 @@ const Portfolio = () => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
+                transform: 'translateX(-50%)', // removes white line on right-side
             }} />
             <div style={{ position: 'relative', zIndex: 2 }}>
                 <Menu logoOverride={require('../resources/5.png').default} />
