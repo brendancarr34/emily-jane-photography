@@ -97,6 +97,7 @@ const Menu = ({ logoOverride }) => {
                                 padding: '8px 24px',
                                 // make background of button see through
                                 backgroundColor: 'rgba(162, 160, 44, 0.4)',
+                                marginTop: '24px',
                             }}
                         >
                             Menu
@@ -126,6 +127,7 @@ const Menu = ({ logoOverride }) => {
                             gap: '32px',
                             flex: 1,
                             justifyContent: 'flex-end',
+                            marginTop: '24px',
                         }}
                     >
                         <Nav.Link as={Link} to="/" style={{ color: 'white', fontWeight: 600, fontSize: '1.15rem', fontFamily: 'Montserrat, Inter, Arial, sans-serif', letterSpacing: '1px' }}>
