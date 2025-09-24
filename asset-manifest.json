@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/emily-jane-photography/static/css/main.317eccfd.css",
-    "main.js": "/emily-jane-photography/static/js/main.a6f6fe84.js",
+    "main.css": "/emily-jane-photography/static/css/main.0c8f780d.css",
+    "main.js": "/emily-jane-photography/static/js/main.111b970f.js",
     "static/media/landingPageBackground3.jpg": "/emily-jane-photography/static/media/landingPageBackground3.f0ab54fab6639f7ae56e.jpg",
     "static/media/SAM_5714.JPG": "/emily-jane-photography/static/media/SAM_5714.0db33f529acfa56bc6c9.JPG",
     "static/media/IMG_7310.JPG": "/emily-jane-photography/static/media/IMG_7310.aa94666247abede36b26.JPG",
@@ -75,12 +75,13 @@
     "static/media/5.png": "/emily-jane-photography/static/media/5.2b3c745772c93026f498.png",
     "static/media/1.png": "/emily-jane-photography/static/media/1.4b33a0fc21afc3ac4e3c.png",
     "static/media/10.png": "/emily-jane-photography/static/media/10.1e242826fc70e3826c0c.png",
+    "static/media/instagramLogo.png": "/emily-jane-photography/static/media/instagramLogo.27a6689eaa63e503538e.png",
     "index.html": "/emily-jane-photography/index.html",
-    "main.317eccfd.css.map": "/emily-jane-photography/static/css/main.317eccfd.css.map",
-    "main.a6f6fe84.js.map": "/emily-jane-photography/static/js/main.a6f6fe84.js.map"
+    "main.0c8f780d.css.map": "/emily-jane-photography/static/css/main.0c8f780d.css.map",
+    "main.111b970f.js.map": "/emily-jane-photography/static/js/main.111b970f.js.map"
   },
   "entrypoints": [
-    "static/css/main.317eccfd.css",
-    "static/js/main.a6f6fe84.js"
+    "static/css/main.0c8f780d.css",
+    "static/js/main.111b970f.js"
   ]
 }
