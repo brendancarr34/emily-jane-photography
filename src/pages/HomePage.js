@@ -113,7 +113,7 @@ const HomePage = () => {
         <Container
           style={{
             textAlign: "center",
-            paddingTop: "40px",
+            paddingTop: "20px",
             margin: "0",
             width: "100vw",
             minWidth: "100vw",
@@ -210,14 +210,21 @@ const HomePage = () => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    justifyContent: "center",
+                    justifyContent: "space-between",
+                    height: "100%", // Ensure the div takes full height
                     opacity: loaded ? 1 : 0,
                     transition: "opacity 1s ease",
                   }}
                 >
                   <Link
                     to={`/product/${photo.id}`}
-                    style={{ textDecoration: "none", width: "100%" }}
+                    style={{
+                      textDecoration: "none",
+                      width: "100%",
+                      paddingBottom: "12px",
+                      paddingTop: "auto",
+                      marginTop: "auto",
+                    }}
                   >
                     <img
                       src={photo.url}
@@ -235,22 +242,19 @@ const HomePage = () => {
                       onLoad={() => setLoaded(true)}
                     />
                   </Link>
-                  <div
-                    style={{
-                      alignSelf: "flex-start",
-                      textAlign: "left",
-                      marginTop: "1rem",
-                    }}
-                  >
-                    <p>{photo.title}</p>
-                  </div>
                   <Button
                     variant="primary"
                     style={{
-                      marginTop: "10px",
-                      backgroundColor: "#55020e",
+                      marginTop: "auto", // Align the button to the bottom
+                      // backgroundColor: "#55020e",
+                      backgroundImage: `url(${backgroundImage})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      color: "white",
                       border: "none",
                       fontWeight: 600,
+                      width: "100%",
                     }}
                     onClick={() => openModal(photo)}
                   >
@@ -430,8 +434,12 @@ const HomePage = () => {
           <Button
             variant="primary"
             style={{
-              backgroundColor: "#55020e",
-              color: "black",
+              // backgroundColor: "#55020e",
+              backgroundImage: `url(${backgroundImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              color: "white",
               border: "none",
             }}
             onClick={() => {
@@ -451,7 +459,7 @@ const HomePage = () => {
               setIsSuccessModalOpen(true);
             }}
           >
-            Add to Cart
+            <strong>Add to Cart</strong>
           </Button>
         </Modal.Footer>
       </Modal>

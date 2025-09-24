@@ -15,7 +15,7 @@ const LandingPage = () => {
     letterSpacing: "-2px",
     wordSpacing: "25px",
     position: "relative",
-    minHeight: "70vh",
+    minHeight: "48vh",
     display: "flex",
     alignItems: "flex-start",
     padding: 0,
@@ -44,7 +44,7 @@ const LandingPage = () => {
           top: 0,
           left: 0,
           width: "100vw",
-          height: "80vh",
+          height: "60vh",
           zIndex: 0,
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
@@ -113,7 +113,7 @@ const LandingPage = () => {
                           letterSpacing: "-1px",
                           textAlign: "center",
                           margin: 0,
-                          marginTop: "120px",
+                          marginTop: "70px",
                         }}
                       >
                         PHOTOGRAPHY
@@ -137,31 +137,73 @@ const LandingPage = () => {
                 </Row>
               </Container>
             </div>
-
-            {/* Portfolio Section */}
             <div>
-              <Container style={{ padding: "20px", textAlign: "center" }}>
-                <Button
-                  variant="dark"
-                  href="/emily-jane-photography/#/portfolio"
+              <Container
+                style={{
+                  padding: "20px",
+                  fontFamily: '"Young Serif", serif',
+                  height: "100%",
+                }}
+              >
+                {/* <Row style={{ paddingBottom: "20px" }}>
+                  <Col style={{ textAlign: "center" }}>
+                    <h2
+                      style={{
+                        fontFamily: '"Inter", sans-serif',
+                        fontSize: "clamp(1rem, 2vw, 2rem)",
+                        fontWeight: "700",
+                        transform: "scaleX(1.4)",
+                      }}
+                    >
+                      ABOUT ME
+                    </h2>
+                  </Col>
+                </Row> */}
+                <Row
                   style={{
-                    fontFamily: '"Inter", sans-serif',
-                    fontWeight: 800,
-                    fontSize: "2.2rem",
-                    padding: "32px 80px",
-                    borderRadius: "40px",
-                    background: "#222",
-                    border: "none",
-                    marginBottom: "18px",
-                    letterSpacing: "1px",
-                    boxShadow: "0 6px 32px rgba(0,0,0,0.18)",
-                    transition: "transform 0.2s",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
                   }}
-                  onMouseOver={e => e.currentTarget.style.transform = 'scale(1.04)'}
-                  onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
                 >
-                  See My Work
-                </Button>
+                  <Col xs={12} sm={12} lg={6}>
+                    <p
+                      style={{
+                        fontFamily: '"Inter", sans-serif',
+                        fontSize: "clamp(0.8rem, 1vw, 1.5rem)",
+                        lineHeight: "1.6",
+                      }}
+                    >
+                      Hi! I'm Emily Jane Teves, a photographer based in the
+                      beautiful state of North Carolina. I specialize in
+                      capturing the essence of nature and the beauty of the
+                      world around us through my lens.
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: '"Inter", sans-serif',
+                        fontSize: "clamp(0.8rem, 1vw, 1.5rem)",
+                        lineHeight: "1.6",
+                      }}
+                    >
+                      My journey into photography began as a way to document my
+                      travels and the stunning landscapes I encountered. Over
+                      time, it has evolved into a passion for sharing these
+                      moments with others.
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: '"Inter", sans-serif',
+                        fontSize: "clamp(0.8rem, 1vw, 1.5rem)",
+                        lineHeight: "1.6",
+                      }}
+                    >
+                      I hope my work inspires you to appreciate the beauty of
+                      our world and perhaps even embark on your own photographic
+                      journey.
+                    </p>
+                  </Col>
+                </Row>
               </Container>
             </div>
             <div>
@@ -172,7 +214,12 @@ const LandingPage = () => {
                   height: "100%",
                 }}
               >
-                <Row style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+                <Row
+                  style={{
+                    // paddingTop: "20px",
+                    paddingBottom: "20px",
+                  }}
+                >
                   <Col style={{ textAlign: "center" }}>
                     <h2
                       style={{
@@ -366,7 +413,7 @@ const LandingPage = () => {
                 </Row>
               </Container>
             </div>
-            <div>
+            {/* <div>
               <Container
                 style={{
                   padding: "20px",
@@ -433,9 +480,8 @@ const LandingPage = () => {
                     </p>
                   </Col>
                 </Row>
-                <Row>{/* Learn More About Me button removed */}</Row>
               </Container>
-            </div>
+            </div> */}
             <div>
               <div
                 style={{
